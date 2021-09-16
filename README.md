@@ -1,6 +1,23 @@
 # unijobapp
 Front-End React Project for the UniJobApplication
 
+## Directory Structure
+/__tests__
+    /unit - Tests in unit
+    /integration - Tests integrating entire system.
+/dist - Final built files which get served by the web server.
+/src
+    /js
+        /atoms - The smallest level of React components we have ( i.e. Buttons, Labels, Headers).
+        /lib - Any small Javascript libraries that we create internally.
+        /molecules - Combination of atoms (i.e. Input Boxes, Headers w/ Text, Nav-Bar).
+        /organisms - Combination of molecules. One level of abstraction higher (i.e. Forms, Sections).
+        /pages - Combination of organisms. Represents the final pages of the site (i.e. Home Page, Affiliate Page, Employees Page).
+        /templates - How to structure your page. The template the page sits in. (i.e. Columns, Grid, Flexbox).
+    /css
+    /html
+/assets - Images, video, or app driven data.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
