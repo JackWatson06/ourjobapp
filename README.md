@@ -1,3 +1,24 @@
+# unijobapp
+Front-End React Project for the UniJobApplication
+
+## Directory Structure
+/__tests__
+    /unit - Tests in unit
+    /integration - Tests integrating entire system.
+/dist - Final built files which get served by the web server.
+/src
+    /js
+        /atoms - The smallest level of React components we have ( i.e. Buttons, Labels, Headers).
+        /lib - Any small Javascript libraries that we create internally.
+        /molecules - Combination of atoms (i.e. Input Boxes, Headers w/ Text, Nav-Bar).
+        /organisms - Combination of molecules. One level of abstraction higher (i.e. Forms, Sections).
+        /pages - Combination of organisms. Represents the final pages of the site (i.e. Home Page, Affiliate Page, Employees Page).
+        /templates - How to structure your page. The template the page sits in. (i.e. Columns, Grid, Flexbox).
+    /css
+    /html
+/assets - Images, video, or app driven data.
+
+## Next.js
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -33,5 +54,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Npm Version - 6.14.15
-## Node Version - 14.17.6
+## Versions
+- NPM: 6.14.15
+- Node: 14.17.6
