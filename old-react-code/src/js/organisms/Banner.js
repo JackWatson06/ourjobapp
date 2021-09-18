@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../../../static/assets/logo.svg';
+import '../../css/Banner.css';
 
-function App() {
+function Banner() {
   return (
     <div className="App">
       <header className="App-header">

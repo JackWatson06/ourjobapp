@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from '../organisms/App';
-import reportWebVitals from './reportWebVitals';
+import Banner from '../organisms/Banner';
+import reportWebVitals from '../lib/reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Banner />
   </React.StrictMode>,
   document.getElementById('root')
 );
