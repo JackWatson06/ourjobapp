@@ -5,7 +5,7 @@ import Affiliate from "../components/pages/affiliate";
  * @param {object} props Properties we are passing into this affiliate page
  * @returns An instance of the affiliate page.
  */
-export default function Affiliate(props)
+export default function AffiliatePage(props)
 {
     return <Affiliate {...props} />
 }

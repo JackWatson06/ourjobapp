@@ -2,7 +2,7 @@
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 
-import Home from "../components/pages/home";
+import Home from "../components/pages/index";
 
 /**
  * This will render a page on the route https://unijob.app OR https://unijob.app/index

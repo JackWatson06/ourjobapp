@@ -14,7 +14,11 @@ Front-End React Project for the UniJobApplication
     /pages      - Combination of organisms. Represents the final pages of the site (i.e. Home Page, Affiliate Page, Employees Page).
     /templates  - How to structure your page. The template the page sits in. (i.e. Columns, Grid, Flexbox).
 /public
-    /images - Static images.  
+    /images - Static images. 
+
+## Style Guide
+
+- Avoid using semicolons at the end of lines.
 
 ## Next.js
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
