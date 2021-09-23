@@ -5,67 +5,95 @@
  * Individual input components will intereact with the state through this class. We are going to want to think of
  * a way to make this generic.
  * 
+ * The form object that this class interacts with has this structure:
+ * 
+ *  {
+ *      "fname" : {
+ *          "value" : "Jack"
+ *      },
+ *      "lname" : {
+ *          "value" : "",
+ *          "error" : "Last Name is a required field."
+ *      },
+ *      "country-authorized-to-work" : {
+ *          "value" : ["United States", "Canada", "Mexico"]
+ *      },
+ *      "email" : {
+ *          "value" : "Orangutan",
+ *          "error" : "Enter a valid email!"
+ *      }
+ *  }
  */
-
 import { useEffect } from "react"
 
-/**
- * Get the value from the input state data. Since the state is stored in a array we have to search the array...
- * maybe we can index the array with the input?
- * @param {object} props React properties object
- * @param {string} property Value we are targeting from within the input state data
- */
-export const getValue = (props, property) => {
 
-    // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
-    let foundObject = props.form.find(inputState => inputState.name === property)
-    return foundObject != undefined && foundObject.hasOwnProperty("value") ? 
-        foundObject.value : 
-        "";
-}
-
-/**
- * Get the value for the current input. If we have none then return an empty string.
- * @param {object} props React properties object
- * @param {string} property Name of the input we are storing the state of
- */
-export const getState = (props, property) => {
-
-    // When we first load up the input element we will need to start to keep track of it's state in the
-    // forms overally state property.
+export const initInput = (property, displayName, formState) =>
+{
     useEffect( () => {
 
-        let newInputState = {
-            "name"  : property,
+        let inputStateObject = { 
+            [property] : { 
+                "display_name" : displayName,
+                "value"        : "",
+                "error"        : ""
+            } 
         }
 
-        // So I think we have to use push here since setForm is an async function and react will batch form requests
-        // together so if we try to use the spread operator we will be spreading it with the old value.
-        props.form.push(newInputState)
-        props.setForm( props.form )
-
+        let newForm = Object.assign(formState.form, inputStateObject)
+        formState.setForm( newForm )
+        
     }, []);
-
-    // Serach for the current elements state by using the name field. Then pull that value out of the state.
-    return getValue(props, property);
 }
 
-/**
- * Handle a state changge in the input state array stored on the multipage form.
- * @param {event} e Event for updating the state change
- * @param {object} props React properties object
- * @param {string} property Name of the input we are storing state for
- */
-export const handleStateChange = (e, props, property) => {
+export const getValue = (property, form) => 
+{
+    if( form[property] === undefined ) return "";
 
     // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
-    let stateIndex = props.form.findIndex(inputState => inputState.name === property)
+    return form[property].value;
+}
 
-    // Array returns a referance to the object. So we have to deep copy
-    let deepCopy = props.form.map(inputState => ({...inputState}))
-    let inputState = deepCopy.splice(stateIndex, 1)[0];
+export const getDisplayName = (property, form) => 
+{
+    if( form[property] === undefined ) return "";
 
-    inputState.value = e.target.value
+    // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
+    return form[property].display_name;
+}
 
-    props.setForm( [...deepCopy, inputState] )
+export const getError = (property, form) => 
+{
+    if( form[property] === undefined ) return "";
+
+    // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
+    return form[property].error;
+}
+
+export const setErrors = (errors, formState) =>
+{
+    let mappedErrors = {};
+    Object.keys(errors).map((name) => {
+        mappedErrors[name] = { "error" : errors[name] }
+    })
+
+    _setInputStateField( mappedErrors, formState )
+}
+
+export const setValue = (value, property, formState) => 
+{
+    _setInputStateField( { 
+        [property] : { "value" : value }
+    }, formState )
+}
+
+const _setInputStateField = (assign, formState) =>
+{
+    // We only need a shallow copy in order for this to work
+    let formCopy = { ...formState.form }
+
+    Object.keys(assign).map((name) => {
+        formCopy[name] = Object.assign(formCopy[name], assign[name])
+    })
+
+    formState.setForm( formCopy );
 }

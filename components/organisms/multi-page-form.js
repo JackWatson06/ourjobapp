@@ -8,6 +8,11 @@ import { ifValidated } from '../lib/FormValidator'
 export default function MultiPageForm(props)
 {
     let [ form, setForm ]   = useState([])
+    let formState = {
+        "form"      : form,
+        "setForm"   : setForm
+    }
+
     let [ stage, setStage ] = useState(0)
 
     let FormComponent = props.children[stage].type
@@ -15,7 +20,7 @@ export default function MultiPageForm(props)
     // Go to the next stage of the multi page form.
     const nextStage = (e, rules) => 
     {
-        if( ifValidated(form, rules) )
+        if( ifValidated(formState, rules) )
         {
             let newStage = stage + 1
             if( newStage < props.children.length )
@@ -46,6 +51,6 @@ export default function MultiPageForm(props)
     // maybe that also dictates how the form is sent.
     return <>
         <button onClick={ prevStage }>Previous</button>
-        <FormComponent form={ form } setForm={ setForm } next={ nextStage } finish={ send } />
+        <FormComponent formState={formState} next={ nextStage } finish={ send } />
     </>;
 }

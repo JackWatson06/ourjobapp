@@ -8,7 +8,7 @@ import { getValue, getState, handleStateChange } from "../../lib/FormStateTracke
 export default function AffiliateForm(props)
 {
     return <div>
-        <p>Hi, { getValue(props, "fname") }! Let’s design your affiliate link.</p>
+        <p>Hi, { getValue("fname", props.formState.form) }! Let’s design your affiliate link.</p>
         
         <label htmlFor="affiliate-input">Affiliate Name</label>
         <input id="affiliate-input" type="text" value={ getState(props, "link") } onChange={ (e) => handleStateChange(e, props, "link") }></input>

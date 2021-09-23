@@ -1,4 +1,4 @@
-import { getState, handleStateChange } from "../../lib/FormStateTracker"
+import { initInput, getError, getValue, setValue } from "../../lib/FormStateTracker"
 
 import required from "../../lib/rules/Required"
 
@@ -9,34 +9,37 @@ import required from "../../lib/rules/Required"
  */
 export default function NameForm(props)
 {
-
     let validationRules = {
         "fname" : [ required ],
         "lname" : [ required ]
     }
 
+    let fnameError = getError( "fname", props.formState.form )
+    let lnameError = getError( "lname", props.formState.form )
+
+    initInput("fname", "Legal First Name", props.formState);
+    initInput("lname", "Legal Last Name", props.formState);
+
     return <div>
         <p>To start, we would love to get to know you!</p>
-
 
         <label htmlFor="legal-fname-input">Legal First Name</label>
         <input 
             id="legal-fname-input" 
             type="text" 
-            value={ getState(props, "fname") } 
-            onChange={ (e) => handleStateChange(e, props, "fname") } 
+            value={ getValue("fname", props.formState.form) } 
+            onChange={ (e) => setValue(e.target.value, "fname", props.formState) } 
             ></input>
-
-
+        { fnameError != "" && <p> { fnameError } </p>}
 
         <label htmlFor="legal-lname-input">Legal Last Name</label>
         <input id="legal-lname-input" 
                 type="text" 
-                value={ getState(props, "lname") } 
-                onChange={ (e) => handleStateChange(e, props, "lname") } 
+                value={ getValue("lname", props.formState.form) } 
+                onChange={ (e) => setValue(e.target.value, "lname", props.formState) } 
             ></input>
+        { lnameError != "" && <p> { lnameError } </p>}
 
-            
         <button onClick={ (e) => props.next(e, validationRules) } >Next</button>
     </div>
 }

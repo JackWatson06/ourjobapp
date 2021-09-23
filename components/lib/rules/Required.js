@@ -6,9 +6,9 @@
  * state.
  */
 
-export default required = {
+export default {
     
-    rule: function(value)
+    validate: function(value)
     {
         if( value === undefined || value === null || value === "")
         {

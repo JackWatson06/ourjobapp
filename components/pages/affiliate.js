@@ -19,14 +19,7 @@ import EmailForm from '../organisms/forms/email-form';
  */
  export default function Affiliate(props)
  {
-    let [stage, setStage] = useState(0);
-
-    const buttonClick = (e) => {
-        setStage(stage + 1)
-    }
-
-    let button = <button onClick={ (e) => buttonClick(e) }>Next</button>;
-
+     
     return <>
 
         {/* SEO Header Tags */}
