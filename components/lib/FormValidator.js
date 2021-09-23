@@ -37,6 +37,7 @@ export const ifValidated = (formState, rules) =>
                 {
                     errors[name] = ""
                 }
+                
             })
 
             setErrors(errors, formState);

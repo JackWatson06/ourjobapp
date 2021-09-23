@@ -45,6 +45,16 @@ export const initInput = (property, displayName, formState) =>
     }, []);
 }
 
+export const removeInput = (property, formState) =>
+{
+    // We only need a shallow copy in order for this to work
+    let formCopy = { ...formState.form }
+
+    delete formCopy[property]
+
+    formState.setForm( formCopy )
+}
+
 export const getValue = (property, form) => 
 {
     if( form[property] === undefined ) return "";
