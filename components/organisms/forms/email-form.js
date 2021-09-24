@@ -1,5 +1,7 @@
-import { getValue, getState, handleStateChange } from "../../lib/FormStateTracker"
+import required from "../../lib/rules/Required"
+import email from "../../lib/rules/Email"
 
+import Input from "../../molecules/input"
 
 /**
  * The affiliate form is in charge of create the form where the user will design their affiliate link
@@ -8,9 +10,12 @@ import { getValue, getState, handleStateChange } from "../../lib/FormStateTracke
 export default function EmailForm(props)
 {
     return <div>
-        <p>Hi, { getValue(props.form, "fname") }! Let’s design your affiliate link.</p>
-        <label htmlFor="affiliate-input">Email</label>
-        <input id="affiliate-input" type="text" value={ getState(props, "email") } onChange={ (e) => handleStateChange(e, props, "email") }></input>
+        <p>Last step just send us your email!</p>
+        <Input 
+            name         = "email"
+            display_name = "Email"
+            formState    = {props.formState}
+            validators   = { [ required, email ] } />
         <button onClick={ props.finish }>Send My Link!</button>
     </div>
 }

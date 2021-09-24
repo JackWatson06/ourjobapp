@@ -11,26 +11,26 @@ export default function NameForm(props)
 {
     let dependent = {
         "Jack" : <Input 
-                    name="lname" 
-                    display_name="Legal Last Name" 
-                    formState={props.formState}
-                    validators={ [required] } />,
+                    name         = "lname"
+                    display_name = "Legal Last Name"
+                    formState    = {props.formState}
+                    validators   = { [required] } />,
         "Bill" : <Input 
-                    name="crime" 
-                    display_name="Last Crime You Commited" 
-                    formState={props.formState}
-                    validators={ [required] } />,
+                    name         = "crime"
+                    display_name = "Last Crime You Commited"
+                    formState    = {props.formState}
+                    validators   = { [required] } />,
     }
 
     return <div>
         <p>To start, we would love to get to know you!</p>
 
         <Input 
-            name="fname" 
-            display_name="Legal First Name" 
-            formState={props.formState} 
-            validators={ [required] } />
-        <DependentInput dependsOn="fname" renders={ dependent } formState={props.formState} />
+            name         = "fname"
+            display_name = "Legal First Name"
+            formState    = {props.formState}
+            validators   = { [required] } />
+        <DependentInput dependsOn = "fname" renders = { dependent } formState = {props.formState} />
 
         <button onClick={ (e) => props.next(e, [ "fname", "lname" ]) } >Next</button>
     </div>

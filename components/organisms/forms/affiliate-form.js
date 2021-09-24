@@ -1,5 +1,8 @@
-import { getValue, getState, handleStateChange } from "../../lib/FormStateTracker"
+import fs from "../../lib/FormStateTracker"
+import required from "../../lib/rules/Required"
 
+import Input from "../../molecules/input"
+import Select from "../../molecules/select"
 
 /**
  * The affiliate form is in charge of create the form where the user will design their affiliate link
@@ -8,20 +11,29 @@ import { getValue, getState, handleStateChange } from "../../lib/FormStateTracke
 export default function AffiliateForm(props)
 {
     return <div>
-        <p>Hi, { getValue("fname", props.formState.form) }! Let’s design your affiliate link.</p>
+        <p>Hi, { fs.getValue("fname", props.formState.form) }! Let’s design your affiliate link.</p>
         
-        <label htmlFor="affiliate-input">Affiliate Name</label>
-        <input id="affiliate-input" type="text" value={ getState(props, "link") } onChange={ (e) => handleStateChange(e, props, "link") }></input>
+        <Input 
+            name         = "affiliat-link"
+            display_name = "Affiliate Link"
+            formState    = {props.formState}
+            validators   = { [required] } />
         
-        <label htmlFor="charity-input">Charity</label>
-        <select id="charity-select" value={ getState(props, "charity") } onChange={ (e) => handleStateChange(e, props, "charity") }>
-            <option value=""></option>
-            <option value="Doctors Without Borders">Doctors Without Borders</option>
-            <option value="Water Wells">Water Wells</option>
-        </select>
+        <Select 
+            name         = "charity"
+            display_name = "Charity"
+            formState    = {props.formState}
+            validators   = { [required] } >
+            <option value = "Doctors Without Borders">Doctors Without Borders</option>
+            <option value = "Water Wells">Water Wells</option>
+        </Select>
 
-        <label htmlFor="terms-of-service-input">Terms of Service</label>
-        <input id="terms-of-service-input" type="checkbox"></input>
+        <Input 
+            name         = "terms-of-service"
+            display_name = "Terms of Service"
+            type         = "checkbox"
+            formState    = {props.formState}
+            validators   = { [required] } />
 
         <button onClick={ props.next }>Create My Link!</button>
     </div>

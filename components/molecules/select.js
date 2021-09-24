@@ -5,7 +5,7 @@ import { useEffect } from "react"
  * Property object for react.
  * @param {object} props Reacts properties object
  */
-export default function Input(props)
+export default function Select(props)
 {
     let id    = Math.floor(Math.random() * 1_000_000_000);
     let error = fs.getError( props.name, props.formState.form )
@@ -16,12 +16,14 @@ export default function Input(props)
 
     return <>
         <label htmlFor={ id } >{ props.display_name }</label>
-        <input 
-            id       = { id }
-            type     = { props.type ? props.type : "text" }
-            value    = { fs.getValue( props.name, props.formState.form) }
-            onChange = { (e) => fs.setValue(e.target.value, props.name, props.formState) }
-            ></input>
+        <select 
+            id={ id } 
+            value={ fs.getValue( props.name, props.formState.form) }  
+            onChange={ (e) => fs.setValue(e.target.value, props.name, props.formState) } 
+            >
+            <option value=""></option>
+            { props.children }
+        </select>
         { error != "" && <p> { error } </p>}
     </>
 }
