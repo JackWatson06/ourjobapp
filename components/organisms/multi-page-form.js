@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ifValidated } from '../lib/FormValidator'
+import { isValid } from '../lib/FormValidator'
 
 /**
  * 
@@ -7,7 +7,7 @@ import { ifValidated } from '../lib/FormValidator'
  */
 export default function MultiPageForm(props)
 {
-    let [ form, setForm ]   = useState([])
+    let [ form, setForm ]   = useState({})
     let formState = {
         "form"      : form,
         "setForm"   : setForm
@@ -15,12 +15,10 @@ export default function MultiPageForm(props)
 
     let [ stage, setStage ] = useState(0)
 
-    let FormComponent = props.children[stage].type
-
     // Go to the next stage of the multi page form.
-    const nextStage = (e, rules) => 
+    const nextStage = (e, inputChecks) => 
     {
-        if( ifValidated(formState, rules) )
+        if( isValid(formState, inputChecks) )
         {
             let newStage = stage + 1
             if( newStage < props.children.length )
@@ -46,6 +44,10 @@ export default function MultiPageForm(props)
         console.log("Sent the form! ");
         console.log(value);
     }
+
+
+    let FormComponent = props.children[stage].type
+
 
     // Finish does NOT need to be avaialbe to every form we should abstract that out into it's own FinishForm component.
     // maybe that also dictates how the form is sent.

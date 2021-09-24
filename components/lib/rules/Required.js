@@ -22,4 +22,4 @@ export default {
     {
         return `Input ${ name } requires input`
     }
-}
+};

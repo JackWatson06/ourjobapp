@@ -24,77 +24,8 @@
  *      }
  *  }
  */
-import { useEffect } from "react"
+import validate from "./Validator"
 
-
-export const initInput = (property, displayName, formState) =>
-{
-    useEffect( () => {
-
-        let inputStateObject = { 
-            [property] : { 
-                "display_name" : displayName,
-                "value"        : "",
-                "error"        : ""
-            } 
-        }
-
-        let newForm = Object.assign(formState.form, inputStateObject)
-        formState.setForm( newForm )
-        
-    }, []);
-}
-
-export const removeInput = (property, formState) =>
-{
-    // We only need a shallow copy in order for this to work
-    let formCopy = { ...formState.form }
-
-    delete formCopy[property]
-
-    formState.setForm( formCopy )
-}
-
-export const getValue = (property, form) => 
-{
-    if( form[property] === undefined ) return "";
-
-    // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
-    return form[property].value;
-}
-
-export const getDisplayName = (property, form) => 
-{
-    if( form[property] === undefined ) return "";
-
-    // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
-    return form[property].display_name;
-}
-
-export const getError = (property, form) => 
-{
-    if( form[property] === undefined ) return "";
-
-    // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
-    return form[property].error;
-}
-
-export const setErrors = (errors, formState) =>
-{
-    let mappedErrors = {};
-    Object.keys(errors).map((name) => {
-        mappedErrors[name] = { "error" : errors[name] }
-    })
-
-    _setInputStateField( mappedErrors, formState )
-}
-
-export const setValue = (value, property, formState) => 
-{
-    _setInputStateField( { 
-        [property] : { "value" : value }
-    }, formState )
-}
 
 const _setInputStateField = (assign, formState) =>
 {
@@ -107,3 +38,72 @@ const _setInputStateField = (assign, formState) =>
 
     formState.setForm( formCopy );
 }
+
+export default {
+        initInput: (property, displayName, validators, formState) =>
+        {
+            let inputStateObject = { 
+                [property] : { 
+                    "display_name" : displayName,
+                    "validators"   : validators,
+                    "value"        : "",
+                    "error"        : ""
+                } 
+            }
+
+            let newForm = Object.assign(formState.form, inputStateObject)
+            formState.setForm( newForm )
+        },
+
+        removeInput: (property, formState) =>
+        {
+            if( formState.form[property] != undefined)
+            {
+                // We only need a shallow copy in order for this to work
+                let formCopy = { ...formState.form }
+
+                delete formCopy[property]
+
+                formState.setForm( formCopy )
+            }
+        },
+
+        getValue: (property, form) => 
+        {
+            if( form[property] === undefined ) return "";
+        
+            // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
+            return form[property].value;
+        },
+
+        getError: (property, form) => 
+        {
+            if( form[property] === undefined ) return "";
+        
+            // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
+            return form[property].error;
+        },
+
+        setErrors: (errors, formState) =>
+        {
+            let mappedErrors = {};
+            Object.keys(errors).map((name) => {
+                mappedErrors[name] = { "error" : errors[name] }
+            })
+        
+            _setInputStateField( mappedErrors, formState )
+        },
+
+        setValue: (value, property, formState) => 
+        {
+            let form = formState.form
+
+            _setInputStateField( { 
+                [property] : { 
+                    "value"  : value,
+                    "error" : validate(value, form[property].display_name, form[property].validators)
+                }
+            }, formState )
+        },
+    };
+
