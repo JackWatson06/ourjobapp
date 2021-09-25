@@ -4,25 +4,22 @@ import { useEffect } from "react"
 export default function DependentInput(props)
 {
     let component = null
+    let shouldRender = fs.getValue(props.dependsOn, props.formState.form) === props.dependsOnValue
 
-    // Don't include the name input if we don't have dependent value just yet.
-    for(const equals of Object.keys(props.renders) )
+    if( shouldRender )
     {
-        let currentValue = fs.getValue(props.dependsOn, props.formState.form)
-
-        if( equals === currentValue )
-        {
-            component = props.renders[equals]
-        }
-
-        useEffect(() => 
-        {
-            if( equals != currentValue )
-            {
-                fs.removeInput( props.renders[equals].props.name, props.formState)
-            }
-        }, [])
+        component = props.renders
     }
+
+    // We only want to remove when we are removing it from the virutal dom tree
+    useEffect(() => 
+    {
+        if(!shouldRender)
+        {
+            fs.removeInput( props.renders.props.name, props.formState)
+        }
+    }, [shouldRender])
+
 
     return component
 }

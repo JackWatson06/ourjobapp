@@ -9,18 +9,18 @@ import DependentInput from "../../molecules/dependent-input"
  */
 export default function NameForm(props)
 {
-    let dependent = {
-        "Jack" : <Input 
-                    name         = "lname"
-                    display_name = "Legal Last Name"
-                    formState    = {props.formState}
-                    validators   = { [required] } />,
-        "Bill" : <Input 
-                    name         = "crime"
-                    display_name = "Last Crime You Commited"
-                    formState    = {props.formState}
-                    validators   = { [required] } />,
-    }
+
+    let lastName = <Input 
+                        name         = "lname"
+                        display_name = "Legal Last Name"
+                        formState    = {props.formState}
+                        validators   = { [required] } />
+
+    let crime    = <Input 
+                        name         = "crime"
+                        display_name = "Last Crime You Commited"
+                        formState    = {props.formState}
+                        validators   = { [required] } />
 
     return <div>
         <p>To start, we would love to get to know you!</p>
@@ -30,8 +30,10 @@ export default function NameForm(props)
             display_name = "Legal First Name"
             formState    = {props.formState}
             validators   = { [required] } />
-        <DependentInput dependsOn = "fname" renders = { dependent } formState = {props.formState} />
 
-        <button onClick={ (e) => props.next(e, [ "fname", "lname" ]) } >Next</button>
+        <DependentInput dependsOn="fname" dependsOnValue="Jack" renders={ lastName } formState={props.formState} />
+        <DependentInput dependsOn="fname" dependsOnValue="Bill" renders={ crime }    formState={props.formState} />
+
+        <button onClick={ (e) => props.next(e, [ "fname", "lname", "crime" ]) } >Next</button>
     </div>
 }
