@@ -1,5 +1,5 @@
-import required from "../../lib/rules/Required"
-import email from "../../lib/rules/Email"
+import required from "../../lib/form/rules/Required"
+import email from "../../lib/form/rules/Email"
 
 import Input from "../../molecules/input"
 

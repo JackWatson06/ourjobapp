@@ -1,6 +1,8 @@
-import required from "../../lib/rules/Required"
+import required from "../../lib/form/rules/Required"
+import search from "../../lib/api/GoogleApi"
 
 import Input from "../../molecules/input"
+import ApiSelect from "../../molecules/api-select"
 import DependentInput from "../../molecules/dependent-input"
 
 /**
@@ -33,6 +35,11 @@ export default function NameForm(props)
 
         <DependentInput dependsOn="fname" dependsOnValue="Jack" renders={ lastName } formState={props.formState} />
         <DependentInput dependsOn="fname" dependsOnValue="Bill" renders={ crime }    formState={props.formState} />
+        <ApiSelect name  = "address"
+            display_name = "Address"
+            formState    = {props.formState}
+            search       = { search }
+            validators   = { [required] } />
 
         <button onClick={ (e) => props.next(e, [ "fname", "lname", "crime" ]) } >Next</button>
     </div>

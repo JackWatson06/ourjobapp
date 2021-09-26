@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { isValid } from '../lib/FormValidator'
+import { isValid } from '../lib/form/FormValidator'
 
 /**
  * 

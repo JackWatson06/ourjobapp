@@ -1,5 +1,5 @@
-import fs from "../../lib/FormStateTracker"
-import required from "../../lib/rules/Required"
+import fs from "../../lib/form/FormStateTracker"
+import required from "../../lib/form/rules/Required"
 
 import Input from "../../molecules/input"
 import Select from "../../molecules/select"

@@ -1,4 +1,4 @@
-import fs from "../lib/FormStateTracker"
+import fs from "../lib/form/FormStateTracker"
 import { useEffect } from "react"
 
 export default function DependentInput(props)
