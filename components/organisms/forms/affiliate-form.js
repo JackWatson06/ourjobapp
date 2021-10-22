@@ -1,5 +1,5 @@
-import fs from "../../lib/form/FormStateTracker"
 import required from "../../lib/form/rules/Required"
+import email from "../../lib/form/rules/Email"
 
 import Input from "../../molecules/input"
 import Select from "../../molecules/select"
@@ -11,22 +11,27 @@ import Select from "../../molecules/select"
 export default function AffiliateForm(props)
 {
     return <div>
-        <p>Hi, { fs.getValue("fname", props.formState.form) }! Let’s design your affiliate link.</p>
+        <p>Let’s design your link!</p>
         
         <Input 
-            name         = "affiliat-link"
-            display_name = "Affiliate Link"
+            name         = "link"
+            display_name = "Link Name"
             formState    = {props.formState}
             validators   = { [required] } />
         
         <Select 
             name         = "charity"
+            endpoint     = "search/charities?name=Doctors"
             display_name = "Charity"
             formState    = {props.formState}
             validators   = { [required] } >
-            <option value = "Doctors Without Borders">Doctors Without Borders</option>
-            <option value = "Water Wells">Water Wells</option>
         </Select>
+
+        <Input 
+            name         = "email"
+            display_name = "Email"
+            formState    = {props.formState}
+            validators   = { [ required, email ] } />
 
         <Input 
             name         = "terms-of-service"
@@ -35,6 +40,6 @@ export default function AffiliateForm(props)
             formState    = {props.formState}
             validators   = { [required] } />
 
-        <button onClick={ props.next }>Create My Link!</button>
+        <button onClick={ props.send }>Create My Link!</button>
     </div>
 }

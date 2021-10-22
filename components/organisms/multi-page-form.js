@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { isValid } from '../lib/form/FormValidator'
 
+import React from 'react'
+
 /**
  * 
  * @param {object} props Bag of properties that this multipage form will take.
@@ -42,11 +44,11 @@ export default function MultiPageForm(props)
     const send = (e) =>
     {
         console.log("Sent the form! ");
-        console.log(value);
+        console.log(formState.form);
     }
 
-
-    let FormComponent = props.children[stage].type
+    //https://stackoverflow.com/questions/32672966/react-props-children-is-not-array
+    let FormComponent = React.Children.toArray(props.children)[stage].type;
 
 
     // Finish does NOT need to be avaialbe to every form we should abstract that out into it's own FinishForm component.

@@ -70,15 +70,25 @@ export default {
 
         getValue: (property, form) => 
         {
-            if( form[property] === undefined ) return "";
+            if( form[property] === undefined ) return ""
         
             // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
             return form[property].value;
         },
 
+        getSubmitData: (form) =>
+        {
+            let submitData = {}
+            Object.keys(form).map((name) => {
+                submitData[name] = name.value
+            })
+
+            return submitData
+        },
+
         getError: (property, form) => 
         {
-            if( form[property] === undefined ) return "";
+            if( form[property] === undefined ) return ""
         
             // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
             return form[property].error;

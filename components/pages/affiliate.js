@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Head from 'next/head'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,9 +8,7 @@ import Image from 'next/image'
 import styles from '../../styles/Affiliate.module.css'
 
 import MultiPageForm from '../organisms/multi-page-form';
-import NameForm from '../organisms/forms/name-form';
 import AffiliateForm from '../organisms/forms/affiliate-form';
-import EmailForm from '../organisms/forms/email-form';
 
 /**
  * 
@@ -53,9 +50,7 @@ import EmailForm from '../organisms/forms/email-form';
         able to use that as a switch case. We need to hold state of the options filled out if you go to option two without already filling out
         option one it will automatically redirect to option one. */}
         <MultiPageForm>
-            <NameForm />
             <AffiliateForm />
-            <EmailForm />
         </MultiPageForm>
     </>;
  }
