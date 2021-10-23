@@ -18,8 +18,8 @@ export default {
         return true
     },
 
-    message: function (name)
+    message: function ()
     {
-        return `Input ${ name } requires input`
+        return `Input is required`
     }
 };

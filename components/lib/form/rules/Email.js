@@ -15,8 +15,8 @@ export default {
         return emailRe.test(String(value).toLowerCase());
     },
 
-    message: function (name)
+    message: function ()
     {
-        return `Input ${name} has to be a valid email!`
+        return `Has to be a valid email`
     }
 };

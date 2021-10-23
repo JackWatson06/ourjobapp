@@ -1,4 +1,3 @@
-import CandidatePool from "../components/pages/candidate_pool";
 
 /**
  * This will render a page on the route https://unijob.app/candidate_pool
@@ -7,5 +6,5 @@ import CandidatePool from "../components/pages/candidate_pool";
  */
 export default function CandidatePool(props)
 {
-    return <CandidatePool {...props} />
+    return <> </>;
 }
