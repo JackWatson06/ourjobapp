@@ -34,7 +34,8 @@ import validate from "./Validator"
  */
 const _setInputStateField = (assign, formState) =>
 {
-    // We only need a shallow copy in order for this to work
+    // We only need a shallow copy in order for this to work since we do not have a deeply nested data structure that is
+    // being passed intot his function.
     const formCopy = { ...formState.form }
 
     // Assign the new values to the copy.
@@ -43,6 +44,30 @@ const _setInputStateField = (assign, formState) =>
     })
 
     formState.setForm( formCopy );
+}
+
+/**
+ * Validate the input of a name on the form. Set error message if invalid.
+ * @param {string} name Name of the formState that we are validating against.
+ * @param {FormState} formState Reference to the formstate object created in the multi-page-form 
+ */
+const _validateInput = (name, formState) =>
+{
+    const form    = formState.form
+    const message = validate(form[name].value, form[name].validators)
+
+    _setInputStateField( {
+        [name] : {
+            "error" : message
+        }
+    }, formState )
+
+    if(message != "")
+    {
+        return false;
+    }
+
+    return true;
 }
 
 export default {
@@ -66,9 +91,7 @@ export default {
             {
                 // We only need a shallow copy in order for this to work
                 const formCopy = { ...formState.form }
-
                 delete formCopy[property]
-
                 formState.setForm( formCopy )
             }
         },
@@ -85,7 +108,7 @@ export default {
         {
             let submitData = {}
             Object.keys(form).map((name) => {
-                submitData[name] = name.value
+                submitData[name] = form[name].value
             })
 
             return submitData
@@ -112,16 +135,15 @@ export default {
          */
         setValue: (value, property, formState) => 
         {
-            const form = formState.form
-
             // Set value, and we also validate here to make sure that the field is valid real time. This setting needs
             // to be togglable since some fields should not be real time. Or at least when we loose focus.
             _setInputStateField( { 
                 [property] : { 
-                    "value" : value,
-                    "error" : validate(value, form[property].validators)
+                    "value" : value
                 }
             }, formState )
+
+            _validateInput(property, formState)
         },
 
         /**
@@ -139,18 +161,7 @@ export default {
             {
                 if( form[name] != undefined )
                 {
-                    const message = validate(form[name].value, form[name].validators)
-
-                    if(message != "")
-                    {
-                        valid = false;
-                    }
-
-                    _setInputStateField( {
-                        [name] : {
-                            "error" : message
-                        }
-                    }, formState )
+                    valid = _validateInput(name, formState)
                 }
             }
 
@@ -165,22 +176,11 @@ export default {
         {
             const form   = formState.form
             const inputs = Object.keys(form)
-            const valid  = true
-            
+            let   valid  = true
+
             for(const name of inputs)
             {
-                const message = validate(form[name].value, form[name].validators)
-
-                if(message != "")
-                {
-                    valid = false;
-                }
-
-                _setInputStateField( {
-                    [name] : {
-                        "error" : message
-                    }
-                }, formState )
+                valid = _validateInput(name, formState)
             }
 
             return valid

@@ -15,20 +15,20 @@ import { useEffect } from "react"
  * Property object for react.
  * @param {object} props Reacts properties object
  */
-export default function Input(props)
+export default function Input( {id, name, type, formState, validators} )
 {
-    let error = fs.getError( props.name, props.formState.form )
+    let error = fs.getError( name, formState.form )
 
     useEffect(() => {
-        fs.initInput(props.name, props.validators, props.formState)
+        fs.initInput(name, validators, formState)
     }, [])
 
     return <>
         <input 
-            id       = { props.id }
-            type     = { props.type ? props.type : "text" }
-            value    = { fs.getValue( props.name, props.formState.form) }
-            onChange = { (e) => fs.setValue(e.target.value, props.name, props.formState) }
+            id       = { id }
+            type     = { type ? type : "text" }
+            value    = { fs.getValue( name, formState.form) }
+            onChange = { (e) => fs.setValue(e.target.value, name, formState) }
             ></input>
         { error != "" && <p> { error } </p>}
     </>

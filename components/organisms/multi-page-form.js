@@ -7,8 +7,13 @@
 
 import fs from "@lib/form/FormStateTracker"
 
+
+import Router from 'next/router'
 import { useState } from 'react'
 import React from 'react'
+
+import axios from "axios";
+
 
 /**
  * 
@@ -53,15 +58,27 @@ export default function MultiPageForm(props)
         // Check the state of the whole form
         if( fs.validateAll(formState) )
         {
-            console.log("Sent the form! ");
-            // console.log(formState.form);
+            const data = fs.getSubmitData(formState.form);
+
+            axios.post(`${props.link}`, data)
+                .then(function (response) {
+                    if(response.status === 200)
+                    {
+                        Router.push( props.redirect )
+                    }
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
         }
     }
 
+    const childrenArray = React.Children.toArray(props.children); // <= React is a 
+
     //https://stackoverflow.com/questions/32672966/react-props-children-is-not-array
-    const Page = React.cloneElement( React.Children.toArray(props.children)[stage], { 
+    const Page = React.cloneElement( childrenArray[stage], { 
         formState : formState,
-        action    : props.children.length - 1 === stage ? send : next   // If we are on the last page then set the send trigger 
+        action    : childrenArray.length - 1 === stage ? send : next   // If we are on the last page then set the send trigger 
     });
 
     // Finish does NOT need to be avaialbe to every form we should abstract that out into it's own FinishForm component.

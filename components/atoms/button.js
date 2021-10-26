@@ -6,7 +6,7 @@
 
 import Router from 'next/router'
 
-export default function Button(props)
+export default function Button( { onClick, title } )
 {
-    return <button onClick={(e) => props.onClick(e) }> {props.title} </button>
+    return <button onClick={(e) => onClick(e) }> {title} </button>
 }

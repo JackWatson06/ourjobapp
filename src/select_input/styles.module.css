@@ -1,0 +1,162 @@
+.select_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 16.31rem;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+}
+.select_input_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0.06rem;
+  align-items: center;
+  justify-content: center;
+  width: 16.31rem;
+  height: auto;
+  min-height: 4.09rem;
+  border: 1px solid #4a4a4a;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);
+  background: white;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+}
+.active_input_wrapper {
+  background: linear-gradient(#64b4fa, #218ed5, #0072b2);
+}
+
+.input_wrapper_parent {
+  height: 4.09rem;
+  padding: 0.25rem;
+  padding-bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+.select_input_wrapper .input_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 3.81rem;
+  position: relative;
+  width: 15.81rem;
+  margin: auto;
+  background: white !important;
+}
+
+.select_input_wrapper .input_wrapper .text_input {
+  width: calc(100% - 3.88rem);
+  height: calc(100% - 1.5rem);
+  background-color: white;
+  padding: 0.25rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 1.13rem;
+  line-height: 1.31rem;
+  text-transform: capitalize;
+  color: #4a4a4a;
+  padding-top: 1rem !important;
+}
+.active_text_input {
+}
+
+.input_wrapper .label {
+  color: #848484;
+  font-size: 1.13rem;
+  line-height: 1.31rem;
+  text-transform: capitalize;
+  position: absolute;
+  left: 1rem;
+  top: 30%;
+  transition: ease-in 0.2s font-size, ease-in 0.2s top, ease-in 0.2s line-height;
+  -webkit-transition: ease-in 0.2s font-size, ease-in 0.2s top,
+    ease-in 0.2s line-height;
+  -moz-transition: ease-in 0.2s font-size, ease-in 0.2s top,
+    ease-in 0.2s line-height;
+  -ms-transition: ease-in 0.2s font-size, ease-in 0.2s top,
+    ease-in 0.2s line-height;
+  -o-transition: ease-in 0.2s font-size, ease-in 0.2s top,
+    ease-in 0.2s line-height;
+}
+
+.input_wrapper .activeLabel {
+  font-size: 0.75rem;
+  top: 0.5rem;
+  line-height: 0.88rem;
+}
+
+.select_input_wrapper .options_wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  background: white !important;
+  height: auto;
+  transition: max-height 0.1s ease-in-out;
+  -webkit-transition: max-height 0.1s ease-in-out;
+  -moz-transition: max-height 0.1s ease-in-out;
+  -ms-transition: max-height 0.1s ease-in-out;
+  -o-transition: max-height 0.1s ease-in-out;
+}
+.select_input_wrapper .options_wrapper .option_item {
+  height: 1.88rem;
+  width: 100%;
+  padding: 0.25rem 1rem;
+}
+.select_input_wrapper .options_wrapper .option_item span {
+  font-size: 0.75rem;
+  line-height: 0.88rem;
+  color: #4a4a4a;
+  text-transform: capitalize;
+}
+.select_input_wrapper .options_wrapper .option_item:hover {
+  background: linear-gradient(#64b4fa, #218ed5, #0072b2);
+}
+.select_input_wrapper .options_wrapper .option_item:hover span {
+  color: white;
+}
+
+.selected_options_wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.selected_options_wrapper .selected_option_item {
+  width: 5.81rem;
+  height: 1.81rem;
+  background: linear-gradient(#2789df, #1b7ebe, #0072b3);
+  display: flex;
+  flex-direction: row;
+  margin: 0.25rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  transition: all ease-in 0.5s;
+  -webkit-transition: all ease-in 0.5s;
+  -moz-transition: all ease-in 0.5s;
+  -ms-transition: all ease-in 0.5s;
+  -o-transition: all ease-in 0.5s;
+}
+
+.selected_options_wrapper .selected_option_item span {
+  color: white;
+  font-size: 0.75rem;
+  line-height: 0.88rem;
+}
+.selected_options_wrapper .selected_option_item img {
+  width: 0.63rem;
+  height: 0.69rem;
+}

@@ -6,11 +6,11 @@
 
 import Router from 'next/router'
 
-export default function LinkButton(props)
+export default function LinkButton( {link, title} )
 {
-    const link = () => {
-        Router.push( props.link )
+    const clickLink = () => {
+        Router.push( link )
     }
 
-    return <button onClick={ (e) => link() }> {props.title} </button>
+    return <button onClick={ (e) => clickLink() }> {title} </button>
 }

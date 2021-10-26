@@ -5,8 +5,12 @@ import MultiPageForm from '@organisms/multi-page-form'
 import FormPage from '@molecules/form-page'
 import FormInput from '@molecules/form-input'
 
+import Paragraph from '@atoms/text/paragraph'
 import Input from '@atoms/input'
 import Select from '@atoms/select'
+
+
+
 
 import rules from '@lib/form/rules'
 
@@ -15,7 +19,7 @@ import rules from '@lib/form/rules'
  * @param {object} props Properties we are passing into this affiliate page
  * @returns An instance of the affiliate page.
  */
-export default function AffiliatePage(props)
+export default function SharePage(props)
 {
     return <>
 
@@ -27,19 +31,23 @@ export default function AffiliatePage(props)
         {/* Form Page these are part of a larger multi 'page' form. Questions we need answers for. Can we use react router this low since we may be
         able to use that as a switch case. We need to hold state of the options filled out if you go to option two without already filling out
         option one it will automatically redirect to option one. */}
-        <MultiPageForm link="signup/affiliate" redirect="affiliate/verify">
+        <MultiPageForm link="signup/affiliates" redirect="sharer/verify">
 
 
-            <FormPage title="Hello" buttonLabel="Thanks!" inputBatch={ ["link", "charity", "email"] } >
+
+
+
+
+            <FormPage title="Let’s design your link!" buttonLabel="Create My Link!" inputBatch={ ["name", "charity_id", "email"] } >
                 <FormInput label="Link Name" >
                     <Input 
-                        name         = "link"
+                        name         = "name"
                         validators   = { [ rules.required ] } />
                 </FormInput>
 
                 <FormInput label="Charity" >
                     <Select 
-                        name         = "charity"
+                        name         = "charity_id"
                         endpoint     = "search/charities?name=Doctors"
                         validators   = { [ rules.required ] } >
                     </Select>
@@ -48,28 +56,13 @@ export default function AffiliatePage(props)
                 <FormInput label="Email" >
                     <Input 
                         name         = "email"
-                        validators   = { [ rules.required ] } />
+                        validators   = { [ rules.required, rules.email ] } />
                 </FormInput>
+
+                <Paragraph>
+                    By clicking ‘Create My Link!’ you agree to our Terms and Conditions, Privacy Policy, & Affiliate Agreement.
+                </Paragraph>
             </FormPage>
-
-
-
-
-            <FormPage title="Hello" buttonLabel="Send Again!">
-                <FormInput label="Friends Email" >
-                    <Input 
-                        name         = "friends_email"
-                        validators   = { [ rules.required ] } />
-                </FormInput>
-
-                <FormInput label="Third Party Email" >
-                    <Input 
-                        name         = "third_email"
-                        validators   = { [ rules.required ] } />
-                </FormInput>
-            </FormPage>
-
-            
         </MultiPageForm>
     </>;
 }

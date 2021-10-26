@@ -15,19 +15,19 @@ import axios from "axios";
  * Property object for react.
  * @param {object} props Reacts properties object
  */
-export default function Select(props)
+export default function Select( {id, name, formState, validators, endpoint}  )
 {
-    let error = fs.getError( props.name, props.formState.form )
+    let error = fs.getError( name, formState.form )
     let [ options, setOptions ] = useState([]);
 
     useEffect(() => {
-        fs.initInput(props.name, props.validators, props.formState)
+        fs.initInput(name, validators, formState)
     }, [])
 
     useEffect(() => {
-        if(props.endpoint)
+        if(endpoint)
         {
-            axios.get(`${props.endpoint}`)
+            axios.get(`${endpoint}`)
                 .then(function (response) {
                     setOptions( response.data.map( (responseData) => ({
                                 value: responseData.id,
@@ -42,9 +42,9 @@ export default function Select(props)
     return <>
         
         <select 
-            id={ props.name } 
-            value={ fs.getValue( props.name, props.formState.form) }  
-            onChange={ (e) => fs.setValue(e.target.value, props.name, props.formState) } 
+            id={ id } 
+            value={ fs.getValue( name, formState.form) }  
+            onChange={ (e) => fs.setValue(e.target.value, name, formState) } 
             >
             {options.map((option) =>
                 <option key={option.value} value={option.value} >{option.name}</option>

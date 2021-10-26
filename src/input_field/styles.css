@@ -1,0 +1,102 @@
+.focused_border {
+  background: linear-gradient(#64b4fa, #218ed5, #0072b2) !important;
+}
+.error_border {
+  background: linear-gradient(#fa6464, #d52121, #b20000);
+}
+.TextInput {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 16.31rem;
+}
+.default_border {
+  background-color: white;
+  border: 1px solid #4a4a4a;
+
+  height: 3.69rem;
+  width: 16.31rem;
+  padding: 0.25rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+.focused_border .text_input_wrapper {
+  height: calc(100% - 0.25rem);
+  width: calc(100% - 0.25rem);
+}
+
+.default_border .text_input_wrapper {
+  height: calc(100% - 0.06rem);
+  width: calc(100% - 0.06rem);
+}
+
+.text_input_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin: auto;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.text_input_wrapper input {
+  border: none;
+  outline: none;
+  color: #4a4a4a;
+  font-size: 1.13rem;
+  line-height: 1.31rem;
+  height: 100%;
+  padding: 0 1rem;
+}
+.acitveLabel + input {
+  padding-top: 1rem;
+}
+.focused_border input,
+.error_border input {
+}
+.text_input_wrapper .label {
+  color: #848484;
+  font-size: 1.13rem;
+  line-height: 1.31rem;
+  text-transform: capitalize;
+  position: absolute;
+  left: 1rem;
+  top: 30%;
+  transition: ease-in 0.2s font-size, ease-in 0.2s top, ease-in 0.2s line-height;
+  -webkit-transition: ease-in 0.2s font-size, ease-in 0.2s top,
+    ease-in 0.2s line-height;
+  -moz-transition: ease-in 0.2s font-size, ease-in 0.2s top,
+    ease-in 0.2s line-height;
+  -ms-transition: ease-in 0.2s font-size, ease-in 0.2s top,
+    ease-in 0.2s line-height;
+  -o-transition: ease-in 0.2s font-size, ease-in 0.2s top,
+    ease-in 0.2s line-height;
+}
+
+.text_input_wrapper .acitveLabel {
+  font-size: 0.75rem;
+  top: 0.5rem;
+  line-height: 0.88rem;
+}
+
+.error_msg {
+  font-size: 0.75rem;
+  line-height: 0.88rem;
+  color: #b20000;
+  margin-top: 0.5rem;
+}

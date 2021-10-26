@@ -6,7 +6,7 @@
  * maybe this is too far in the level of abstracting simple concepts. IDK we'll find out.
  */
 
-export default function Paragraph(props)
+export default function Paragraph({text})
 {
-    return <p>{ props.text }</p>
+    return <p>{ text }</p>
 }
