@@ -18,24 +18,17 @@ const successMessage = {
 
     "sharer" : (response) => {
         return <>
-            <Paragraph>
-                Your link has been activated!
-            </Paragraph>
-
+            <Paragraph text="Your link has been activated!" />
             <Header title={response.data.link} />
         </> 
     },
 
     "employee" : (response) => {
-        return <Paragraph>
-                Congratulations! You have applied to all relevant jobs
-            </Paragraph>
+        return <Paragraph text="Congratulations! You have applied to all relevant jobs" />
     },
 
     "employer" : (response) => {
-        return <Paragraph>
-                Your Candidate Pool has been created! You will receive candidates via email
-            </Paragraph>
+        return <Paragraph text="Your Candidate Pool has been created! You will receive candidates via email"/>
     }
 
 }

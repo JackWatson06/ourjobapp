@@ -6,7 +6,6 @@
 
 import Router from 'next/router'
 
-export default function Button( { onClick, title } )
-{
+export default function Button( { onClick, title } ){
     return <button onClick={(e) => onClick(e) }> {title} </button>
 }

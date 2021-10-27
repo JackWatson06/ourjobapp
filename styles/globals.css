@@ -1,3 +1,4 @@
+
 html,
 body {
   padding: 0;
@@ -13,4 +14,14 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+:root {
+  --primary: "#218ed5";
+  --primary-light: "#64b4fa";
+  --primary-dark: "#0072b2";
+
+  --error: "#fa6464";
+  --error-light: "#d52121";
+  --error-dark: "#b20000";
 }

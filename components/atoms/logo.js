@@ -5,8 +5,7 @@
  * Purpose: The logo represents the our job app logo.
  */
 
-export default function Logo(props)
-{
+export default function Logo(props){
     return <div>
         <Image 
             src="/images/svg/gray_logo.svg"

@@ -18,8 +18,6 @@ export default function Index(props)
         <LinkButton title="Employee" link="/employee" />
         <LinkButton title="Candidate Pool" link="/employer" />
 
-        <Paragraph>
-            Welcome to OurJob App please signup using the above buttons.
-        </Paragraph>
+        <Paragraph text="Welcome to OurJob App please signup using the above buttons." />
     </>;
 }

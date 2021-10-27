@@ -6,7 +6,6 @@
  * maybe this is too far in the level of abstracting simple concepts. IDK we'll find out.
  */
 
-export default function Paragraph({text})
-{
+export default function Paragraph({text}){
     return <p>{ text }</p>
 }

@@ -15,8 +15,7 @@ import { useEffect } from "react"
  * Property object for react.
  * @param {object} props Reacts properties object
  */
-export default function Input( {id, name, type, formState, validators} )
-{
+export default function Input( {id, name, type, formState, validators} ) {
     let error = fs.getError( name, formState.form )
 
     useEffect(() => {

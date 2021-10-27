@@ -10,9 +10,7 @@ import Paragraph from "@atoms/text/paragraph"
 export default function AffiliatePage(props)
 {
     return <>
-        <Paragraph>
-            We sent an email verification link to your email! Please confirm your identity to recieve your link.
-        </Paragraph>
+        <Paragraph text="We sent an email verification link to your email! Please confirm your identity to recieve your link." />
 
         {/* <Button title="Resend Email"> */}
     </>

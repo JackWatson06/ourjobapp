@@ -9,8 +9,7 @@ import Paragraph from '@atoms/text/paragraph'
 import Input from '@atoms/input'
 import Select from '@atoms/select'
 
-
-
+import TextInput from "@atoms/textInput"
 
 import rules from '@lib/form/rules'
 
@@ -53,11 +52,7 @@ export default function SharePage(props)
                     </Select>
                 </FormInput>
 
-                <FormInput label="Email" >
-                    <Input 
-                        name         = "email"
-                        validators   = { [ rules.required, rules.email ] } />
-                </FormInput>
+                <TextInput label="Email" name="email" validators = { [ rules.required, rules.email ] } />
 
                 <Paragraph>
                     By clicking ‘Create My Link!’ you agree to our Terms and Conditions, Privacy Policy, & Affiliate Agreement.

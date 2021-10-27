@@ -6,7 +6,6 @@
  * the user is currently using this control for.
  */
 
-export default function Label( { forId, label } )
-{
+export default function Label( { forId, label } ){
     return <label htmlFor={ forId } >{ label }</label>
 }

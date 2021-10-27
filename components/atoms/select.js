@@ -15,8 +15,7 @@ import axios from "axios";
  * Property object for react.
  * @param {object} props Reacts properties object
  */
-export default function Select( {id, name, formState, validators, endpoint}  )
-{
+export default function Select( {id, name, formState, validators, endpoint}  ){
     let error = fs.getError( name, formState.form )
     let [ options, setOptions ] = useState([]);
 
@@ -37,7 +36,7 @@ export default function Select( {id, name, formState, validators, endpoint}  )
                     );
                 });
         }
-    }, [ props.endpoint ])
+    }, [ endpoint ])
 
     return <>
         

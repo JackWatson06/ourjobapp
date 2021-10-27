@@ -1,16 +1,28 @@
-.focused_border {
-  background: linear-gradient(#64b4fa, #218ed5, #0072b2) !important;
+/*
+  Code Authored by Adil Kazmi from Upworks
+*/
+
+/* Focused border when we are zoomed into the border */
+.focused_border 
+{
+  background: linear-gradient(var(--primary-light), var(--primary), var(--primary-dark)) !important;
 }
-.error_border {
-  background: linear-gradient(#fa6464, #d52121, #b20000);
+
+.error_border 
+{
+  background: linear-gradient(var(--error-light), var(--error), var(--error-dark));
 }
-.TextInput {
+
+.text_input 
+{
   display: flex;
   flex-direction: column;
   height: auto;
   width: 16.31rem;
 }
-.default_border {
+
+.default_border 
+{
   background-color: white;
   border: 1px solid #4a4a4a;
 
@@ -27,17 +39,21 @@
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 }
-.focused_border .text_input_wrapper {
+
+.focused_border .text_input_wrapper 
+{
   height: calc(100% - 0.25rem);
   width: calc(100% - 0.25rem);
 }
 
-.default_border .text_input_wrapper {
+.default_border .text_input_wrapper 
+{
   height: calc(100% - 0.06rem);
   width: calc(100% - 0.06rem);
 }
 
-.text_input_wrapper {
+.text_input_wrapper 
+{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,7 +70,8 @@
   -o-border-radius: 4px;
 }
 
-.text_input_wrapper input {
+.text_input_wrapper input 
+{
   border: none;
   outline: none;
   color: #4a4a4a;
@@ -63,13 +80,16 @@
   height: 100%;
   padding: 0 1rem;
 }
-.acitveLabel + input {
+
+.active_label + input 
+{
   padding-top: 1rem;
 }
-.focused_border input,
-.error_border input {
-}
-.text_input_wrapper .label {
+
+.text_input_wrapper .label 
+{
+  --speed: 0.05s;
+
   color: #848484;
   font-size: 1.13rem;
   line-height: 1.31rem;
@@ -77,26 +97,28 @@
   position: absolute;
   left: 1rem;
   top: 30%;
-  transition: ease-in 0.2s font-size, ease-in 0.2s top, ease-in 0.2s line-height;
-  -webkit-transition: ease-in 0.2s font-size, ease-in 0.2s top,
-    ease-in 0.2s line-height;
-  -moz-transition: ease-in 0.2s font-size, ease-in 0.2s top,
-    ease-in 0.2s line-height;
-  -ms-transition: ease-in 0.2s font-size, ease-in 0.2s top,
-    ease-in 0.2s line-height;
-  -o-transition: ease-in 0.2s font-size, ease-in 0.2s top,
-    ease-in 0.2s line-height;
+  transition: ease-in var(--speed) font-size, ease-in var(--speed) top, ease-in var(--speed) line-height;
+  -webkit-transition: ease-in var(--speed) font-size, ease-in var(--speed) top,
+    ease-in var(--speed) line-height;
+  -moz-transition: ease-in var(--speed) font-size, ease-in var(--speed) top,
+    ease-in var(--speed) line-height;
+  -ms-transition: ease-in var(--speed) font-size, ease-in var(--speed) top,
+    ease-in var(--speed) line-height;
+  -o-transition: ease-in var(--speed) font-size, ease-in var(--speed) top,
+    ease-in var(--speed) line-height;
 }
 
-.text_input_wrapper .acitveLabel {
+.text_input_wrapper .active_label 
+{
   font-size: 0.75rem;
   top: 0.5rem;
   line-height: 0.88rem;
 }
 
-.error_msg {
+.error_msg 
+{
   font-size: 0.75rem;
   line-height: 0.88rem;
-  color: #b20000;
+  color: var(--error);
   margin-top: 0.5rem;
 }

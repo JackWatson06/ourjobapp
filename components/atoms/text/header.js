@@ -7,7 +7,6 @@
  * when we have a use case for it.
  */
 
-export default function Header( {title} )
-{
+export default function Header( {title} ){
     return <h1>{ title }</h1>
 }

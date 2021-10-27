@@ -6,8 +6,7 @@
 
 import Router from 'next/router'
 
-export default function LinkButton( {link, title} )
-{
+export default function LinkButton( {link, title} ){
     const clickLink = () => {
         Router.push( link )
     }

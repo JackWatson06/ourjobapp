@@ -1,6 +1,6 @@
 
 import './App.css';
-import TextInput from './input_field/textInput';
+import TextInput from '../components/atoms/textInput';
 import Radio from './radios_btn/radio';
 
 import SelectInput from './select_input/select_input';
@@ -43,7 +43,6 @@ function App() {
 
     }
     else if (multi_select === true) {
-      console.log("val===", val);
       await formikProps.setFieldValue("selectedOptions", [...formikProps.values.selectedOptions, val]);
     }
   }
