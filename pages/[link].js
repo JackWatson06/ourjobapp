@@ -5,5 +5,5 @@
  */
 export default function Link(props)
 {
-    return <p> Hey </p>;
+    return <p> Affiliate code </p>;
 }

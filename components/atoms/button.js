@@ -4,8 +4,11 @@
  * Purpose: The link button allows the use of a button component which then links to whatever endpoint we pass in.
  */
 
-import Router from 'next/router'
+import style from "@styles/Button.module.css";
 
-export default function Button( { onClick, title } ){
-    return <button onClick={(e) => onClick(e) }> {title} </button>
+export default function Button( { onClick, title, loading, active } ){
+    return loading ? <p> Loading... </p>:
+        <button className={ active ? `${style.button} ${style.active}` : `${style.button}` } 
+                onClick={(e) => onClick(e) }
+                disabled={!active}> {title} </button>
 }

@@ -1,34 +1,40 @@
-/**
- * Original Author: Jack Watson
- * Created Date: 10/22/2021
- * Purpose: This class allows us to use default inputs so that we can encapsulate and reuse the idea of an input box
- * throughout our site so we get consistent styling. We do need to pass in the context of a formState. Which is less
- * than desriable since now we require to have some sort of 'FormState' object which means that we need to have the input
- * in the context of a form.... which it should be theoretically be anyways. Were not macking a web app here so this should
- * be fine.
- */
-
+import React, { useState, useEffect } from "react";
 import fs from "@lib/form/FormStateTracker"
-import { useEffect } from "react"
 
-/**
- * Property object for react.
- * @param {object} props Reacts properties object
- */
-export default function Input( {id, name, type, formState, validators} ) {
-    let error = fs.getError( name, formState.form )
+import style from "@styles/Input.module.css";
+
+export default function TextInput ({ id, name, type, label, validators, formState }) {
+
+    const [isFocused, setIsFocused] = useState(false);
+    
+    const error = fs.getError( name, formState.form )
+    const value = fs.getValue( name, formState.form )
 
     useEffect(() => {
         fs.initInput(name, validators, formState)
     }, [])
 
-    return <>
-        <input 
-            id       = { id }
-            type     = { type ? type : "text" }
-            value    = { fs.getValue( name, formState.form) }
-            onChange = { (e) => fs.setValue(e.target.value, name, formState) }
-            ></input>
-        { error != "" && <p> { error } </p>}
-    </>
-}
+    return (
+        <div className={style.text_input}>
+            {/* Below here we also had the isTouched or'd with the isFocus variable. */}
+            <div className={error != "" ? `${style.default_border} ${style.error_border}` : (isFocused === true) ? `${style.focused_border} ${style.default_border}` : `${style.default_border}`}>
+                <div className={`${style.text_input_wrapper}`}>
+                    <span className={value != "" ? `${style.active_label} ${style.label}` : `${style.label}`}>{label}</span>
+                    <input
+                        id       = { id }
+                        type     = { type ? type : "text" }
+
+                        value = { value }
+                        onChange={ (e) => fs.setValue(e.target.value, name, formState) }
+                        onFocus={() => setIsFocused(true) }
+                        onBlur={() =>  { 
+                            setIsFocused(false); 
+                            fs.validateSome(formState, [name]) 
+                        }}
+                    />
+                </div>
+            </div >
+            <span className={style.error_msg}>{error != undefined ? error : null}</span>
+        </div>
+    )
+};

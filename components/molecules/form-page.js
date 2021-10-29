@@ -7,9 +7,14 @@
  * server.
  */
 
+import fs from "@lib/form/FormStateTracker"
+
 import React from "react"
 
 import Button from "@atoms/button"
+import HeaderMedium from "@atoms/text/header-md"
+
+import styles from "@styles/FormPage.module.css"
 
 /**
  * Create a new form page. Accept the following props parameters
@@ -21,17 +26,23 @@ import Button from "@atoms/button"
  * 
  * @param {object} props 
  */
-export default function FormPage(props)
+export default function FormPage({ action, formState, title, buttonLabel, inputBatch, children})
 {
-    const batch = props.inputBatch ?? [];
+    const batch = inputBatch ?? []
+    const active = fs.someValid(formState, inputBatch);
 
-    return <div>
-        <h5>{props.title}</h5>
-        { props.children.map( (input, index) => {
-            return <React.Fragment key={index}>
-                { React.cloneElement( input, {  formState : props.formState } ) }
-            </React.Fragment>
-        } ) }
-        <Button title={props.buttonLabel} onClick={ (e) => props.action(e, batch) } />
+    const inputs = <div className={styles.InputWrapper}>
+                        { children.map( (input, index) => {
+                            return <React.Fragment key={index}>
+                                { React.cloneElement( input, {  formState : formState } ) }
+                            </React.Fragment>
+                        } ) }
+                    </div>
+
+    return <div className={styles.FormPage}>
+        <HeaderMedium title={title} />
+        <br/>
+        { inputs }
+        <Button title={buttonLabel} loading={false} active={active} onClick={ (e) => action(e, batch) } />
     </div>   
 }

@@ -5,12 +5,11 @@
  * rely on mutlipage forms for user signup.
  */
 
+
 import fs from "@lib/form/FormStateTracker"
 
-
 import Router from 'next/router'
-import { useState } from 'react'
-import React from 'react'
+import React, { useState } from 'react'
 
 import axios from "axios";
 
@@ -30,9 +29,9 @@ export default function MultiPageForm(props)
     let [ stage, setStage ] = useState(0)
 
     // Go to the next stage of the multi page form.
-    const next = (e, inputChecks) => 
+    const next = async (e, inputChecks) => 
     {
-        if( fs.validateSome(formState, inputChecks) )
+        if( await fs.someValid(formState, inputChecks) )
         {
             let newStage = stage + 1
             if( newStage < props.children.length )
@@ -53,10 +52,10 @@ export default function MultiPageForm(props)
     }
 
     // Generic send method ( this will probably change with the FinishForm component)
-    const send = (e) =>
+    const send = async (e) =>
     {
         // Check the state of the whole form
-        if( fs.validateAll(formState) )
+        if( await fs.validateAll(formState) )
         {
             const data = fs.getSubmitData(formState.form);
 

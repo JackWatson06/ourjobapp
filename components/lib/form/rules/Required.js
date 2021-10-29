@@ -10,7 +10,7 @@ export default {
     
     validate: function(value)
     {
-        if( value === undefined || value === null || value === "")
+        if( value === undefined || value === null || value === "" || value.length === 0)
         {
             return false
         }

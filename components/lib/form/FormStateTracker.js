@@ -9,6 +9,8 @@
  *  {
  *      "fname" : {
  *          "value" : "Jack"
+ *          "valid" : true
+ *          "error" : ""
  *      },
  *      "lname" : {
  *          "value" : "",
@@ -19,6 +21,7 @@
  *      },
  *      "email" : {
  *          "value" : "Orangutan",
+ *          "valid" : false
  *          "error" : "Enter a valid email!"
  *      }
  *  }
@@ -51,14 +54,15 @@ const _setInputStateField = (assign, formState) =>
  * @param {string} name Name of the formState that we are validating against.
  * @param {FormState} formState Reference to the formstate object created in the multi-page-form 
  */
-const _validateInput = (name, formState) =>
+const _validateInput = async (name, formState) =>
 {
     const form    = formState.form
-    const message = validate(form[name].value, form[name].validators)
+    const message = await validate(form[name].value, form[name].validators)
 
     _setInputStateField( {
         [name] : {
-            "error" : message
+            "error" : message,
+            "valid" : message === "" ? true : false
         }
     }, formState )
 
@@ -70,13 +74,17 @@ const _validateInput = (name, formState) =>
     return true;
 }
 
+
+
+
 export default {
-        initInput: (property, validators, formState) =>
+        initInput: (property, validators, formState, starting = "") =>
         {
             let inputStateObject = { 
                 [property] : { 
                     "validators"   : validators,
-                    "value"        : "",
+                    "valid"        : false, // A input field can be invalid yet we don't want to show the error message just yet. Such as empty input. Obviously it would be annoying to user if we showed this.
+                    "value"        : starting,
                     "error"        : ""
                 } 
             }
@@ -96,14 +104,18 @@ export default {
             }
         },
 
-        getValue: (property, form) => 
+        getValue: (property, form, array = false) => 
         {
-            if( form[property] === undefined ) return ""
+            if( form[property] === undefined ) return array ? [] : ""
         
             // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
             return form[property].value;
         },
 
+        /**
+         * Get the submit data for the form when we submit to the backend.
+         * @param {Form} form Refernce to the form object. The schema is in the top header comment.
+         */
         getSubmitData: (form) =>
         {
             let submitData = {}
@@ -135,15 +147,41 @@ export default {
          */
         setValue: (value, property, formState) => 
         {
-            // Set value, and we also validate here to make sure that the field is valid real time. This setting needs
-            // to be togglable since some fields should not be real time. Or at least when we loose focus.
             _setInputStateField( { 
                 [property] : { 
                     "value" : value
                 }
             }, formState )
+        },
 
-            _validateInput(property, formState)
+        /**
+         * Check the valid flag in order to test to see if the input that we have is valid. If not then we want to disable
+         * the submit button. This has to be batched based on the current input that we have.
+         * @param {FormState} formState The object that keeps track of Form State
+         * @param {array} batchedInputs The inputs we are currently checking to see if they are valid.
+         */
+        someValid: (formState, batchedInputs) => 
+        {
+            const form = formState.form;
+
+            // The form is populated before we run the someValid method form the form-page check here to make sure that we are not empty
+            // if were empty that means we have not loaded the inputs into the forms state object just yet... I am so sorry this is so 
+            // confusing.
+            if( !Object.keys(form).length )
+            {
+                return false
+            }
+
+            // If any forms states are valid then return false.
+            for(const name of batchedInputs)
+            {
+                if( form[name] != undefined && !form[name].valid )
+                {
+                    return false;
+                }
+            }
+
+            return true;
         },
 
         /**
@@ -151,7 +189,7 @@ export default {
          * @param {FormState} formState Current form state object
          * @param {array} batchedInputs Array of the inputs we are testing against the form state.
          */
-        validateSome: (formState, batchedInputs) =>
+        validateSome: async (formState, batchedInputs) =>
         {
             const form  = formState.form
             let valid = true
@@ -161,7 +199,7 @@ export default {
             {
                 if( form[name] != undefined )
                 {
-                    valid = _validateInput(name, formState)
+                    valid = await _validateInput(name, formState)
                 }
             }
 
@@ -172,7 +210,7 @@ export default {
          * Validate that the entire formState is in a valid state before submission.
          * @param {FormState} formState Current form state object
          */
-        validateAll: (formState) =>
+        validateAll: async (formState) =>
         {
             const form   = formState.form
             const inputs = Object.keys(form)
@@ -180,77 +218,9 @@ export default {
 
             for(const name of inputs)
             {
-                valid = _validateInput(name, formState)
+                valid = await _validateInput(name, formState)
             }
 
             return valid
         },
     };
-
-
-    // import validate from "./Validator"
-    // import fs from "./FormStateTracker"
-    
-    // /**
-    //  * Check to see if some of the input elements are valid in the form state.
-    //  * @param {FormState} formState FormStateTracker that we use to keep track of the different input values in a form.
-    //  * @param {array} inputChecks The input values in the form state that we want to track
-    //  */
-    // export const someValid = (formState, inputChecks) =>
-    // {
-    //     if( inputChecks != undefined )
-    //     {
-    //         const errors = {}
-    //         const form   = formState.form
-    
-    //         for(const name of inputChecks)
-    //         {
-    //             if( form[name] != undefined )
-    //             {
-    //                 const input = form[name]
-    //                 Object.assign( errors, { [name] : validate(input.value, input.validators) } )
-    //             }
-    //         }
-    
-    //         fs.setErrors(errors, formState)
-    
-    //         for( const message of Object.values(errors))
-    //         {
-    //             if( message != "" )
-    //             {
-    //                 return false
-    //             }             
-    //         }
-    //     }
-    //     return true
-    // }
-    
-    // /**
-    //  * Check to see if the entire form state is valid. We don't mark errors here since we just want to return the errors.
-    //  * That is because we should theoretically already be valid before we reach this state. This is just an extra precaution.
-    //  * @param {FormState} formState FormStateTracker that we use to keep track of the different input values in a form.
-    //  */
-    // export const allValid = (formState) =>
-    // {
-    //     const errors = {}
-    //     const form   = formState.form
-    //     const inputs = Object.keys(form)
-    
-    //     for(const name in inputs)
-    //     {
-    //         const input = form[name]
-    //         if(validate(input.value, input.validators))
-    //         {
-    
-    //         }
-    //         Object.assign( errors, { [name] : validate(input.value, input.validators) } )
-    //     }
-    
-    //     fs.setErrors(errors, formState)
-    
-    //     console.log(errors);
-    // }
-
-
-
-

@@ -1,0 +1,23 @@
+/*
+  Code Authored by Adil Kazmi from Upworks
+*/
+
+/* Focused border when we are zoomed into the border */
+.button
+{
+    font-size: 1rem;
+
+    background: var(--inactive);
+    color: var(--light-text);
+
+    border: none;
+    border-radius: 0.3em;
+
+    padding: 1.5em 5em;
+    cursor: pointer;
+}
+
+.active
+{
+    background: linear-gradient( var(--primary-light), var(--primary), var(--primary-dark)) !important;
+}
