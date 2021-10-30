@@ -9,7 +9,7 @@
 
 import fs from "@lib/form/FormStateTracker"
 
-import React from "react"
+import React, { useState } from "react"
 
 import Button from "@atoms/button"
 import HeaderMedium from "@atoms/text/header-md"
@@ -28,6 +28,7 @@ import styles from "@styles/FormPage.module.css"
  */
 export default function FormPage({ action, formState, title, buttonLabel, inputBatch, children})
 {
+    const [ loading, setLoading ] = useState(false);
     const batch = inputBatch ?? []
     const active = fs.someValid(formState, inputBatch);
 
@@ -43,6 +44,10 @@ export default function FormPage({ action, formState, title, buttonLabel, inputB
         <HeaderMedium title={title} />
         <br/>
         { inputs }
-        <Button title={buttonLabel} loading={false} active={active} onClick={ (e) => action(e, batch) } />
+        <br/>
+        <Button title={buttonLabel} loading={loading} active={active} onClick={ (e) => {
+            setLoading(true);
+            action(e, batch)
+         } } />
     </div>   
 }

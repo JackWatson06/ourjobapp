@@ -3,7 +3,7 @@ import './App.css';
 import TextInput from '../components/atoms/input';
 import Radio from './radios_btn/radio';
 
-import SelectInput from '../components/atoms/selectInput';
+import SelectInput from '../components/atoms/select';
 import ToggleInput from './toggle_input/toggle_input';
 import { useFormik } from "formik";
 import * as yup from "yup";

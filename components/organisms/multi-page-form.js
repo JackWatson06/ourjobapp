@@ -13,6 +13,7 @@ import React, { useState } from 'react'
 
 import axios from "axios";
 
+import styles from "@styles/MultiPageForm.module.css"
 
 /**
  * 
@@ -83,7 +84,7 @@ export default function MultiPageForm(props)
     // Finish does NOT need to be avaialbe to every form we should abstract that out into it's own FinishForm component.
     // maybe that also dictates how the form is sent.
     return <>
-        <button onClick={ prev }>Previous</button>
+        <button className={styles.PreButton} onClick={ prev }></button>
         { Page }    
     </>;
 }

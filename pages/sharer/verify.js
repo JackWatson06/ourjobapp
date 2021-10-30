@@ -1,6 +1,7 @@
+import Head from 'next/head'
 
-// import LinkButton from "@atoms/link-button"
-import Paragraph from "@atoms/text/paragraph"
+import Column from "@templates/column"
+import HeaderMedium from "@atoms/text/header-md"
 
 /**
  * This will render a page on the route https://unijob.app/affiliate
@@ -9,9 +10,14 @@ import Paragraph from "@atoms/text/paragraph"
  */
 export default function AffiliatePage(props)
 {
-    return <>
-        <Paragraph text="We sent an email verification link to your email! Please confirm your identity to recieve your link." />
+    const message = <HeaderMedium title="Congratulations! Your link is on the way. Check your email inbox." />
 
-        {/* <Button title="Resend Email"> */}
+    return <>
+
+        <Head>
+            <title>Verify you email!</title>
+        </Head>
+
+        <Column content={message} />
     </>
 }

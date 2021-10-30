@@ -1,6 +1,9 @@
 
-import Paragraph from "@atoms/text/paragraph"
-import Header from "@atoms/text/header"
+
+import Column from "@templates/column"
+
+import HeaderMedium from "@atoms/text/header-md"
+import HeaderLarge from "@atoms/text/header-lg"
 
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -13,26 +16,22 @@ const routeMap = {
     "employer" : "employer"
 }
 
-
 const successMessage = {
-
     "sharer" : (response) => {
         return <>
-            <Paragraph text="Your link has been activated!" />
-            <Header title={response.data.link} />
+            <HeaderMedium text="Your link has been activated!" />
+            <HeaderLarge title={response.data.link} />
         </> 
     },
 
     "employee" : (response) => {
-        return <Paragraph text="Congratulations! You have applied to all relevant jobs" />
+        return <HeaderMedium text="Congratulations! You have applied to all relevant jobs" />
     },
 
     "employer" : (response) => {
-        return <Paragraph text="Your Candidate Pool has been created! You will receive candidates via email"/>
+        return <HeaderMedium text="Your Candidate Pool has been created! You will receive candidates via email"/>
     }
-
 }
-
 
 export default function TokenPage(props)
 {
@@ -55,18 +54,18 @@ export default function TokenPage(props)
                     }
                 })
                 .catch(function (error) {
-                    console.error(error);
+                    console.error(error)
                 });
         }
-    }, [endpoint]);
+    }, [endpoint])
 
 
     // Load the correct screen based on the response that we recieve from the verification endpoint that we chose to send
     // the token to.
-    let screen = <p>Verifying...</p>;
+    let screen = <p>Verifying...</p>
     if( verified )
     {
-        screen = successMessage[endpoint](data);
+        screen = <Column content={successMessage[endpoint](data)} />
     }
 
     return screen

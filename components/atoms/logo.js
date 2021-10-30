@@ -5,14 +5,29 @@
  * Purpose: The logo represents the our job app logo.
  */
 
-export default function Logo(props){
-    return <div>
+import styles from "@styles/Logo.module.css"
+import Image from 'next/image'
+
+import Cookies from 'js-cookie'
+
+export default function Logo(){
+
+
+    const affiliateName = Cookies.get('referral_key')
+    let urlName = "OurJob.App"
+
+    if(affiliateName != undefined)
+    {
+        urlName += `/${affiliateName.split(",")[1]}`
+    }
+
+    return <div className={styles.Logo}>
         <Image 
             src="/images/svg/gray_logo.svg"
             alt="ALC"
-            width={40}
-            height={40}
+            width={35}
+            height={35}
         />
-        <span>UJA</span>
+        <span>{urlName}</span>
     </div>
 }
