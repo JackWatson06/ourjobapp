@@ -5,21 +5,14 @@
  * Purpose: The logo represents the our job app logo.
  */
 
-import styles from "@styles/Logo.module.css"
+import styles from "@styles/atoms/Logo.module.css"
+import * as affTrack from "@lib/affiliate/AffiliateTracker"
 import Image from 'next/image'
 
-import Cookies from 'js-cookie'
 
-export default function Logo(){
-
-
-    const affiliateName = Cookies.get('referral_key')
-    let urlName = "OurJob.App"
-
-    if(affiliateName != undefined)
-    {
-        urlName += `/${affiliateName.split(",")[1]}`
-    }
+export default function Logo()
+{
+    const affiliateData = affTrack.ReadCookie();
 
     return <div className={styles.Logo}>
         <Image 
@@ -28,6 +21,6 @@ export default function Logo(){
             width={35}
             height={35}
         />
-        <span>{urlName}</span>
+        <span>{affiliateData != undefined ? affiliateData.url : "OurJob.App" }</span>
     </div>
 }

@@ -24,7 +24,7 @@
     
     margin-right: 2rem;
     
-    color: white;
+    color: var(--background);
     font-size: 1rem;
 
     overflow: hidden;

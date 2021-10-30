@@ -1,9 +1,9 @@
+import * as affTrack from "@lib/affiliate/AffiliateTracker"
 
 import Head from 'next/head'
 
 import Column from '@templates/column'
-import Header from "@atoms/text/header"
-import Paragraph from "@atoms/text/paragraph"
+import HeaderMedium from "@atoms/text/header-md"
 import LinkButton from "@molecules/link-button"
 
 /**
@@ -14,14 +14,25 @@ import LinkButton from "@molecules/link-button"
 export default function Index(props)
 {
 
+    const affiliateData = affTrack.ReadCookie()
+    let headerText = "Welcome to OurJob.App! Are you looking to..."
+
+    if(affiliateData != undefined)
+    {
+        headerText = `Welcome to ${affiliateData.name}'s link! Are you looking to...`
+    }
+
     const content = <>
-        <Header title="Index"/> 
+        <HeaderMedium title={headerText}/> 
 
-        <LinkButton title="Share" link="/sharer" />
-        <LinkButton title="Employee" link="/employee" />
-        <LinkButton title="Candidate Pool" link="/employer" />
+        <br />
+        <br />
 
-        <Paragraph text="Welcome to OurJob App please signup using the above buttons." />
+        <LinkButton title="Share for charity" link="/sharer" />
+
+        <LinkButton title="Find a job" link="/employee" />
+        <LinkButton title="Find candidates" link="/employer" />
+
     </>
 
 

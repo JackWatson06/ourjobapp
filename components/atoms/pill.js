@@ -1,5 +1,5 @@
 
-import styles from "@styles/Pill.module.css"
+import styles from "@styles/atoms/Pill.module.css"
 
 export default function Pill({item, remove}){
     return <div className={styles.selected_option_item}>

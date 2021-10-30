@@ -7,13 +7,17 @@
 
 
 import fs from "@lib/form/FormStateTracker"
+import * as affTrack from "@lib/affiliate/AffiliateTracker"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 import Router from 'next/router'
 import React, { useState } from 'react'
 
 import axios from "axios";
 
-import styles from "@styles/MultiPageForm.module.css"
+import styles from "@styles/organisms/MultiPageForm.module.css"
 
 /**
  * 
@@ -58,7 +62,12 @@ export default function MultiPageForm(props)
         // Check the state of the whole form
         if( await fs.validateAll(formState) )
         {
-            const data = fs.getSubmitData(formState.form);
+            const data = fs.getSubmitData(formState.form)
+
+            if(affTrack.ReadCookie() != undefined)
+            {
+                data.affiliate_id = affTrack.ReadCookie().id
+            }
 
             axios.post(`${props.link}`, data)
                 .then(function (response) {
@@ -73,18 +82,21 @@ export default function MultiPageForm(props)
         }
     }
 
-    const childrenArray = React.Children.toArray(props.children); // <= React is a 
+    const childrenArray = React.Children.toArray(props.children)  
+
+    const notFirstPage  = stage != 0
+    const lastPage      = stage === childrenArray.length - 1
 
     //https://stackoverflow.com/questions/32672966/react-props-children-is-not-array
     const Page = React.cloneElement( childrenArray[stage], { 
         formState : formState,
-        action    : childrenArray.length - 1 === stage ? send : next   // If we are on the last page then set the send trigger 
-    });
+        action    : lastPage ? send : next   // If we are on the last page then set the send trigger 
+    })
 
     // Finish does NOT need to be avaialbe to every form we should abstract that out into it's own FinishForm component.
     // maybe that also dictates how the form is sent.
     return <>
-        <button className={styles.PreButton} onClick={ prev }></button>
+        { notFirstPage && <FontAwesomeIcon className={styles.PrevButton} icon={ faChevronLeft } onClick={prev} /> }
         { Page }    
-    </>;
+    </>
 }

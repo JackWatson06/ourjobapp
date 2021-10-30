@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 
 import Logo from "@atoms/logo";
-import styles from '@styles/Navigation.module.css'
+import styles from '@styles/organisms/Navigation.module.css'
 
 export default function Navigation()
 {

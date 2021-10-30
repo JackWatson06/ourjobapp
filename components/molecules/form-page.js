@@ -9,12 +9,14 @@
 
 import fs from "@lib/form/FormStateTracker"
 
+
+
 import React, { useState } from "react"
 
 import Button from "@atoms/button"
 import HeaderMedium from "@atoms/text/header-md"
 
-import styles from "@styles/FormPage.module.css"
+import styles from "@styles/molecules/FormPage.module.css"
 
 /**
  * Create a new form page. Accept the following props parameters

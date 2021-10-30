@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import fs from "@lib/form/FormStateTracker"
 
-import style from "@styles/Input.module.css";
+import style from "@styles/atoms/Input.module.css";
 
 export default function TextInput ({ id, name, type, label, validators, formState }) {
 

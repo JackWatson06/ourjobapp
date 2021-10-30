@@ -1,5 +1,5 @@
 import Navigation from "@organisms/navigation"
-import styles from "@styles/Column.module.css"
+import styles from "@styles/templates/Column.module.css"
 
 export default function Column({content})
 {

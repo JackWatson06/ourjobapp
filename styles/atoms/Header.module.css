@@ -1,5 +1,6 @@
 
 .Header
 {
-    color: #4A4A4A;
+    color: var(--header-text);
+    text-align: center;
 }

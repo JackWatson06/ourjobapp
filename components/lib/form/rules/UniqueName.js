@@ -26,6 +26,6 @@ export default {
 
     message: function ()
     {
-        return `Link name taken`
+        return `Name already taken`
     }
 };

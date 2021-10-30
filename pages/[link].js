@@ -1,9 +1,9 @@
 import Router from 'next/router'
 
+import * as affTrack from "@lib/affiliate/AffiliateTracker"
+
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-
-import Cookies from 'js-cookie'
 
 import axios from "axios";
 
@@ -25,7 +25,7 @@ export default function Link(props)
                 .then(function (response) {
                     if(response.status === 200)
                     {
-                        Cookies.set(`referral_key`, `${response.data.id},${link}`, { expires: 1 })
+                        affTrack.SetCookie(response.data.id, link)
                         Router.push( "/" )
                     }
                 })

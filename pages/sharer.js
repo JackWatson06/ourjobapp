@@ -28,9 +28,7 @@ export default function SharePage(props)
                             name         = "charity_id"
                             endpoint     = "search/charities"
                             validators   = { [ rules.required ] } />
-            <Input label = "Email" name = "email" validators = { [ rules.required, rules.email ] } />
-
-            <Paragraph text="By clicking ‘Create My Link!’ you agree to our Terms and Conditions, Privacy Policy, & Affiliate Agreement." />
+            <Input label = "Email" name = "email" validators = { [ rules.required, rules.email, rules.uniqueAffiliateEmail ] } />
         </FormPage>
     </MultiPageForm>
 

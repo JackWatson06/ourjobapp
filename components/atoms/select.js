@@ -3,7 +3,7 @@ import fs from "@lib/form/FormStateTracker"
 import React, { useState, useEffect, useRef } from "react"
 
 import Pill from "./pill"
-import styles from "@styles/Select.module.css"
+import styles from "@styles/atoms/Select.module.css"
 import axios from "axios"
 
 export default function SelectInput({ label, multi_select, name, endpoint, list, validators, formState }){
