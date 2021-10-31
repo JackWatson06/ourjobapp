@@ -35,11 +35,11 @@ export default function FormPage({ action, formState, title, buttonLabel, inputB
     const active = fs.someValid(formState, inputBatch);
 
     const inputs = <div className={styles.InputWrapper}>
-                        { children.map( (input, index) => {
+                        { Array.isArray(children) ? children.map( (input, index) => {
                             return <React.Fragment key={index}>
                                 { React.cloneElement( input, {  formState : formState } ) }
                             </React.Fragment>
-                        } ) }
+                        } ) : React.cloneElement( children, {  formState : formState } ) }
                     </div>
 
     return <div className={styles.FormPage}>

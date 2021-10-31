@@ -13,7 +13,7 @@ export default function SignupPage(props)
 {
     const message = <>
         <HeaderMedium title="Congratulations! Your link is on the way. Check your email inbox." />
-        <LinkButton title="Back" link="/" />
+        <LinkButton title="Return to Homepage" link="/" />
     </>
 
     return <>

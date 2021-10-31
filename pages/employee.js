@@ -11,7 +11,7 @@ import * as data from "@lib/form/FormData"
 import rules from '@lib/form/rules'
 import DependentInput from '@molecules/dependent-input'
 
-export default function SharePage(props)
+export default function EmployeePage(props)
 {
 
     const major   = <SelectInput label="Major"   multi_select={true} name="major" endpoint="search/majors" validators={ [ rules.required ] } />
@@ -32,7 +32,7 @@ export default function SharePage(props)
 
         <FormPage title="Hi, {fname}! What job are you searching for?" buttonLabel="Next" inputBatch={ ["job_id", "hourly_rate", "commitment", "where"] } >
             <SelectInput label="Job"    multi_select={true}  name="job_id"      endpoint="search/jobs"     validators={ [ rules.required ] } />
-            <SelectInput label="Hourly" multi_select={false} name="hourly_rate" list={data.hourly}         validators={ [ rules.required ] } />
+            <SelectInput label="Hourly" multi_select={false} name="hourly_rate" list={data.employeeWage}         validators={ [ rules.required ] } />
             <Question question="Full-time or Part-time?" input={
                 <SelectInput label="Time"   multi_select={false} name="commitment" list={data.commitment} validators={ [ rules.required ] } />
             }/>
@@ -40,8 +40,6 @@ export default function SharePage(props)
                 <SelectInput label="Where" multi_select={false} name="where" list={data.where} validators={ [ rules.required ] } />
             }/>
         </FormPage>
-
-
 
         <FormPage title="Where are you searching?" buttonLabel="Next" inputBatch={ ["authorized", "distance", "place_id", "nations"] } >
             <Question question="What countries are you legally authorized to work in?" input={
@@ -51,11 +49,9 @@ export default function SharePage(props)
                 <SelectInput label="Where" multi_select={false} name="distance" list={data.distance} validators={ [ rules.required ] } />
             }/>
 
-            <DependentInput dependsOn="distance" name="nations"  dependsOnValue={2}         renders={nations} />
-            <DependentInput dependsOn="distance" name="place_id" dependsOnValue={[3, 4, 5]} renders={place} />
+            <DependentInput dependsOn="distance" name="nations"  dependsOnValue={1}         renders={nations} />
+            <DependentInput dependsOn="distance" name="place_id" dependsOnValue={[2, 3, 4, 5]} renders={place} />
         </FormPage>
-
-
 
         <FormPage title="Almost there! Tell us about your background" buttonLabel="Next" inputBatch={ ["education", "major", "experience", "information"] } >
             <SelectInput label="Highest Education" multi_select={false} name="education" list={data.education} validators={ [ rules.required ] } />

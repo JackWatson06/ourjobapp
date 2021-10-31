@@ -152,7 +152,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
                 <div className={styles.search_wrapper}>
 
                     {/* When we have the span focused and no values than make it active. */}
-                    <span className={search === "" ? styles.label : `${styles.active_label} ${styles.label}`}>{label}</span>
+                    <span className={search === "" ? styles.label : `${styles.active_label} ${styles.label}`} onClick={() => selectRef.current.focus()}>{label}</span>
 
                     {/* Active styling when we are not focused. Otherwise it is basic text change. */}
                     <input type="text" className={styles.text_input}
@@ -165,7 +165,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
                         value={search}
                     />
                     {/* These will need to be stored in a public directory... When we click these arrows we also show the dropdown. */}
-                    <img src={showDropDown ? "images/svg/activeDropDownArrows.svg" : "images/svg/dropDownArrows.svg"} />
+                    <img src={showDropDown ? "images/svg/activeDropDownArrows.svg" : "images/svg/dropDownArrows.svg"} onClick={() => selectRef.current.focus()} />
                 </div>
 
 

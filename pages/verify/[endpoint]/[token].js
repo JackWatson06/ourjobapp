@@ -15,7 +15,7 @@ import Paragraph from "@atoms/text/paragraph"
 const routeMap = {
     "sharer"   : "affiliates",
     "employee" : "employees",
-    "employer" : "employer"
+    "employer" : "employers"
 }
 
 const successMessage = {
