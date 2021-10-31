@@ -3,6 +3,7 @@ import * as affTrack from "@lib/affiliate/AffiliateTracker"
 import Head from 'next/head'
 
 import Column from '@templates/column'
+
 import HeaderMedium from "@atoms/text/header-md"
 import LinkButton from "@molecules/link-button"
 
@@ -25,11 +26,7 @@ export default function Index(props)
     const content = <>
         <HeaderMedium title={headerText}/> 
 
-        <br />
-        <br />
-
         <LinkButton title="Share for charity" link="/sharer" />
-
         <LinkButton title="Find a job" link="/employee" />
         <LinkButton title="Find candidates" link="/employer" />
 

@@ -6,6 +6,8 @@
  * maybe this is too far in the level of abstracting simple concepts. IDK we'll find out.
  */
 
+import styles from "@styles/atoms/Paragraph.module.css"
+
 export default function Paragraph({text}){
-    return <p>{ text }</p>
+    return <p className={styles.Paragraph}>{ text }</p>
 }

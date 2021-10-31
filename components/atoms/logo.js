@@ -21,6 +21,6 @@ export default function Logo()
             width={35}
             height={35}
         />
-        <span>{affiliateData != undefined ? affiliateData.url : "OurJob.App" }</span>
+        <span suppressHydrationWarning>{affiliateData != undefined ? affiliateData.url : "OurJob.App" }</span>
     </div>
 }

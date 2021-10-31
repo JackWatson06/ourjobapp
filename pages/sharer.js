@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Column from '@templates/column'
 import MultiPageForm from '@organisms/multi-page-form'
 import FormPage from '@molecules/form-page'
-import Paragraph from '@atoms/text/paragraph'
+import Question from '@molecules/question'
 import Input from "@atoms/input"
 import SelectInput from '@atoms/select'
 
@@ -19,7 +19,7 @@ export default function SharePage(props)
     /* Form Page these are part of a larger multi 'page' form. Questions we need answers for. Can we use react router this low since we may be
         able to use that as a switch case. We need to hold state of the options filled out if you go to option two without already filling out
         option one it will automatically redirect to option one. */
-    const sharerForm =  <MultiPageForm link="signup/affiliates" redirect="sharer/verify">
+    const sharerForm =  <MultiPageForm link="signup/affiliates" redirect="signup/verify">
         <FormPage title="Let’s design your link!" buttonLabel="Create My Link!" inputBatch={ ["name", "charity_id", "email"] } >
 
             <Input label = "Link Name" name = "name" validators  = { [ rules.required, rules.uniqueName ] } />

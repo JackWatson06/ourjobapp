@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import fs from "@lib/form/FormStateTracker"
 
 import style from "@styles/atoms/Input.module.css";
@@ -6,6 +6,7 @@ import style from "@styles/atoms/Input.module.css";
 export default function TextInput ({ id, name, type, label, validators, formState }) {
 
     const [isFocused, setIsFocused] = useState(false);
+    const inputRef = useRef()
     
     const error = fs.getError( name, formState.form )
     const value = fs.getValue( name, formState.form )
@@ -19,12 +20,13 @@ export default function TextInput ({ id, name, type, label, validators, formStat
             {/* Below here we also had the isTouched or'd with the isFocus variable. */}
             <div className={error != "" ? `${style.default_border} ${style.error_border}` : (isFocused === true) ? `${style.focused_border} ${style.default_border}` : `${style.default_border}`}>
                 <div className={`${style.text_input_wrapper}`}>
-                    <span className={value != "" ? `${style.active_label} ${style.label}` : `${style.label}`}>{label}</span>
+                    <span className={value != "" ? `${style.active_label} ${style.label}` : `${style.label}`} onClick={() => inputRef.current.focus()}>{label}</span>
                     <input
                         id       = { id }
                         type     = { type ? type : "text" }
 
                         value = { value }
+                        ref = {inputRef}
                         onChange={ (e) => fs.setValue(e.target.value, name, formState) }
                         onFocus={() => setIsFocused(true) }
                         onBlur={() =>  { 

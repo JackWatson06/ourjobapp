@@ -38,7 +38,7 @@ export default function MultiPageForm(props)
     {
         if( await fs.someValid(formState, inputChecks) )
         {
-            let newStage = stage + 1
+            const newStage = stage + 1
             if( newStage < props.children.length )
             {
                 setStage( stage + 1 )
@@ -77,7 +77,7 @@ export default function MultiPageForm(props)
                     }
                 })
                 .catch(function (error) {
-                    console.error(error);
+                    console.error(error)
                 });
         }
     }
@@ -86,6 +86,7 @@ export default function MultiPageForm(props)
 
     const notFirstPage  = stage != 0
     const lastPage      = stage === childrenArray.length - 1
+
 
     //https://stackoverflow.com/questions/32672966/react-props-children-is-not-array
     const Page = React.cloneElement( childrenArray[stage], { 

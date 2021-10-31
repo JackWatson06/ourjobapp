@@ -1,0 +1,10 @@
+
+
+.Paragraph
+{
+    margin-top: 0;
+
+    font-size: 1.13rem;
+    
+    color: var(--border);
+}

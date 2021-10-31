@@ -7,16 +7,27 @@
  */
 
 import fs from "@lib/form/FormStateTracker"
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 
-export default function DependentInput(props)
+export default function DependentInput( {name, dependsOn, dependsOnValue, formState, renders} )
 {
     let component = null
-    let shouldRender = fs.getValue(props.dependsOn, props.formState.form) === props.dependsOnValue
+    let shouldRender = false;
 
+    // If we have an array test the entire array.
+    if(Array.isArray(dependsOnValue))
+    {
+        shouldRender = dependsOnValue.includes( fs.getValue(dependsOn, formState.form))
+    }
+    else
+    {
+        shouldRender = fs.getValue(dependsOn, formState.form) === dependsOnValue
+    }
+
+    // ShouldRender
     if( shouldRender )
     {
-        component = props.renders
+        component = React.cloneElement( renders, {formState: formState} )
     }
 
     // We only want to remove when we are removing it from the virutal dom tree
@@ -24,7 +35,7 @@ export default function DependentInput(props)
     {
         if(!shouldRender)
         {
-            fs.removeInput( props.renders.props.name, props.formState)
+            fs.removeInput( name, formState)
         }
     }, [shouldRender])
 

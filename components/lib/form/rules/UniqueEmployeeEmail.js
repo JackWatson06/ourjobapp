@@ -10,7 +10,7 @@ export default {
     
     validate: async function(value)
     {
-        const foundName = await axios.get(`search/existing/links?name=${value}`)
+        const foundName = await axios.get(`search/existing/employee-emails?email=${value}`)
                             .then(function (response) {
                                 if(response.status === 200)
                                 {

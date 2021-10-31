@@ -1,6 +1,5 @@
 
-
-.Navigation
+.NavigationContainer
 {
     display: flex;
     justify-content: space-between;
@@ -11,4 +10,19 @@
     border-bottom: solid 1px var(--navigation);
     color: var(--navigation);
     height: 3rem;
+}
+
+.IconContainer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.NavigationIcon
+{
+    font-size: 1.25rem;
+
+    cursor: pointer;
 }

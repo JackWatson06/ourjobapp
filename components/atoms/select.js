@@ -68,7 +68,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
      */
     const selectOption = (item) => {
         
-        if ( !multi_select ) 
+        if ( !multi_select) 
         {
             // Where we are just a regular dropdown. Remove focus, and hide drodown.
             fs.setValue(item.value, name, formState)
@@ -77,7 +77,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
             setShowDropDown(false)
             setSearch(item.name)
         }
-        else
+        else if( !value.includes(item.value) )
         {
             // If we are a multi select then set the options that are selected.
             fs.setValue([ ...value, item.value], name, formState)
@@ -89,15 +89,14 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
      * Remove the item that we want to remove from the pill values.
      * @param {object} item Item we have selected to remove
      */
-    const removeSelected = (item) => {
-
-        const index = value.indexOf(item.value);
-
-        value.splice(index, 1)
-        selected.splice(index, 1)
+    const removeSelected = (index) => {
+        return () => {
+            value.splice(index, 1)
+            selected.splice(index, 1)
         
-        fs.setValue([ ...value], name, formState)
-        fs.validateSome(formState, [name])
+            fs.setValue([ ...value], name, formState)
+            fs.validateSome(formState, [name])
+        }
     }
 
     /**
@@ -142,7 +141,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
                 <div className={styles.selected_options_wrapper}>
                     {selected.map((item, index) => {
                         // We use a CSS transition for deleting the items from the multiselct... kinda grows not a huge fan.
-                        return <Pill key={index} item={item} remove={removeSelected} />
+                        return <Pill key={index} item={item} remove={removeSelected(index)} />
                     })}
                 </div> : null }
 

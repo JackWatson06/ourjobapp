@@ -113,6 +113,8 @@
 {
     max-height: 9.44rem;
     border-top: solid 1px var(--border);
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
 } 
 
 .options_wrapper_closed

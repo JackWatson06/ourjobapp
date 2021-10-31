@@ -78,19 +78,27 @@ const _validateInput = async (name, formState) =>
 
 
 export default {
-        initInput: (property, validators, formState, starting = "") =>
-        {
-            let inputStateObject = { 
-                [property] : { 
-                    "validators"   : validators,
-                    "valid"        : false, // A input field can be invalid yet we don't want to show the error message just yet. Such as empty input. Obviously it would be annoying to user if we showed this.
-                    "value"        : starting,
-                    "error"        : ""
-                } 
-            }
 
-            let newForm = Object.assign(formState.form, inputStateObject)
-            formState.setForm( newForm )
+        /**
+         * Initialize the input of the form if we have not already initialized an input with the same name on the form object.
+         */
+        initInput: (property, validators, formState, starting) =>
+        {
+            if( formState.form[property] === undefined)
+            {
+                const formCopy = {
+                    ...formState.form, 
+                    [property] : { 
+                        "value"        : starting   ?? "",
+                        "validators"   : validators ?? [],
+                        "valid"        : validators === undefined ? true : false,
+                        "error"        : ""
+                    } 
+                }
+    
+                formState.form = formCopy; 
+                formState.setForm( formCopy )
+            }
         },
 
         removeInput: (property, formState) =>
@@ -100,6 +108,8 @@ export default {
                 // We only need a shallow copy in order for this to work
                 const formCopy = { ...formState.form }
                 delete formCopy[property]
+
+                formState.form = formCopy; // Use this in case we add a property right after... as in the case of dependent inputs.
                 formState.setForm( formCopy )
             }
         },

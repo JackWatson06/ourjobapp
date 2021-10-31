@@ -6,7 +6,8 @@
 
 import style from "@styles/atoms/Button.module.css";
 
-export default function Button( { onClick, title, loading, active } ){
+export default function Button( { onClick, title, loading, active = true } ){
+
     return loading ? <p> Loading... </p>:
         <button className={ active ? `${style.button} ${style.active}` : `${style.button}` } 
                 onClick={(e) => onClick(e) }
