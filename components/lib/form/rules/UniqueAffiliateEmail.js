@@ -6,7 +6,7 @@
 
 import axios from "axios";
 
-export default {
+const UniqueAffiliateEmail = {
     
     validate: async function(value)
     {
@@ -28,4 +28,6 @@ export default {
     {
         return `Email already taken`
     }
-};
+}
+
+export default UniqueAffiliateEmail

@@ -77,7 +77,7 @@ const _validateInput = async (name, formState) =>
 
 
 
-export default {
+const FormStateTracker = {
 
         /**
          * Initialize the input of the form if we have not already initialized an input with the same name on the form object.
@@ -234,3 +234,5 @@ export default {
             return valid
         },
     };
+
+export default FormStateTracker;

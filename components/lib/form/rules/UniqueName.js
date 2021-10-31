@@ -6,7 +6,7 @@
 
 import axios from "axios";
 
-export default {
+const UniqueName = {
     
     validate: async function(value)
     {
@@ -29,3 +29,5 @@ export default {
         return `Name already taken`
     }
 };
+
+export default UniqueName

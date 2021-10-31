@@ -1,5 +1,5 @@
 
-export default {
+const Phone = {
     
     validate: function(value)
     {
@@ -13,3 +13,5 @@ export default {
         return `Has to be a valid phone number`
     }
 };
+
+export default Phone

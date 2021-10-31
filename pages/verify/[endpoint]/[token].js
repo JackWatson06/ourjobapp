@@ -19,7 +19,7 @@ const routeMap = {
 }
 
 const successMessage = {
-    "sharer" : (response) => {
+    "sharer" : function AffiliateScreen(response){
         return <>
             <HeaderMedium title="Your link has been activated!" />
             <Header title={response.data.link} />
@@ -28,14 +28,14 @@ const successMessage = {
         </> 
     },
 
-    "employee" : (response) => {
+    "employee" : function EmployeeScreen(response){
         return <>
             <HeaderMedium title="Congratulations! You have applied to all relevant jobs" />
             <Button title="Share" />
         </>
     },
 
-    "employer" : (response) => {
+    "employer" : function EmployerScreen(response){
         return <>
             <HeaderMedium text="Your Candidate Pool has been created! You will receive candidates via email"/>
             <Button title="Share" />
@@ -68,7 +68,7 @@ export default function TokenPage(props)
                     setError(true);
                 });
         }
-    }, [endpoint])
+    }, [endpoint, token])
 
 
     // Load the correct screen based on the response that we recieve from the verification endpoint that we chose to send

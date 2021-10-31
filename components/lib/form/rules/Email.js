@@ -6,7 +6,7 @@
  * state.
  */
 
-export default {
+const Email = {
     
     validate: function(value)
     {
@@ -20,3 +20,5 @@ export default {
         return `Has to be a valid email`
     }
 };
+
+export default Email

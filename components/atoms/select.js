@@ -3,8 +3,10 @@ import fs from "@lib/form/FormStateTracker"
 import React, { useState, useEffect, useRef } from "react"
 
 import Pill from "./pill"
+
 import styles from "@styles/atoms/Select.module.css"
 import axios from "axios"
+import Image from 'next/image'
 
 export default function SelectInput({ label, multi_select, name, endpoint, list, validators, formState }){
 
@@ -165,7 +167,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
                         value={search}
                     />
                     {/* These will need to be stored in a public directory... When we click these arrows we also show the dropdown. */}
-                    <img src={showDropDown ? "images/svg/activeDropDownArrows.svg" : "images/svg/dropDownArrows.svg"} onClick={() => selectRef.current.focus()} />
+                    <Image src={showDropDown ? "images/svg/activeDropDownArrows.svg" : "images/svg/dropDownArrows.svg"} alt="^" onClick={() => selectRef.current.focus()} />
                 </div>
 
 

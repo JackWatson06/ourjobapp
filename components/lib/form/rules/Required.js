@@ -6,7 +6,7 @@
  * state.
  */
 
-export default {
+const Required = {
     
     validate: function(value)
     {
@@ -23,3 +23,5 @@ export default {
         return `Input is required`
     }
 };
+
+export default Required
