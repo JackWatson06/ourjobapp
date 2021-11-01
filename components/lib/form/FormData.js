@@ -171,24 +171,28 @@ export const where = [
 
 export const distance = [
     {
-        name: "Nationally",
+        name: "Worldwide",
         value: 1
     },
     {
-        name: "10 Miles From Home",
+        name: "Nationally",
         value: 2
     },
     {
-        name: "50 Miles From Home",
+        name: "10 Miles From Home",
         value: 3
     },
     {
-        name: "100 Miles From Home",
+        name: "50 Miles From Home",
         value: 4
     },
     {
-        name: "250 Miles From Home",
+        name: "100 Miles From Home",
         value: 5
+    },
+    {
+        name: "250 Miles From Home",
+        value: 6
     }
 ]
 

@@ -18,6 +18,14 @@ Front-End React Project for the UniJobApplication
 
 ## Style Guide
 
+- To build the current version of the project run the following command:
+    ```npm run build```
+
+- To restart the server of nextjs on the production env run the following command:
+    ```pm2 restart nextjs```
+
+## Style Guide
+
 - Avoid using semicolons at the end of lines.
 
 ## Next.js
