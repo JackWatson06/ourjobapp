@@ -28,6 +28,9 @@
  */
 import validate from "./Validator"
 
+
+const DEBOUNCE_TIME = 500
+
 /**
  * When we set a form state. React works by batching in all of the SET state requests into one single batch that then
  * gets applied. We need to set as a copy since the way these values are stored on the stack. We also need to do a object assign
@@ -74,7 +77,18 @@ const _validateInput = async (name, formState) =>
     return true;
 }
 
-
+/**
+ * Debounce the current function that we passed into this scope.
+ * @param {closure} func Function we are calling after the debounce.
+ * @param {int} timeout Number of seconds that we want to wait to debounce.
+ */
+const debounce = (func, timeout = 1000) => {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(async () => { await func.apply(this, args); }, timeout);
+    };
+}
 
 
 const FormStateTracker = {
@@ -197,23 +211,41 @@ const FormStateTracker = {
         /**
          * Validate that the some of the formState is in a valid state before submission.
          * @param {FormState} formState Current form state object
-         * @param {array} batchedInputs Array of the inputs we are testing against the form state.
+         * @param {array} field The field that we are currently validating with a onChange validator.
          */
-        validateSome: async (formState, batchedInputs) =>
+        onChangeValidation: (formState, field) =>
         {
-            const form  = formState.form
-            let valid = true
-        
-            // Check the batched inputs. Mark the component as invalid if invaild.
-            for(const name of batchedInputs)
-            {
-                if( form[name] != undefined )
+            return debounce(async () => {
+                const form  = formState.form
+            
+                // Check the batched inputs. Mark the component as invalid if invaild.
+                if( form[field] != undefined )
                 {
-                    valid = await _validateInput(name, formState)
+                    return await _validateInput(field, formState)
                 }
-            }
+            
+                return true
+            }, DEBOUNCE_TIME)
+        },
 
-            return valid
+        /**
+         * The field we are currently validating with an onblur validator.
+         * @param {FormState} formState Current form state object
+         * @param {array} field The field that we are currently validating with a onBlur validator.
+         */
+        onBlurValidation: async (formState, field) =>
+        {
+            console.log("Field On Blur Validation: " + field);
+
+            const form  = formState.form
+            
+            // Check the batched inputs. Mark the component as invalid if invaild.
+            if( form[field] != undefined )
+            {
+                return await _validateInput(field, formState)
+            }
+        
+            return true
         },
 
         /**

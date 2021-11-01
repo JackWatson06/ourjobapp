@@ -8,8 +8,8 @@ import styles from "@styles/atoms/Select.module.css"
 import axios from "axios"
 import Image from 'next/image'
 
-export default function SelectInput({ label, multi_select, name, endpoint, list, validators, formState }){
-
+export default function SelectInput({ label, multi_select, name, endpoint, list, validators, formState })
+{
     const [selected,     setSelected]     = useState([])
     const [options,      setOptions]      = useState([])
     const [search,       setSearch]       = useState("")
@@ -21,6 +21,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
     const optionsRef  = useRef()
     const dropdownRef = useRef()
 
+    const validate = () => fs.onBlurValidation(formState, name)
 
     dropdownRef.current = showDropDown;
 
@@ -74,7 +75,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
         {
             // Where we are just a regular dropdown. Remove focus, and hide drodown.
             fs.setValue(item.value, name, formState)
-            fs.validateSome(formState, [name])
+            validate()
 
             setShowDropDown(false)
             setSearch(item.name)
@@ -97,7 +98,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
             selected.splice(index, 1)
         
             fs.setValue([ ...value], name, formState)
-            fs.validateSome(formState, [name])
+            validate()
         }
     }
 
@@ -108,7 +109,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
     const onBlurInput = (e) => {
         if( e.relatedTarget != null ){
             setShowDropDown(false)
-            fs.validateSome(formState, [name])
+            validate()
         }
         return
     }
@@ -116,7 +117,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
     // Add the input to the form state.
     useEffect(() => {
         fs.initInput(name, validators, formState, multi_select ? [] : "")
-        searchOptions("");
+        searchOptions("")
     }, [])
 
     // Called once to add the event listener for clicking anywhere in the document. Then we 
@@ -126,7 +127,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
             if (wrapperRef.current && !wrapperRef.current.contains(e.target) && dropdownRef.current) 
             {
                 setShowDropDown(false); // Hide the dropdwon when we click off
-                fs.validateSome(formState, [name])
+                validate()
             }
         });
 

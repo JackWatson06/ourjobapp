@@ -5,6 +5,7 @@ import style from "@styles/atoms/Input.module.css";
 
 export default function TextInput ({ id, name, type, label, validators, formState }) {
 
+    const [validate, setValidate]   = useState(() => {})
     const [isFocused, setIsFocused] = useState(false);
     const inputRef = useRef()
     
@@ -13,6 +14,7 @@ export default function TextInput ({ id, name, type, label, validators, formStat
 
     useEffect(() => {
         fs.initInput(name, validators, formState)
+        setValidate(() => fs.onChangeValidation(formState, name))
     }, [])
 
     return (
@@ -27,12 +29,12 @@ export default function TextInput ({ id, name, type, label, validators, formStat
 
                         value = { value }
                         ref = {inputRef}
-                        onChange={ (e) => fs.setValue(e.target.value, name, formState) }
-                        onFocus={() => setIsFocused(true) }
-                        onBlur={() =>  { 
-                            setIsFocused(false); 
-                            fs.validateSome(formState, [name]) 
+                        onChange={ (e) => {
+                            fs.setValue(e.target.value, name, formState)
+                            validate()
                         }}
+                        onFocus={() => setIsFocused(true) }
+                        onBlur={() => setIsFocused(false) }
                     />
                 </div>
             </div >
