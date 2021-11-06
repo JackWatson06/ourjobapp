@@ -1,11 +1,13 @@
-import * as affTrack from "@lib/affiliate/AffiliateTracker"
 
 import Head from 'next/head'
 
-import Column from '@templates/column'
+import PrimaryNavigation from '@molecules/navigation/primary-navigation'
+import Header from '@organisms/header'
+import Signup from '@organisms/signup'
+import Footer from '@organisms/footer'
+import Description from '@organisms/description'
+import Reel from '@organisms/reel'
 
-import HeaderMedium from "@atoms/text/header-md"
-import LinkButton from "@molecules/link-button"
 
 /**
  * This will render a page on the route https://unijob.app OR https://unijob.app/index
@@ -14,32 +16,16 @@ import LinkButton from "@molecules/link-button"
  */
 export default function Index(props)
 {
-
-    const affiliateData = affTrack.ReadCookie()
-    let headerText = "Welcome to OurJob.App! Are you looking to..."
-
-    if(affiliateData != undefined)
-    {
-        headerText = `Welcome to ${affiliateData.name}'s link! Are you looking to...`
-    }
-
-    const content = <>
-        <HeaderMedium title={headerText}/> 
-
-        <LinkButton title="Share for charity" link="/sharer" />
-        <LinkButton title="Find a job" link="/employee" />
-        <LinkButton title="Find candidates" link="/employer" />
-
-    </>
-
-
-
     return <>
         {/* SEO Header Tags */}
         <Head>
             <title>Welcome to OurJob.App Signup as a candidate, employer, or sharer today!</title>
         </Head>
 
-        <Column content={content} />
+        <Header navigation={ <PrimaryNavigation/> } />
+        <Signup />
+        <Description />
+        <Reel />
+        <Footer />
     </>
 }

@@ -13,7 +13,7 @@ const DEBOUNCE_TIME = 200
 
 let source = axios.CancelToken.source()
 
-export default function SelectInput({ label, multi_select, name, endpoint, list, validators, formState })
+export default function SelectInput({ label, required, multi_select, name, endpoint, list, validators, formState })
 {
     // Select and options can be merged into one.
     const [selected,     setSelected]     = useState([])
@@ -126,7 +126,11 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
 
     // Set the select box to it's default state.
     useEffect(() => {
-        fs.initInput(name, validators, formState, multi_select ? [] : "")
+        fs.initInput(name, formState, {
+            required     : required,
+            validators   : validators,
+            initialValue :  multi_select ? [] : ""
+        });
         searchOptions("")
     }, [])
 

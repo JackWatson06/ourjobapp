@@ -6,7 +6,7 @@
  * state.
  */
 
-const Required = {
+const NotEmpty = {
     
     validate: function(value)
     {
@@ -24,4 +24,4 @@ const Required = {
     }
 };
 
-export default Required
+export default NotEmpty

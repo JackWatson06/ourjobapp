@@ -26,14 +26,16 @@ a {
 :root {
 
   --background: white;
+  --secondary-background: #000000;
 
-  --primary: #218ed5;
-  --primary-light: #64b4fa;
-  --primary-dark: #0072b2;
+  --primary: #9E005D  ;
+  --primary-dark: #2B4F7B;
+  --primary-gradient: linear-gradient(135deg, var(--primary-dark), var(--primary));
 
   --error: #fa6464;
   --error-light: #d52121;
   --error-dark: #b20000;
+  --error-gradient: linear-gradient(135deg, var(--error-dark), var(--error));
 
   --light-text: #FFFFFF;
   --dark-text:  #000000;

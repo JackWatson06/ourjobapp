@@ -13,7 +13,7 @@
 
     padding: 0 0.5rem;
 
-    background: linear-gradient(var(--primary-light), var(--primary), var(--primary-dark));
+    background: var(--primary-gradient);
 
     border-radius: 0.25rem;
     transition: all ease-in 0.5s;

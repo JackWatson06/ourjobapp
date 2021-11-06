@@ -7,7 +7,7 @@ import fs from "@lib/form/FormStateTracker"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 
-export default function FileInput({ name, label, validators, formState })
+export default function FileInput({ name, required, url, label, validators, formState })
 {    
     const validate = () => fs.onBlurValidation(formState, name)
     const inputRef = useRef()
@@ -21,16 +21,15 @@ export default function FileInput({ name, label, validators, formState })
             return
         }
 
-        fs.setValue({ 
-            name: file.name,
-            size: file.size,
-            type: file.type
-        }, name, formState)
+        fs.setValue(file, name, formState)
         validate()
     }
 
     useEffect(() => {
-        fs.initInput(name, validators, formState)
+        fs.initInput(name, formState, {
+            required     : required,
+            validators   : validators
+        });
     }, [])
 
     return  <div className={style.text_input}>

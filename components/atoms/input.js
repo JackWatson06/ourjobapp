@@ -3,7 +3,7 @@ import fs from "@lib/form/FormStateTracker"
 
 import style from "@styles/atoms/Input.module.css";
 
-export default function TextInput ({ name, type, label, validators, formState }) {
+export default function TextInput ({ name, required, type, label, validators, formState }) {
 
     const [validate, setValidate]   = useState(() => {})
     const [isFocused, setIsFocused] = useState(false);
@@ -13,7 +13,10 @@ export default function TextInput ({ name, type, label, validators, formState })
     const value = fs.getValue( name, formState.form )
 
     useEffect(() => {
-        fs.initInput(name, validators, formState)
+        fs.initInput(name, formState, {
+            required     : required,
+            validators   : validators
+        });
         setValidate(() => fs.onChangeValidation(formState, name))
     }, [])
 

@@ -1,0 +1,14 @@
+.IconContainer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.NavigationIcon
+{
+    font-size: 1.25rem;
+
+    cursor: pointer;
+}

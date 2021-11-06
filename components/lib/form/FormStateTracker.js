@@ -61,7 +61,7 @@ const _setInputStateField = (assign, formState) =>
 const _validateInput = async (name, formState) =>
 {
     const form    = formState.form
-    const message = await validate(form[name].value, form[name].validators)
+    const message = await validate(form[name].value, form[name].required, form[name].validators)
 
     _setInputStateField( {
         [name] : {
@@ -83,16 +83,17 @@ const FormStateTracker = {
         /**
          * Initialize the input of the form if we have not already initialized an input with the same name on the form object.
          */
-        initInput: (property, validators, formState, starting) =>
+        initInput: (property, formState, options) =>
         {
             if( formState.form[property] === undefined)
             {
                 const formCopy = {
                     ...formState.form, 
                     [property] : { 
-                        "value"        : starting   ?? "",
-                        "validators"   : validators ?? [],
-                        "valid"        : validators === undefined ? true : false,
+                        "value"        : options.initialValue ?? "",
+                        "validators"   : options.validators   ?? [],
+                        "valid"        : ! options.required,
+                        "required"     : options.required     ?? true,
                         "error"        : ""
                     } 
                 }

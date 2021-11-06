@@ -15,7 +15,7 @@
 
 .error_border 
 {
-  background: linear-gradient(var(--error-light), var(--error), var(--error-dark)) !important;
+  background: var(--error-gradient) !important;
 }
 
 .input_wrapper {
@@ -145,7 +145,7 @@
 }
 
 .option_item:hover {
-    background: linear-gradient(var(--primary-light), var(--primary), var(--primary-dark));
+    background: var(--primary-gradient);
 }
 
 /* All the font that has a deafult of white. */

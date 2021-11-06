@@ -1,4 +1,3 @@
-import required from "./Required"
 import email from "./Email"
 import phone from "./Phone"
 import maxLength from "./MaxLength"
@@ -14,7 +13,6 @@ import uniqueEmployeeEmail from "./UniqueEmployeeEmail"
 const rules = {
     email                : email,
     phone                : phone,
-    required             : required,
     maxLength            : maxLength,
     noSpaces             : noSpaces,
     maxSize              : maxSize,

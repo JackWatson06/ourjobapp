@@ -1,0 +1,19 @@
+
+.UList
+{
+    color: var(--light-text);
+    font-size: 1.1;
+
+    list-style-type: none;
+}
+
+.LinkWrapper
+{
+    margin: 1.0rem 0;
+}
+
+.Link
+{
+    text-decoration: underline;
+    color: var(--light-text)
+}

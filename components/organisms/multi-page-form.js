@@ -64,11 +64,28 @@ export default function MultiPageForm(props)
         {
             const data = fs.getSubmitData(formState.form)
 
+            // Add the affiliate if we have it.
             if(affTrack.ReadCookie() != undefined)
             {
                 data.affiliate_id = affTrack.ReadCookie().id
             }
 
+            // Upload the resume if we have it. Obv we will change this in the future.
+            if( data.resume != undefined )
+            {
+                const formData = new FormData();
+                formData.append("resume", data.resume);
+
+                data.resume_id = (await axios.post('signup/resumes', formData, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                })).data.id;
+
+                delete data.resume;
+            }
+
+            // Post the data to the server.
             axios.post(`${props.link}`, data)
                 .then(function (response) {
                     if(response.status === 200)
@@ -97,7 +114,7 @@ export default function MultiPageForm(props)
     // Finish does NOT need to be avaialbe to every form we should abstract that out into it's own FinishForm component.
     // maybe that also dictates how the form is sent.
     return <>
-        { notFirstPage && <FontAwesomeIcon className={styles.PrevButton} icon={ faChevronLeft } onClick={prev} /> }
+        {/* { notFirstPage && <FontAwesomeIcon className={styles.PrevButton} icon={ faChevronLeft } onClick={prev} /> } */}
         { Page }    
     </>
 }
