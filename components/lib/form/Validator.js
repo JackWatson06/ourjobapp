@@ -5,14 +5,13 @@
  * @param {string} value The value we are passing into the server
  * @param {array} rules List of rules we need to pass
  */
-export default async function Validator(value, rules)
-{
-
+export default async function Validator(value, rules) {
     let message = "";
 
     // Try each rule that we have.
     for (const rule of rules)
     {
+
         if( ! await rule.validate( value) )
         {
             message = rule.message( );

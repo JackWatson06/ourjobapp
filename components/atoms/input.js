@@ -3,7 +3,7 @@ import fs from "@lib/form/FormStateTracker"
 
 import style from "@styles/atoms/Input.module.css";
 
-export default function TextInput ({ id, name, type, label, validators, formState }) {
+export default function TextInput ({ name, type, label, validators, formState }) {
 
     const [validate, setValidate]   = useState(() => {})
     const [isFocused, setIsFocused] = useState(false);
@@ -24,11 +24,9 @@ export default function TextInput ({ id, name, type, label, validators, formStat
                 <div className={`${style.text_input_wrapper}`}>
                     <span className={value != "" ? `${style.active_label} ${style.label}` : `${style.label}`} onClick={() => inputRef.current.focus()}>{label}</span>
                     <input
-                        id       = { id }
-                        type     = { type ? type : "text" }
-
+                        type  = { type ? type : "text" }
                         value = { value }
-                        ref = {inputRef}
+                        ref   = {inputRef}
                         onChange={ (e) => {
                             fs.setValue(e.target.value, name, formState)
                             validate()

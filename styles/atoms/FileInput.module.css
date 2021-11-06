@@ -1,0 +1,52 @@
+
+/* New CSS I know we will fix this */
+.FileInput
+{
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.IconInputContainer
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+/* Input Icon for File Upload */
+.InputIcon
+{
+    color: var(--label-text);
+    font-size: 2rem;
+    margin-left: 0.25em;
+    align-self: center;
+}
+
+.FileInputWrapper
+{
+    position: relative;
+    min-width: 0;
+}
+
+/* Value */
+.ValueSpan
+{
+    height: 100%;
+    width: 100%;
+
+    display: block;
+    overflow: hidden;
+    padding: 0 1rem;
+    margin-top: 1.1rem;
+
+    border: none;
+    outline: none;
+    color: var(--border);
+
+    font-size: 1.13rem;
+    line-height: 1.31rem;
+    white-space: nowrap;
+}

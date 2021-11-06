@@ -22,13 +22,9 @@ export default function SharePage(props)
     const sharerForm =  <MultiPageForm link="signup/affiliates" redirect="signup/verify">
         <FormPage title="Let’s design your link!" buttonLabel="Create My Link!" inputBatch={ ["name", "charity_id", "email"] } >
 
-            <Input label = "Link Name" name = "name" validators  = { [ rules.required, rules.uniqueName ] } />
-            <SelectInput label        = "Charity"
-                            multi_select = { false }
-                            name         = "charity_id"
-                            endpoint     = "search/charities"
-                            validators   = { [ rules.required ] } />
-            <Input label = "Email" name = "email" validators = { [ rules.required, rules.email, rules.uniqueAffiliateEmail ] } />
+            <Input       label="Link Name" name="name"       validators={ [ rules.required, rules.noSpaces, rules.urlTokens, rules.maxLength(50), rules.uniqueName ] } />
+            <SelectInput label="Charity"   name="charity_id" validators={ [ rules.required ] } multi_select={ false } endpoint="search/charities" />
+            <Input       label="Email"     name="email"      validators={ [ rules.required, rules.email, rules.uniqueAffiliateEmail ] } />
         </FormPage>
     </MultiPageForm>
 

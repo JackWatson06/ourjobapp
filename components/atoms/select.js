@@ -1,15 +1,21 @@
 import fs from "@lib/form/FormStateTracker"
+import debounce from "@lib/utilities/debounce"
 
 import React, { useState, useEffect, useRef } from "react"
-
-import Pill from "./pill"
-
 import styles from "@styles/atoms/Select.module.css"
 import axios from "axios"
+
+import Pill from "./pill"
 import Image from 'next/image'
+
+//https://axios-http.com/docs/cancellation
+const DEBOUNCE_TIME = 200
+
+let source = axios.CancelToken.source()
 
 export default function SelectInput({ label, multi_select, name, endpoint, list, validators, formState })
 {
+    // Select and options can be merged into one.
     const [selected,     setSelected]     = useState([])
     const [options,      setOptions]      = useState([])
     const [search,       setSearch]       = useState("")
@@ -20,10 +26,10 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
     const wrapperRef  = useRef()
     const optionsRef  = useRef()
     const dropdownRef = useRef()
-
-    const validate = () => fs.onBlurValidation(formState, name)
-
     dropdownRef.current = showDropDown;
+
+    // Validation function
+    const validate = () => fs.onBlurValidation(formState, name)
 
     // This can be removed by spliting the select multiple with the default select.
     const error = fs.getError( name, formState.form )
@@ -45,7 +51,10 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
         // If we are searching for options against an endpoint.
         if(endpoint)
         {
-            axios.get(`${endpoint}?name=${search}`)
+            source.cancel()
+            source = axios.CancelToken.source()
+    
+            axios.get(`${endpoint}?name=${search}`, { cancelToken: source.token })
                 .then(function (response) {
                     setOptions( response.data.map( (responseData) => ({
                                 value: responseData.id,
@@ -54,6 +63,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
                         )
                     )
                 })
+                .catch( () => {});
         }
         //Search through the options regularly.
         else
@@ -114,7 +124,7 @@ export default function SelectInput({ label, multi_select, name, endpoint, list,
         return
     }
 
-    // Add the input to the form state.
+    // Set the select box to it's default state.
     useEffect(() => {
         fs.initInput(name, validators, formState, multi_select ? [] : "")
         searchOptions("")

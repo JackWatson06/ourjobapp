@@ -6,10 +6,19 @@ import FormPage from '@molecules/form-page'
 import Question from '@molecules/question'
 import Input from "@atoms/input"
 import SelectInput from '@atoms/select'
+import FileInput from '@atoms/file-input'
 
 import * as data from "@lib/form/FormData"
 import rules from '@lib/form/rules'
 import DependentInput from '@molecules/dependent-input'
+
+const validFiles = 
+[
+    "text/plain", //txt
+    "application/pdf", //pdf
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document", //docx
+    "application/msword" //doc
+]
 
 export default function EmployeePage(props)
 {
@@ -23,16 +32,20 @@ export default function EmployeePage(props)
 
     const sharerForm =  <MultiPageForm link="signup/employees" redirect="signup/verify">
 
+        {/* Name */}
         <FormPage title="To start, we would love to get to know you!" buttonLabel="Find Your Perfect Job" inputBatch={ ["fname", "lname"] } >
-            <Input label="Legal First Name" name="fname" validators={ [ rules.required ] } />
-            <Input label="Legal Last Name"  name="lname" validators={ [ rules.required ] } />
+            <Question question="Upload your resume - Optional" input={
+                <FileInput label="Resume" name="resume" url="signup/resumes" validators={ [ rules.maxSize(5), rules.fileType(validFiles) ] } />
+            }/>
+            <Input label="Legal First Name" name="fname" validators={ [ rules.required, rules.maxLength(50) ] } />
+            <Input label="Legal Last Name"  name="lname" validators={ [ rules.required, rules.maxLength(50) ] } />
         </FormPage>
 
 
-
+        {/* Job Specification */}
         <FormPage title="Hi, {fname}! What job are you searching for?" buttonLabel="Next" inputBatch={ ["job_id", "hourly_rate", "commitment", "where"] } >
             <SelectInput label="Job"    multi_select={true}  name="job_id"      endpoint="search/jobs"     validators={ [ rules.required ] } />
-            <SelectInput label="Hourly" multi_select={false} name="hourly_rate" list={data.employeeWage}         validators={ [ rules.required ] } />
+            <SelectInput label="Hourly" multi_select={false} name="hourly_rate" list={data.employeeWage}   validators={ [ rules.required ] } />
             <Question question="Full-time or Part-time?" input={
                 <SelectInput label="Time"   multi_select={false} name="commitment" list={data.commitment} validators={ [ rules.required ] } />
             }/>
@@ -41,6 +54,8 @@ export default function EmployeePage(props)
             }/>
         </FormPage>
 
+
+        {/* Location */}
         <FormPage title="Where are you searching?" buttonLabel="Next" inputBatch={ ["authorized", "distance", "place_id", "nations"] } >
             <Question question="What countries are you legally authorized to work in?" input={
                 <SelectInput label="Country" multi_select={true}  name="authorized" endpoint="search/countries" validators={ [ rules.required ] } />
@@ -50,18 +65,20 @@ export default function EmployeePage(props)
             }/>
 
             <DependentInput dependsOn="distance" name="nations"  dependsOnValue={1}         renders={nations} />
-            <DependentInput dependsOn="distance" name="place_id" dependsOnValue={[2, 3, 4, 5]} renders={place} />
+            <DependentInput dependsOn="distance" name="place_id" dependsOnValue={[3, 4, 5, 6]} renders={place} />
         </FormPage>
 
+        {/* Background */}
         <FormPage title="Almost there! Tell us about your background" buttonLabel="Next" inputBatch={ ["education", "major", "experience", "information"] } >
             <SelectInput label="Highest Education" multi_select={false} name="education" list={data.education} validators={ [ rules.required ] } />
             <DependentInput dependsOn="education" name="major" dependsOnValue={[4,5,6]} renders={major} />
             <SelectInput label="Experience Level" multi_select={false} name="experience" list={data.experience} validators={ [ rules.required ] } />
             <Question question="Licenses, certifications, and other information the employer should know? - Optional" input={
-                <Input label="Other Information" name="information" />
+                <Input label="Other Information" name="information" validators={ [ rules.maxLength(0, 50) ] } />
             }/>
         </FormPage>
 
+        {/* Contact */}
         <FormPage title="Employers need a way to contact you" buttonLabel="Submit Your Application" inputBatch={ ["email", "phone"] } >
             <Input label = "Email" name = "email" validators = { [ rules.required, rules.email, rules.uniqueEmployeeEmail ] } />
             <Input label = "Phone" name = "phone" validators = { [ rules.required, rules.phone ] } />

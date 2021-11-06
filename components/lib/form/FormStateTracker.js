@@ -27,6 +27,7 @@
  *  }
  */
 import validate from "./Validator"
+import debounce from "@lib/utilities/debounce"
 
 
 const DEBOUNCE_TIME = 500
@@ -77,20 +78,6 @@ const _validateInput = async (name, formState) =>
     return true;
 }
 
-/**
- * Debounce the current function that we passed into this scope.
- * @param {closure} func Function we are calling after the debounce.
- * @param {int} timeout Number of seconds that we want to wait to debounce.
- */
-const debounce = (func, timeout = 1000) => {
-    let timer;
-    return (...args) => {
-        clearTimeout(timer);
-        timer = setTimeout(async () => { await func.apply(this, args); }, timeout);
-    };
-}
-
-
 const FormStateTracker = {
 
         /**
@@ -128,9 +115,9 @@ const FormStateTracker = {
             }
         },
 
-        getValue: (property, form, array = false) => 
+        getValue: (property, form ) => 
         {
-            if( form[property] === undefined ) return array ? [] : ""
+            if( form[property] === undefined ) return ""
         
             // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
             return form[property].value;
@@ -235,8 +222,6 @@ const FormStateTracker = {
          */
         onBlurValidation: async (formState, field) =>
         {
-            console.log("Field On Blur Validation: " + field);
-
             const form  = formState.form
             
             // Check the batched inputs. Mark the component as invalid if invaild.

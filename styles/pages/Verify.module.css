@@ -1,0 +1,5 @@
+
+.Header{
+    overflow-wrap: break-word;
+    color: var(--primary-dark);
+}

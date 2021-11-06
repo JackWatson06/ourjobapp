@@ -12,6 +12,8 @@ import { useEffect, useState } from 'react'
 import axios from "axios";
 import Paragraph from "@atoms/text/paragraph"
 
+import styles from "@styles/pages/Verify.module.css" 
+
 const routeMap = {
     "sharer"   : "affiliates",
     "employee" : "employees",
@@ -22,8 +24,8 @@ const successMessage = {
     "sharer" : function AffiliateScreen(response){
         return <>
             <HeaderMedium title="Your link has been activated!" />
-            <Header title={response.data.link} />
-            <Button title="Copy" />
+            <Header className={style.header} title={response.data.link} onClick={() => {navigator.clipboard.writeText(response.data.link)}} />
+            <Button title="Copy" onClick={() => {navigator.clipboard.writeText(response.data.link)}}/> {/* We should add in a notification here that it was scuessfully copied to clipboard.  */}
             <Button title="Share" />
         </> 
     },
