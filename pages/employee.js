@@ -30,7 +30,7 @@ export default function EmployeePage(props)
                     }/>
 
 
-    const sharerForm =  <MultiPageForm link="signup/employees" redirect="signup/verify">
+    const sharerForm =  <MultiPageForm link="signup/employees" redirect="employee/verify">
 
         {/* Name */}
         <FormPage title="To start, we would love to get to know you!" buttonLabel="Find Your Perfect Job" inputBatch={ ["fname", "lname"] } >

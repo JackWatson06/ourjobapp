@@ -13,7 +13,7 @@ import rules from '@lib/form/rules'
 export default function EmployerPage(props)
 {
 
-    const candidateForm =  <MultiPageForm link="signup/employers" redirect="signup/verify">
+    const candidateForm =  <MultiPageForm link="signup/employers" redirect="employer/verify">
 
         <FormPage title="Create your Candidate Pool! First, let’s get to know each other better" buttonLabel="Create Candidate Pool" inputBatch={ ["fname", "lname", "position"] } >
             <Input label="Legal First Name"     name="fname"     validators={ [ rules.maxLength(50) ] } />
