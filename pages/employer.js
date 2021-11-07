@@ -21,7 +21,7 @@ export default function EmployerPage(props)
             <Input label="Position at Company"  name="position" required={true} validators={ [ rules.maxLength(50) ] } />
         </FormPage>
 
-        <FormPage title="Hi, {fname}! Tell us about your company" buttonLabel="Next" inputBatch={ ["company_name", "place_id"] } >
+        <FormPage title="Hello! Tell us about your company" buttonLabel="Next" inputBatch={ ["company_name", "place_id"] } >
             <Input label="Company Name"    name="company_name" required={true} validators={ [ rules.maxLength(50) ] } />
             <Input label="Company Website" name="website"      validators={ [ rules.maxLength(50) ] }/>
             <SelectInput label="Company Address" multi_select={false} name="place_id" endpoint="search/places" required={true} />

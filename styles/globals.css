@@ -28,9 +28,12 @@ a {
   --background: white;
   --secondary-background: #000000;
 
-  --primary: #9E005D  ;
+  --primary: #9E005D;
+  --primary-light: #ff00bb;
   --primary-dark: #2B4F7B;
   --primary-gradient: linear-gradient(135deg, var(--primary-dark), var(--primary));
+
+  /* linear-gradient(135deg,  #2B4F7B, #9E005D); */
 
   --error: #fa6464;
   --error-light: #d52121;

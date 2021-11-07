@@ -1,5 +1,10 @@
-
-.Header{
+.LinkHeader
+{
     overflow-wrap: break-word;
     color: var(--primary-dark);
+}
+
+.Copied
+{
+    text-align: center;
 }

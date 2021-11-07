@@ -7,32 +7,32 @@ export default function FooterNavigation()
     return <ul className={styles.UList}>
         <li className={styles.LinkWrapper}> 
             <Link href="/">
-                <a class={styles.Link}>Home</a>
+                <a className={styles.Link}>Home</a>
             </Link>
         </li>
         <li className={styles.LinkWrapper}>
             <Link href="/sharer">
-                <a class={styles.Link}>Become a Sharer</a>
+                <a className={styles.Link}>Become a Sharer</a>
             </Link>
         </li>
         <li className={styles.LinkWrapper}>
             <Link href="/canddiate_pool">
-                <a class={styles.Link}>Candidate Pool</a>
+                <a className={styles.Link}>Candidate Pool</a>
             </Link>
         </li>
         <li className={styles.LinkWrapper}>
             <Link href="/employee">
-                <a class={styles.Link}>Find a Job</a>
+                <a className={styles.Link}>Find a Job</a>
             </Link>
         </li>
         <li className={styles.LinkWrapper}>
             <Link href="/tos.pdf">
-                <a class={styles.Link}>Terms of Service</a>
+                <a className={styles.Link}>Terms and Conditions</a>
             </Link>
         </li>
         <li className={styles.LinkWrapper}>
             <Link href="/operating_aggrement.pdf">
-                <a class={styles.Link}>Operating Aggrement</a>
+                <a className={styles.Link}>Privacy Policy</a>
             </Link>
         </li>
     </ul>

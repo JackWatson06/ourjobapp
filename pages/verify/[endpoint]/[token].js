@@ -2,17 +2,15 @@
 
 import Column from "@templates/column"
 
+import AffiliateVerified from "@organisms/affiliate-verified.js"
 import HeaderMedium from "@atoms/text/header-md"
-import Header from "@atoms/text/header"
-import Button from "@atoms/button"
+import ShareButton from "@molecules/share-button.js";
 
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import axios from "axios";
 import Paragraph from "@atoms/text/paragraph"
-
-import styles from "@styles/pages/Verify.module.css" 
 
 const routeMap = {
     "sharer"   : "affiliates",
@@ -22,25 +20,20 @@ const routeMap = {
 
 const successMessage = {
     "sharer" : function AffiliateScreen(response){
-        return <>
-            <HeaderMedium title="Your link has been activated!" />
-            <Header className={style.header} title={response.data.link} onClick={() => {navigator.clipboard.writeText(response.data.link)}} />
-            <Button title="Copy" onClick={() => {navigator.clipboard.writeText(response.data.link)}}/> {/* We should add in a notification here that it was scuessfully copied to clipboard.  */}
-            <Button title="Share" />
-        </> 
+        return <AffiliateVerified link={response.data.link} />
     },
 
     "employee" : function EmployeeScreen(response){
         return <>
             <HeaderMedium title="Congratulations! You have applied to all relevant jobs" />
-            <Button title="Share" />
+            <ShareButton url="https://ourjob.app" title="Find a Job Today!" text="OurJob.App helps connect you with employers who are hiring around your location. Customize your job!" />
         </>
     },
 
     "employer" : function EmployerScreen(response){
         return <>
-            <HeaderMedium text="Your Candidate Pool has been created! You will receive candidates via email"/>
-            <Button title="Share" />
+            <HeaderMedium title="Your Candidate Pool has been created! You will receive candidates via email"/>
+            <ShareButton url="https://ourjob.app" title="Find candidates now!" text="OurJob.App helps connect you with candidates that meet your criteria. Sign up to see candidates today!" />
         </>
     }
 }

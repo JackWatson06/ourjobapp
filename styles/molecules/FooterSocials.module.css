@@ -12,9 +12,11 @@
 {
     font-size: 2rem;
     cursor: pointer;
+
+    color: var(--primary-light);
 }
 
-.FirstStop
+/* .FirstStop
 {
     stop-color: var(--primary);
 }
@@ -28,4 +30,4 @@
 {
     fill: url(#icon-gradient);
 }
-
+ */

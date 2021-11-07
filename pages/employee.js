@@ -40,7 +40,7 @@ export default function EmployeePage(props)
 
 
         {/* Job Specification */}
-        <FormPage title="Hi, {fname}! What job are you searching for?" buttonLabel="Next" inputBatch={ ["job_id", "hourly_rate", "commitment", "where"] } >
+        <FormPage title="Hello! What job are you searching for?" buttonLabel="Next" inputBatch={ ["job_id", "hourly_rate", "commitment", "where"] } >
             <SelectInput label="Job"    multi_select={true}  name="job_id"      endpoint="search/jobs"     required={true} />
             <SelectInput label="Hourly" multi_select={false} name="hourly_rate" list={data.employeeWage}   required={true} />
             <Question question="Full-time or Part-time?" input={
@@ -81,7 +81,7 @@ export default function EmployeePage(props)
         {/* Contact */}
         <FormPage title="Employers need a way to contact you" buttonLabel="Submit Your Application" inputBatch={ ["email", "phone"] } >
             <Input label = "Email" name = "email" required={true} validators={ [ rules.email, rules.uniqueEmployeeEmail ] } />
-            <Input label = "Phone" name = "phone" required={true} validators={ [ rules.phone ] } />
+            <Input label = "Phone" name = "phone" required={true} />
         </FormPage>
 
     </MultiPageForm>

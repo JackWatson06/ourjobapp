@@ -8,6 +8,7 @@ import Footer from '@organisms/footer'
 import Description from '@organisms/description'
 import Reel from '@organisms/reel'
 
+import AffiliateVerified from "@organisms/affiliate-verified"
 
 /**
  * This will render a page on the route https://unijob.app OR https://unijob.app/index
