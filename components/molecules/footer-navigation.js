@@ -5,16 +5,16 @@ import styles from '@styles/molecules/FooterNavigation.module.css'
 
 export default function FooterNavigation()
 {
+    const openMailer = () => {
+        window.location = mailto;
+        e.preventDefault();
+    }
+
     return <>
-        <h2 className={styles.Header}>Contact Us</h2>
+        <h2 className={styles.Header}>Give Feedback</h2>
         <ul className={styles.UList}>
             <li className={styles.LinkWrapper}> 
-                <Link href="/" to='#' onClick={(e) => {
-                                                    window.location = mailto;
-                                                    e.preventDefault();
-                                                }}>
-                    <a className={styles.Link}>feedback@ourjob.app</a>
-                </Link> 
+                <a className={styles.Link} href="mailto:feedback@ourjob.app">feedback@ourjob.app</a>
             </li>
         </ul>
 
@@ -41,10 +41,14 @@ export default function FooterNavigation()
                 </Link>
             </li>
             <li className={styles.LinkWrapper}>
-                <a className={styles.Link} href="/documents/terms_and_conditions.pdf" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>
+                <Link href="/documents/terms_and_conditions.pdf" passHref={true}>
+                    <a className={styles.Link} target="_blank" rel="noopener noreferrer">Terms and Conditions</a>
+                </Link>
             </li>
             <li className={styles.LinkWrapper}>
-                <a className={styles.Link} href="/documents/privacy_policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                <Link href="/documents/privacy_policy.pdf" passHref={true}>
+                    <a className={styles.Link}  target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                </Link>
             </li>
         </ul> 
 
