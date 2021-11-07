@@ -9,7 +9,7 @@ export default function Image(props) {
   const { ...rest } = props;
   return (
     <div className={style.ImageContainer}>
-      <NextImage className={style.BaseImage} {...rest} layout="fill" priority={true} />
+      <NextImage className={style.BaseImage} {...rest} layout="fill" priority />
     </div>
   );
 };
