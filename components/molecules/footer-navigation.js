@@ -13,7 +13,7 @@ export default function FooterNavigation()
                                                     window.location = mailto;
                                                     e.preventDefault();
                                                 }}>
-                    <a className={styles.Link}>info@ourjob.app</a>
+                    <a className={styles.Link}>feedback@ourjob.app</a>
                 </Link> 
             </li>
         </ul>
