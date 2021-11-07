@@ -9,6 +9,23 @@
 .Icon
 {
     font-size: 1.25rem;
-
     cursor: pointer;
+
+    color: var(--primary);
 }
+
+/* .FirstStop
+{
+    stop-color: var(--primary);
+}
+
+.SecondStop
+{
+    stop-color: var(--primary-dark);
+}
+
+.Icon > path
+{
+    fill: url(#icon-gradient);
+} */
+

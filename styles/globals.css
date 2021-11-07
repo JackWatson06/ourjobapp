@@ -26,7 +26,7 @@ a {
 :root {
 
   --background: white;
-  --secondary-background: #750e52;
+  --secondary-background: #7B0B58;
 
   --primary: #9E005D;
   --primary-dark: #2B4F7B;
@@ -44,7 +44,7 @@ a {
   --header-text:#4A4A4A;
   --label-text: #848484;
 
-  --navigation: #D1D1D1;
+  --navigation: #6e6e6e;
   --inactive:   #A7A7A7;
   --border: #4a4a4a;
 }
