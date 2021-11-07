@@ -21,22 +21,22 @@ export default function FooterNavigation()
         <h2 className={styles.Header}>Navigation</h2>
         <ul className={styles.UList}>
             <li className={styles.LinkWrapper}> 
-                <Link href="/">
+                <Link href="/" passHref={true}>
                     <a className={styles.Link}>Home</a>
                 </Link>
             </li>
             <li className={styles.LinkWrapper}>
-                <Link href="/employee">
+                <Link href="/employee" passHref={true}>
                     <a className={styles.Link}>Find a Job</a>
                 </Link>
             </li>
             <li className={styles.LinkWrapper}>
-                <Link href="/employer">
+                <Link href="/employer" passHref={true}>
                     <a className={styles.Link}>Find Employees</a>
                 </Link>
             </li>
             <li className={styles.LinkWrapper}>
-                <Link href="/sharer">
+                <Link href="/sharer" passHref={true}>
                     <a className={styles.Link}>Share</a>
                 </Link>
             </li>
