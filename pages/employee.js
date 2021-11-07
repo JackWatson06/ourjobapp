@@ -31,18 +31,18 @@ export default function EmployeePage(props)
     const sharerForm =  <MultiPageForm link="signup/employees" redirect="employee/verify">
 
         {/* Name */}
-        <FormPage buttonLabel="Find Your Perfect Job" inputBatch={ ["fname", "lname", "email", "phone"] } >
+        <FormPage buttonLabel="Find Your Perfect Job" inputBatch={ ["fname", "lname", "email", "phone", "job_id"] } >
             <Input label="Legal First Name" name="fname"  validators={ [ rules.maxLength(50) ] } />
             <Input label="Legal Last Name"  name="lname"  validators={ [ rules.maxLength(50) ] } />
             <Input label="Phone" name="phone" />
             <Input label="Email" name="email" validators={ [ rules.email, rules.uniqueEmployeeEmail ] } />
+            <SelectInput label="Jobs" multi_select={true} name="job_id" endpoint="search/jobs"      />
         </FormPage>
 
 
         {/* Job Specification */}
-        <FormPage buttonLabel="Next" inputBatch={ ["job_id", "hourly_rate", "commitment", "where", "authorized", "distance", "place_id", "nations"] } >
-            <SelectInput label="Jobs"    multi_select={true}  name="job_id"      endpoint="search/jobs"      />
-            <SelectInput label="Hourly"  multi_select={false} name="hourly_rate" list={data.employeeWage}    />
+        <FormPage buttonLabel="Next" inputBatch={ ["hourly_rate", "commitment", "where", "authorized", "distance", "place_id", "nations"] } >
+            <SelectInput label="Hourly Rate"  multi_select={false} name="hourly_rate" list={data.employeeWage}    />
             <Question question="Full-time or Part-time?" input={
                 <SelectInput label="Time"   multi_select={false} name="commitment" list={data.commitment}  />
             }/>

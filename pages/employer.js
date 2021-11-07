@@ -21,12 +21,12 @@ export default function EmployerPage(props)
             <Input label="Email"                name="email"   validators = { [ rules.email, rules.uniqueEmployerEmail ] } />
             <Input label="Position at Company"  name="position"  validators={ [ rules.maxLength(50) ] } />
             <Input label="Company Name"         name="company_name"   validators={ [ rules.maxLength(50) ] } />
-            <Input label="Company Website"      name="website"        validators={ [ rules.maxLength(50) ] }/>
+            <Input label="Company Website - Opt." name="website"  required={false} validators={ [ rules.maxLength(50) ] }/>
             <SelectInput label="Company Address" multi_select={false} name="place_id" endpoint="search/places"  />
         </FormPage>
 
         <FormPage buttonLabel="Start Receiving Candiates!" inputBatch={ ["industry", "experience", "salary", "commitment", "where", "authorized"] } >
-            <SelectInput label="Job"              multi_select={true}  name="industry" endpoint="search/job-groups"  />
+            <SelectInput label="Jobs"             multi_select={true}  name="industry" endpoint="search/job-groups"  />
             <SelectInput label="Experience Level" multi_select={true}  name="experience" list={data.experience}      />
             <SelectInput label="Hourly Wage"      multi_select={false} name="salary"     list={data.employerWage}    />
             <Question question="Full-time or Part-time?" input={
