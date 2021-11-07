@@ -5,20 +5,20 @@
  * @param {string} value The value we are passing into the server
  * @param {array} rules List of rules we need to pass
  */
-import NotEmpty from "@lib/form/rules/NotEmpty"
+import empty from "@lib/form/Empty"
 
 export default async function Validator(value, required, rules) {
     let message = "";
 
 
     // If the input is not required and we don't have input then just don't validate.
-    if(required && ! await NotEmpty.validate(value))
+    if(required && empty(value))
     {
-        return NotEmpty.message();
+        return "Input is required";
     }
 
     // If we do not require input then we are ok with empty input values.
-    if(!required & ! await NotEmpty.validate(value))
+    if(!required & empty(value))
     {
         return message;
     }

@@ -26,7 +26,8 @@
  *      }
  *  }
  */
-import validate from "./Validator"
+import validate from "@lib/form/Validator"
+import empty    from "@lib/form/Empty"
 import debounce from "@lib/utilities/debounce"
 
 
@@ -92,7 +93,7 @@ const FormStateTracker = {
                     [property] : { 
                         "value"        : options.initialValue ?? "",
                         "validators"   : options.validators   ?? [],
-                        "valid"        : ! options.required,
+                        "valid"        : ! ( options.required ?? true) , // If we are not required then make it valid, otherwise if we did not pass in a required become invalid.
                         "required"     : options.required     ?? true,
                         "error"        : ""
                     } 
@@ -125,20 +126,6 @@ const FormStateTracker = {
         },
 
         /**
-         * Get the submit data for the form when we submit to the backend.
-         * @param {Form} form Refernce to the form object. The schema is in the top header comment.
-         */
-        getSubmitData: (form) =>
-        {
-            let submitData = {}
-            Object.keys(form).map((name) => {
-                submitData[name] = form[name].value
-            })
-
-            return submitData
-        },
-
-        /**
          * Get the error of the given property.
          * @param {string} property The property we are checking the error of.
          * @param {Form} formState Reference to the form object. That has the schema in the top header.
@@ -149,6 +136,25 @@ const FormStateTracker = {
         
             // Find the current object that we are refering to. This SHOULD already be created by the useEffect on startup.
             return form[property].error;
+        },
+
+        /**
+         * Get the submit data for the form when we submit to the backend.
+         * @param {Form} form Refernce to the form object. The schema is in the top header comment.
+         */
+        getSubmitData: (form) =>
+        {
+            let submitData = {}
+            Object.keys(form).map((name) => {
+                // If we are required || notEmpty then include the value. This prevents us from returning non-required values
+                // and adding it to the submit result. Not pretty but it works.
+                if( form[name].required || ! empty(form[name].value) )
+                {
+                    submitData[name] = form[name].value
+                }
+            })
+
+            return submitData
         },
 
         /**

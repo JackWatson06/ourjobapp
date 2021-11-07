@@ -18,8 +18,8 @@ export default function Signup()
 
     return <div className={style.SignupContainer}>
         <HeaderMedium title={headerText} />
-        <LinkButton title="Share for charity" link="/sharer" />
         <LinkButton title="Find a job" link="/employee" />
-        <LinkButton title="Find candidates" link="/employer" />
+        <LinkButton title="Find employees " link="/employer" />
+        <LinkButton title="Share" link="/sharer" />
     </div>
 }

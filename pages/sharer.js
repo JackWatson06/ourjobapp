@@ -21,9 +21,9 @@ export default function SharePage(props)
         option one it will automatically redirect to option one. */
     const sharerForm =  <MultiPageForm link="signup/affiliates" redirect="signup/verify">
         <FormPage title="Let’s design your link!" buttonLabel="Create My Link!" inputBatch={ ["name", "charity_id", "email"] } >
-            <Input       label="Link Name" name="name"       required={true} validators={ [ rules.noSpaces, rules.urlTokens, rules.maxLength(50), rules.uniqueName ] } />
-            <SelectInput label="Charity"   name="charity_id" required={true} multi_select={ false } endpoint="search/charities" />
-            <Input       label="Email"     name="email"      required={true} validators={ [ rules.email, rules.uniqueAffiliateEmail ] } />
+            <Input       label="Link Name" name="name"        validators={ [ rules.noSpaces, rules.urlTokens, rules.maxLength(50), rules.uniqueName ] } />
+            <SelectInput label="Charity"   name="charity_id"  multi_select={ false } endpoint="search/charities" />
+            <Input       label="Email"     name="email"       validators={ [ rules.email, rules.uniqueAffiliateEmail ] } />
         </FormPage>
     </MultiPageForm>
 

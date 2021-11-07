@@ -25,7 +25,7 @@ export default function Index(props)
 
         <Header navigation={ <PrimaryNavigation/> } />
         <Signup />
-        <Description />
+        {/* <Description /> */}
         <Reel />
         <Footer />
     </>

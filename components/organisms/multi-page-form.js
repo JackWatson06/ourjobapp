@@ -70,8 +70,9 @@ export default function MultiPageForm(props)
                 data.affiliate_id = affTrack.ReadCookie().id
             }
 
-            // Upload the resume if we have it. Obv we will change this in the future.
-            if( data.resume != undefined && data.resume)
+            // Upload the resume if we have it. Obv we will change this in the future. This is essentially the upload
+            // process of a document. We will want to think about the mapping functionality.
+            if( data.resume != undefined )
             {
                 const formData = new FormData();
                 formData.append("resume", data.resume);
@@ -83,10 +84,6 @@ export default function MultiPageForm(props)
                 })).data.id;
 
                 delete data.resume;
-            }
-            else if(data.resume != undefined)
-            {
-                delete data.resume
             }
 
             // Post the data to the server.
