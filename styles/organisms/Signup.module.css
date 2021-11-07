@@ -1,9 +1,7 @@
-
 .SignupContainer
 {
     max-width: 18rem;
-    margin: auto;
-    margin-top: 1.5rem;
+    margin: 3rem auto;
 
     text-align: center;
 }

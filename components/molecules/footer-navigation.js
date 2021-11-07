@@ -11,29 +11,25 @@ export default function FooterNavigation()
             </Link>
         </li>
         <li className={styles.LinkWrapper}>
-            <Link href="/sharer">
-                <a className={styles.Link}>Become a Sharer</a>
-            </Link>
-        </li>
-        <li className={styles.LinkWrapper}>
-            <Link href="/canddiate_pool">
-                <a className={styles.Link}>Candidate Pool</a>
-            </Link>
-        </li>
-        <li className={styles.LinkWrapper}>
             <Link href="/employee">
                 <a className={styles.Link}>Find a Job</a>
             </Link>
         </li>
         <li className={styles.LinkWrapper}>
-            <Link href="/tos.pdf">
-                <a className={styles.Link}>Terms and Conditions</a>
+            <Link href="/employer">
+                <a className={styles.Link}>Find Employees</a>
             </Link>
         </li>
         <li className={styles.LinkWrapper}>
-            <Link href="/operating_aggrement.pdf">
-                <a className={styles.Link}>Privacy Policy</a>
+            <Link href="/sharer">
+                <a className={styles.Link}>Share</a>
             </Link>
+        </li>
+        <li className={styles.LinkWrapper}>
+            <a className={styles.Link} href="/documents/terms_and_conditions.pdf" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>
+        </li>
+        <li className={styles.LinkWrapper}>
+            <a className={styles.Link} href="/documents/privacy_policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
         </li>
     </ul>
 }

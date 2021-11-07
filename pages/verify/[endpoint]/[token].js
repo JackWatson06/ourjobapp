@@ -26,14 +26,14 @@ const successMessage = {
     "employee" : function EmployeeScreen(response){
         return <>
             <HeaderMedium title="Congratulations! You have applied to all relevant jobs" />
-            <ShareButton url="https://ourjob.app" title="Find a Job Today!" text="OurJob.App helps connect you with employers who are hiring around your location. Customize your job!" />
+            <ShareButton url="https://ourjob.app" title="Find a Job" text="Apply for all relevant jobs with ourjob.app" />
         </>
     },
 
     "employer" : function EmployerScreen(response){
         return <>
             <HeaderMedium title="Your Candidate Pool has been created! You will receive candidates via email"/>
-            <ShareButton url="https://ourjob.app" title="Find candidates now!" text="OurJob.App helps connect you with candidates that meet your criteria. Sign up to see candidates today!" />
+            <ShareButton url="https://ourjob.app" title="Find employees" text="Only pay $100 USD when you hire with ourjob.app" />
         </>
     }
 }

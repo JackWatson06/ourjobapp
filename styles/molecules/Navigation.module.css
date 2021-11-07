@@ -3,10 +3,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
-.NavigationIcon
+.Icon
 {
     font-size: 1.25rem;
 

@@ -20,7 +20,7 @@ export default function AffiliateVerified({ link })
         <HeaderMedium title="Your link has been activated!" />
         <h1 className={style.LinkHeader} onClick={() => copy()}>{link}</h1>
         <p className={style.CopyText}>{copied}</p>
-        <Button title="Copy" onClick={() => copy()}/> {/* We should add in a notification here that it was scuessfully copied to clipboard.  */}
-        <ShareButton url={ actualUrl } title="Get a job today!" text="OurJob.App helps connect you with employers who are hiring around your location. Customize your job!" />
+        <Button title="Copy" onClick={() => copy()}/>
+        <ShareButton url={ actualUrl } title="Share" text="#ShareForCharity with ourjob.app" />
     </> 
 }
