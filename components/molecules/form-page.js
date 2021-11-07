@@ -43,8 +43,8 @@ export default function FormPage({ action, formState, title, buttonLabel, inputB
                     </div>
 
     return <div className={styles.FormPage}>
-        <HeaderMedium title={title} />
-        <br/>
+        {title != undefined && <> <HeaderMedium title={title} /> <br/> </>}
+        
         { inputs }
         <br/>
         <Button title={buttonLabel} loading={loading} active={active} onClick={ (e) => {

@@ -175,24 +175,24 @@ export const distance = [
         value: 1
     },
     {
-        name: "Nationally",
+        name: "Nationwide",
         value: 2
     },
     {
-        name: "10 Miles From Home",
-        value: 3
+        name: "25 Miles From Home",
+        value: 25
     },
     {
         name: "50 Miles From Home",
-        value: 4
+        value: 50
     },
     {
         name: "100 Miles From Home",
-        value: 5
+        value: 100
     },
     {
         name: "250 Miles From Home",
-        value: 6
+        value: 250
     }
 ]
 

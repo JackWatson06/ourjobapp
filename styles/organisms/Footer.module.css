@@ -1,20 +1,8 @@
 .FooterContainer
 {
-    background-color: var(--primary-dark);
+    background-color: var(--secondary-background);
     padding-top: 1rem;
     padding-bottom: 1rem;
-}
-
-.Header
-{
-    color: var(--light-text);
-    margin-top: 1em;
-    text-align: center;
-}
-
-.NavigationWrapper
-{
-    width: 100%;
 }
 
 .Moto

@@ -6,9 +6,6 @@ import Header from '@organisms/header'
 import Signup from '@organisms/signup'
 import Footer from '@organisms/footer'
 import Description from '@organisms/description'
-import Reel from '@organisms/reel'
-
-import AffiliateVerified from "@organisms/affiliate-verified"
 
 /**
  * This will render a page on the route https://unijob.app OR https://unijob.app/index
@@ -26,7 +23,6 @@ export default function Index(props)
         <Header navigation={ <PrimaryNavigation/> } />
         <Signup />
         <Description />
-        <Reel />
         <Footer />
     </>
 }

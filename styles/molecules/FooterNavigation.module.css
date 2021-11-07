@@ -17,3 +17,10 @@
     text-decoration: underline;
     color: var(--light-text)
 }
+
+.Header
+{
+    color: var(--light-text);
+    margin-top: 1em;
+    text-align: center;
+}

@@ -26,10 +26,9 @@ a {
 :root {
 
   --background: white;
-  --secondary-background: #000000;
+  --secondary-background: #750e52;
 
   --primary: #9E005D;
-  --primary-light: #ff00bb;
   --primary-dark: #2B4F7B;
   --primary-gradient: linear-gradient(135deg, var(--primary-dark), var(--primary));
 
