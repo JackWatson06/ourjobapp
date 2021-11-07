@@ -71,18 +71,25 @@ export default function MultiPageForm(props)
             }
 
             // Upload the resume if we have it. Obv we will change this in the future.
-            if( data.resume != undefined )
+            if( data.resume != undefined && data.resume)
             {
                 const formData = new FormData();
                 formData.append("resume", data.resume);
 
-                data.resume_id = (await axios.post('signup/resumes', formData, {
-                    headers: {
-                      'Content-Type': 'multipart/form-data'
-                    }
-                })).data.id;
-
-                delete data.resume;
+                try
+                {
+                    data.resume_id = (await axios.post('signup/resumes', formData, {
+                        headers: {
+                          'Content-Type': 'multipart/form-data'
+                        }
+                    })).data.id;
+    
+                    delete data.resume;
+                }
+                catch(err)
+                {
+                    console.error(err);
+                }
             }
 
             // Post the data to the server.
