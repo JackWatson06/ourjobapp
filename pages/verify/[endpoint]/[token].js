@@ -79,7 +79,7 @@ export default function TokenPage(props)
     // If we got an error verifying.
     if(error)
     {
-        screen = <Paragraph text="Could not be verified! Please try resubmitting form. We apologies for any inconvenience!" />
+        screen = <Paragraph text="Could not be verified! Please try resubmitting the form. We apologize for any inconvenience!" />
     }
 
     return  <Column content={screen} />
