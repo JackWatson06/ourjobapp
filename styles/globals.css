@@ -26,11 +26,12 @@ a {
 :root {
 
   --background: white;
-  --secondary-background: #7B0B58;
+  --secondary-background: linear-gradient(-100deg, #85075A, #6C0959);
 
   --primary: #9E005D;
   --primary-dark: #2B4F7B;
   --primary-gradient: linear-gradient(135deg, var(--primary-dark), var(--primary));
+
 
   /* linear-gradient(135deg,  #2B4F7B, #9E005D); */
 

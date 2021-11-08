@@ -9,21 +9,23 @@ export default class MyDocument extends Document {
         <Head>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=G-W5V83T4F5Z`}
-          />
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=G-W5V83T4F5Z`}
+            />
           <script
-            dangerouslySetInnerHTML={{
-              __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-W5V83T4F5Z', {
-              page_path: window.location.pathname,
-            });
-          `,
-            }}
-          />
+                dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-W5V83T4F5Z', {
+                page_path: window.location.pathname,
+                });
+            `,
+                }}
+            />
+         <link rel="shortcut icon"      href="/favicon.svg" />
+         <link rel="preload" as="image" href="/images/sharer-graphic.jpg"/>
         </Head>
         <body>
           <Main />

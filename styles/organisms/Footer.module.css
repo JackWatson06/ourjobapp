@@ -1,6 +1,6 @@
 .FooterContainer
 {
-    background-color: var(--secondary-background);
+    background: var(--secondary-background);
     padding-top: 1rem;
     padding-bottom: 1rem;
 }

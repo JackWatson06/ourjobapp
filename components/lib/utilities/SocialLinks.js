@@ -1,7 +1,7 @@
 const SocialLinks = {
     "instagram": "https://www.instagram.com/ourjob.app/",
-    "tiktok"   : "https://twitter.com/OurJobApp",
-    "twitter"  : "https://www.tiktok.com/@ourjob.app?",
+    "tiktok"   : "https://www.tiktok.com/@ourjob.app?",
+    "twitter"  : "https://twitter.com/OurJobApp",
     "facebook" : "https://www.facebook.com/OurJobApp"
 }
 

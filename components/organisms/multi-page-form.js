@@ -47,14 +47,14 @@ export default function MultiPageForm(props)
     }
 
     // Turn to the previous stage of the multi page form. Make sure we don't go lower than the last page.
-    const prev = (e) => 
-    {
-        let newStage = stage - 1;
-        if( newStage >= 0 )
-        {
-            setStage( newStage )    
-        }
-    }
+    // const prev = (e) => 
+    // {
+    //     let newStage = stage - 1;
+    //     if( newStage >= 0 )
+    //     {
+    //         setStage( newStage )    
+    //     }
+    // }
 
     // Generic send method ( this will probably change with the FinishForm component)
     const send = async (e) =>
@@ -77,11 +77,21 @@ export default function MultiPageForm(props)
                 const formData = new FormData();
                 formData.append("resume", data.resume);
 
-                data.resume_id = (await axios.post('signup/resumes', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })).data.id;
+                // Try to post to the server. If we failed then simply just don't upload the resume.
+                try
+                {
+                    const response = await axios.post('signup/resumes', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    });
+
+                    data.resume_id = response.data.id;
+                }
+                catch(err)
+                {
+                    console.error(err);
+                }
 
                 delete data.resume;
             }
