@@ -25,7 +25,6 @@ export default class MyDocument extends Document {
                 }}
             />
          <link rel="shortcut icon"      href="/favicon.svg" />
-         <link rel="preload" as="image" href="/images/sharer-graphic.jpg"/>
         </Head>
         <body>
           <Main />

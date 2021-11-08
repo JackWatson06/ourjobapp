@@ -18,6 +18,7 @@ export default function Index(props)
         {/* SEO Header Tags */}
         <Head>
             <title>Welcome to OurJob.App Signup as a candidate, employer, or sharer today!</title>
+            <link rel="preload" as="image" href="/images/sharer-graphic.jpg"/>
         </Head>
 
         <Header navigation={ <PrimaryNavigation/> } />
