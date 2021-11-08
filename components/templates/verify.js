@@ -11,6 +11,7 @@ export default function Verify({ message })
 {
     const content = <>
         <HeaderMedium title={ message } />
+        <p><small>Remember to check spam!</small></p>
         <LinkButton title="Return to Homepage" link="/" />
     </>
 
