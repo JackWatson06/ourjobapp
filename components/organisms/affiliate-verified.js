@@ -9,7 +9,7 @@ import style from "@styles/organisms/AffiliateVerified.module.css"
 export default function AffiliateVerified({ link })
 {
     const [copied, setCopied] = useState("");
-    const actualUrl = `https://${link}`;
+    const actualUrl = `${link}`;
 
     const copy = () => {
         navigator.clipboard.writeText(actualUrl);

@@ -35,5 +35,5 @@ export default function Link(props)
         }
     }, [link])
 
-    return <p> Loaded... </p>;
+    return <p> Applying Link... </p>;
 }

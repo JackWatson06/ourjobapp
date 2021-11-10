@@ -26,14 +26,14 @@ const successMessage = {
     "employee" : function EmployeeScreen(response){
         return <>
             <HeaderMedium title="Congratulations! You have applied to all relevant jobs" />
-            <ShareButton url="https://ourjob.app" title="Find a Job" text="Apply for all relevant jobs with ourjob.app" />
+            <ShareButton title="Find a Job" text="Apply for all relevant jobs with ourjob.app" />
         </>
     },
 
     "employer" : function EmployerScreen(response){
         return <>
             <HeaderMedium title="Your Candidate Pool has been created! You will receive candidates via email"/>
-            <ShareButton url="https://ourjob.app" title="Find employees" text="Only pay $100 USD when you hire with ourjob.app" />
+            <ShareButton title="Find employees" text="Only pay $100 USD when you hire with ourjob.app" />
         </>
     }
 }
@@ -79,7 +79,7 @@ export default function TokenPage(props)
     // If we got an error verifying.
     if(error)
     {
-        screen = <Paragraph text="Error: could not be verified. Please try resubmitting the form. We apologize for any inconvenience!" />
+        screen = <Paragraph text="Error: could not be verified. Please try resubmitting the form. We apologize for the inconvenience!" />
     }
 
     return  <Column content={screen} />
