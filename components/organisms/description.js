@@ -1,7 +1,7 @@
 
 import Image from "@atoms/image";
 
-import profilePic from '../../public/images/sharer-graphic.jpg'
+import profilePic from '../../public/images/sharer-graphic.webp'
 
 import styles from "@styles/organisms/Description.module.css"
 
