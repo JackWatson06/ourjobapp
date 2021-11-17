@@ -1,7 +1,7 @@
 
 import Head from 'next/head'
 import Column from '@templates/column'
-import MultiPageForm from '@organisms/multi-page-form'
+import MultiPageForm from '@organisms/form/multi-page-form'
 import FormPage from '@organisms/form/form-page'
 
 import Input from "@molecules/control/input"
@@ -29,10 +29,9 @@ export default function SharePage(props)
         option one it will automatically redirect to option one. */
     const sharerForm =  <MultiPageForm link="signup/affiliates" redirect="sharer/verify">
         <FormPage title="Let’s design your link!" buttonLabel="Create My Link!" >
-            <Input  label="Link Name" type="text"       name="name"   validators={ [ rules.noSpaces, rules.urlTokens, rules.maxLength(50) ] } />
-            <Select label="Charity"   name="charity_id" endpoint="search/charities" multiple={true} required={false} />
-            <Input  label="Resume"    type="file"       name="resume" required={false} validators={ [ rules.maxSize(5), rules.fileType(validFiles) ] } />
-            {/* <Input       label="Email"   name="email"      validators={ [ rules.required, rules.email, rules.uniqueAffiliateEmail ] } /> */}
+            <Input  label="Link Name" name="name"       type="text" validators={ [ rules.noSpaces, rules.urlTokens, rules.maxLength(50) ] } />
+            <Select label="Charity"   name="charity_id" endpoint="search/charities" />
+            <Input  label="Phone"     name="phone"      type="tel" />
         </FormPage>
     </MultiPageForm>
 

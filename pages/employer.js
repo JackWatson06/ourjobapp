@@ -1,14 +1,14 @@
 
-import Head from 'next/head'
-import Column from '@templates/column'
-import MultiPageForm from '@organisms/multi-page-form'
-import FormPage from '@organisms/form-page'
-import Question from '@molecules/question'
-import Input from "@atoms/input/input"
-import SelectInput from '@atoms/select'
+// import Head from 'next/head'
+// import Column from '@templates/column'
+// import MultiPageForm from '@organisms/multi-page-form'
+// import FormPage from '@organisms/form-page'
+// import Question from '@molecules/question'
+// import Input from "@atoms/input/input"
+// import SelectInput from '@atoms/select'
 
-import * as data from "@lib/form/FormData"
-import rules from '@lib/form/rules'
+// import * as data from "@lib/form/FormData"
+// import rules from '@lib/form/rules'
 
 // export default function EmployerPage(props)
 // {

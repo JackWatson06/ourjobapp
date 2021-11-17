@@ -1,16 +1,16 @@
 
-import Head from 'next/head'
-import Column from '@templates/column'
-import MultiPageForm from '@organisms/multi-page-form'
-import FormPage from '@organisms/form-page'
-import Question from '@molecules/question'
-import Input from "@atoms/input/input"
-import SelectInput from '@atoms/select'
-import FileInput from '@atoms/input/file-input'
+// import Head from 'next/head'
+// import Column from '@templates/column'
+// import MultiPageForm from '@organisms/multi-page-form'
+// import FormPage from '@organisms/form-page'
+// import Question from '@molecules/question'
+// import Input from "@atoms/input/input"
+// import SelectInput from '@atoms/select'
+// import FileInput from '@atoms/input/file-input'
 
-import * as data from "@lib/form/FormData"
-import rules from '@lib/form/rules'
-import DependentInput from '@molecules/dependent-input'
+// import * as data from "@lib/form/FormData"
+// import rules from '@lib/form/rules'
+// import DependentInput from '@molecules/dependent-input'
 
 const validFiles = 
 [

@@ -25,15 +25,14 @@ import style from "./FormPage.module.css"
  * 
  * @param {object} props 
  */
-export default function FormPage({ title, buttonLabel, onSubmit, notify, children})
+export default function FormPage({ title, buttonLabel, onSubmit, children})
 {
     const [ loading, setLoading ] = useState(false);
-    const [ valid, setValid ]     = useState(false);
-    const [ data, setData ]       = useState();
-
+    const [ valid, setValid ]     = useState({});
+    const [ data, setData ]       = useState({});
 
     // When you only pass in one children the children prop will not be an array. This function turns that into an array.
-    const formChildren = !Array.isArray(children) ? [children] : children;
+    const formChildren = !Array.isArray(children) ? [children] : children
 
     /**
      * Handle an update to any input in this form.
@@ -41,30 +40,33 @@ export default function FormPage({ title, buttonLabel, onSubmit, notify, childre
      * @param {mixed} value Value that the input has just sent out.
      * @param {boolean} valid Is the value that was just sent a valid value?
      */
-    const onChange = (name, value, valid) => {
+    const onChange = (name, value, inputValid) => {
+        valid[name] = inputValid
 
-        const dataCopy = { ...data }
-        // Data represents a list of all the currently validated data that is passed in from the inputs components.
-        if(valid)
+        // Ugh this falsey check is kind of annyoing. Not a huge falsey person. What this check is doing is making sure
+        // empty input does NOT go in the data that will be submited for this form. We just skip the empty data.
+        if(value)
         {
-            dataCopy[name] = value
-            setData(dataCopy)
-            setValid(Object.keys(dataCopy).length === formChildren.length)
+            data[name] = value
         }
         else
         {
-            delete dataCopy[name]
-            setData(dataCopy)
-            setValid(false)
+            delete data[name]
         }
+
+        setData({ ...data })
+        setValid({ ...valid })
     }
 
-    // const submit = async () => {
-
-    //     if()
-
-    // }
-
+    /**
+     * Since we need to keep track of the state of which inputs elements are valid this function simply loops through
+     * all of the states that we do have and returns the overall status of the form. If all input states are valid we
+     * are good to submit.
+     */
+    const formValid = () => {
+        return ! Object.values(valid).some((state) => !state)
+    }
+    
     // console.log("Re-Rendering Form");
     // Render the form.
     return <form className={style.FormPage}>
@@ -80,9 +82,9 @@ export default function FormPage({ title, buttonLabel, onSubmit, notify, childre
         </div>
 
         <br/>
-        <Button title={buttonLabel} loading={loading} active={valid} onClick={ (e) => {
+        <Button title={buttonLabel} loading={loading} active={formValid()} onClick={ (e) => {
             setLoading(true);
-            submit()
+            onSubmit(data)
          } } />
     </form>
 }

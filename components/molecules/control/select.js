@@ -25,7 +25,8 @@ export default function Select({ label, name, multiple, endpoint, list, validato
     const [value,    setValue]    = useState([]) // Default to an empty array for potential of multi select input.
     const [search,   setSearch]   = useState("") 
     const [error,    setError]    = useState("") 
-    const [focused,  setFocused]  = useState(false)
+    const [touched, setTouched]   = useState(false)
+    const [focused, setFocused]   = useState(false)
 
     const selectRef   = useRef()
 
@@ -46,29 +47,14 @@ export default function Select({ label, name, multiple, endpoint, list, validato
     // Since debouce is a stateful action (we have to know the current state of the timer) so we just load it into state.
     const [validator] = useState(() => validateInput)  
 
-
-    /**
-     * Run the notification on start so we can make sure the optional inputs are taken care of.
-     */
-    useEffect(() => {
-        validator(value) 
-    }, [validator, value])
-
-
-
     // Get the options from an endpoint if we are using the options from an endpoint.
     const onSearch = useCallback(
         (search) => {
-            // If we search while we are in single select mode then default to empty. This if statement needs to be removed
-            // multi select can be it's own component
-            // if(!multiple)
-            // {
-            //     fs.setValue("", name, formState)
-            // }
 
             // If we are searching for options against an endpoint.
             if(endpoint)
             {
+                // We should store the API stuff in a seperate file... or maybe a custom use API hook.
                 source.cancel()
                 source = axios.CancelToken.source()
         
@@ -145,8 +131,23 @@ export default function Select({ label, name, multiple, endpoint, list, validato
         else
         {
             setFocused(true)
+            setTouched(true)
         }
     }
+
+    /**
+     * Determine if we want to show the error. We really only want to do this after the first interaction with the component.
+     */
+    const errorState = () => {
+        return error != "" && !focused && touched
+    }
+
+    /**
+     * Run the notification on start so we can make sure the optional inputs are taken care of.
+     */
+    useEffect(() => {
+        validator(value) 
+    }, [validator, value])
 
     // Called once to add the event listener for clicking anywhere in the document. Then we 
     useEffect(() => {
@@ -179,7 +180,7 @@ export default function Select({ label, name, multiple, endpoint, list, validato
                 </div> : null }
                 
             {/* Search box */}
-            <Border focused={focused} error={error}>
+            <Border focused={focused} error={errorState()}>
                 <div className={style.IconInputContainer}>
                     <InputText label={label} name={name} value={search} onChange={onSearch} onFocus={onFocus} />
                     <FontAwesomeIcon className={`${style.InputIcon} ${focused ? style.Flipped : ''}`} icon={ faChevronDown }/>
@@ -188,7 +189,7 @@ export default function Select({ label, name, multiple, endpoint, list, validato
 
             {/* Dropdown popup  */}
             <Dropdown open={focused} options={options} onChange={onChange} />
-            <span className={style.ErrorSpan}>{error != "" && !focused  ? error : ""}</span>
+            <span className={style.ErrorSpan}>{errorState() ? error : null}</span>
         </div>
     );
 };
