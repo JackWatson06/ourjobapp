@@ -4,11 +4,12 @@
  * Purpose: 
  */
 
-import axios from "axios";
+import axios from "axios"
+import debounce from "@lib/utilities/debounce"
 
 const UniqueEmployeeEmail = {
     
-    validate: async function(value)
+    validate: debounce( async function(value)
     {
         const foundName = await axios.get(`search/existing/employee-emails?email=${value}`)
                             .then(function (response) {
@@ -22,7 +23,7 @@ const UniqueEmployeeEmail = {
                             });
 
         return foundName;
-    },
+    }, 500),
 
     message: function ()
     {

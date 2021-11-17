@@ -6,7 +6,6 @@
  * state tracker.
  */
 
-import fs from "@lib/form/FormStateTracker"
 import React, { useEffect } from "react"
 
 export default function DependentInput( {name, dependsOn, dependsOnValue, formState, renders} )
@@ -37,7 +36,7 @@ export default function DependentInput( {name, dependsOn, dependsOnValue, formSt
         {
             fs.removeInput( name, formState)
         }
-    }, [shouldRender])
+    }, [shouldRender, formState, name])
 
     return component
 }

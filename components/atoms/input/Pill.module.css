@@ -1,8 +1,8 @@
 /* Select color... see the gradient. */
-.selected_option_item {
+.Pill {
 
     width: 100%;
-    height: 2.2rem;
+    height: 2.5rem;
 
     margin-bottom: 5px;
 
@@ -20,7 +20,7 @@
 }
 
 /* Pill color and size. */
-.selected_option_item span {
+.Pill span {
     
     margin-right: 2rem;
     
@@ -33,7 +33,7 @@
 }
 
 /* Arrow for the select? */
-.selected_option_item img {
+.Pill img {
     width: 0.63rem;
     height: 0.69rem;
 }

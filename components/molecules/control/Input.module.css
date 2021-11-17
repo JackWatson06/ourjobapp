@@ -1,0 +1,18 @@
+/*
+  Code Authored by Adil Kazmi from Upworks, Changed by Jack Watson
+*/
+.ErrorWrapper 
+{
+    height: auto;
+    width: 16.31rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.ErrorSpan 
+{
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--error);
+}

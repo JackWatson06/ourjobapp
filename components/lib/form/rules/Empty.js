@@ -13,12 +13,13 @@
   * Check to make sure the input is not required.
   * @param {string} value Value we are checking
   */
-export default function empty(value)
-{
-    if( value === undefined || value === null || value === "" || value.length === 0)
-    {
-        return true
-    }
-
-    return false
-}
+ export default function empty(value)
+ {
+     if( value === undefined || value === null || value === "" || value.length === 0)
+     {
+         return true
+     }
+ 
+     return false
+ }
+ 

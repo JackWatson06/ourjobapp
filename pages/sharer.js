@@ -2,12 +2,20 @@
 import Head from 'next/head'
 import Column from '@templates/column'
 import MultiPageForm from '@organisms/multi-page-form'
-import FormPage from '@molecules/form-page'
-import Question from '@molecules/question'
-import Input from "@atoms/input"
-import SelectInput from '@atoms/select'
+import FormPage from '@organisms/form/form-page'
+
+import Input from "@molecules/control/input"
+import Select from "@molecules/control/select"
 
 import rules from '@lib/form/rules'
+
+const validFiles = 
+[
+    "text/plain", //txt
+    "application/pdf", //pdf
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document", //docx
+    "application/msword" //doc
+]
 
 /**
  * This will render a page on the route https://unijob.app/affiliate
@@ -20,10 +28,11 @@ export default function SharePage(props)
         able to use that as a switch case. We need to hold state of the options filled out if you go to option two without already filling out
         option one it will automatically redirect to option one. */
     const sharerForm =  <MultiPageForm link="signup/affiliates" redirect="sharer/verify">
-        <FormPage title="Let’s design your link!" buttonLabel="Create My Link!" inputBatch={ ["name", "charity_id", "email"] } >
-            <Input       label="Link Name" name="name"        validators={ [ rules.noSpaces, rules.urlTokens, rules.maxLength(50), rules.uniqueName ] } />
-            <SelectInput label="Charity"   name="charity_id"  multi_select={ false } endpoint="search/charities" />
-            <Input       label="Email"     name="email"       validators={ [ rules.email, rules.uniqueAffiliateEmail ] } />
+        <FormPage title="Let’s design your link!" buttonLabel="Create My Link!" >
+            <Input  label="Link Name" type="text"       name="name"   validators={ [ rules.noSpaces, rules.urlTokens, rules.maxLength(50) ] } />
+            <Select label="Charity"   name="charity_id" endpoint="search/charities" multiple={true} required={false} />
+            <Input  label="Resume"    type="file"       name="resume" required={false} validators={ [ rules.maxSize(5), rules.fileType(validFiles) ] } />
+            {/* <Input       label="Email"   name="email"      validators={ [ rules.required, rules.email, rules.uniqueAffiliateEmail ] } /> */}
         </FormPage>
     </MultiPageForm>
 

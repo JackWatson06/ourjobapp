@@ -5,8 +5,6 @@
  * rely on mutlipage forms for user signup.
  */
 
-
-import fs from "@lib/form/FormStateTracker"
 import * as affTrack from "@lib/affiliate/AffiliateTracker"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -19,7 +19,7 @@ function MaxLength(max)
     
         message: function ()
         {
-            return `Cannot be long than ${max} characters`
+            return `Cannot be longer than ${max} characters`
         }
     };
 }

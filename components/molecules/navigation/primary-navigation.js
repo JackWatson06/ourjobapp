@@ -9,17 +9,17 @@ import SocialLinks from '@lib/utilities/SocialLinks'
 export default function PrimaryNavigation()
 {
     return <div className={styles.IconContainer}>
-        <Link href={SocialLinks.instagram}>
-            <FontAwesomeIcon className={styles.Icon} icon={ faInstagram } />
+        <Link href={SocialLinks.instagram} passHref>
+            <a><FontAwesomeIcon className={styles.Icon} icon={ faInstagram } /></a>
         </Link>       
-        <Link href={SocialLinks.tiktok}>
-            <FontAwesomeIcon className={styles.Icon} icon={ faTiktok } />
+        <Link href={SocialLinks.tiktok} passHref>
+            <a><FontAwesomeIcon className={styles.Icon} icon={ faTiktok } /></a>
         </Link>
-        <Link href={SocialLinks.twitter}>
-            <FontAwesomeIcon className={styles.Icon} icon={ faTwitter } />
+        <Link href={SocialLinks.twitter} passHref>
+            <a><FontAwesomeIcon className={styles.Icon} icon={ faTwitter } /></a>
         </Link>
-        <Link href={SocialLinks.facebook}>
-            <FontAwesomeIcon className={styles.Icon} icon={ faFacebook } />
+        <Link href={SocialLinks.facebook} passHref>
+            <a><FontAwesomeIcon className={styles.Icon} icon={ faFacebook } /></a>
         </Link>
     </div>
 }
