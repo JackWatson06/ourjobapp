@@ -1,3 +1,8 @@
+
+.ContractLink {
+    color: var(--primary);
+}
+
 .LinkHeader
 {
     overflow-wrap: break-word;

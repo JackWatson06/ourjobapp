@@ -12,23 +12,23 @@ import style from "./Select.module.css"
 
 import validate from "@lib/form/validate"
 
-
 //https://axios-http.com/docs/cancellation
 let source = axios.CancelToken.source()
 
-export default function Select({ label, name, multiple, endpoint, list, validators, required = true, notify })
+export default function Select({ label, name, endpoint, list, validators, multiple = false, required = true, notify })
 {
     // States that we are using for this select 
     // Hmmm... an select needs to keep track of quite a bit of state. I wonder if their is a way to simplify this?
-    const [pills,    setPills]    = useState([])
-    const [options,  setOptions]  = useState([])
-    const [value,    setValue]    = useState([]) // Default to an empty array for potential of multi select input.
-    const [search,   setSearch]   = useState("") 
-    const [error,    setError]    = useState("") 
-    const [touched, setTouched]   = useState(false)
-    const [focused, setFocused]   = useState(false)
+    const [pills,     setPills] = useState([])
+    const [options, setOptions] = useState([])
+    const [value,     setValue] = useState([]) // Default to an empty array for potential of multi select input.
+    const [search,   setSearch] = useState("") 
+    const [error,     setError] = useState("") 
+    const [touched, setTouched] = useState(false)
+    const [focused, setFocused] = useState(false)
 
-    const selectRef   = useRef()
+    const selectRef = useRef()
+    const inputRef  = useRef()
 
     /**
      * Send a notification to a higher level component that this input is good to go ... only if we are correctly validated.
@@ -46,6 +46,11 @@ export default function Select({ label, name, multiple, endpoint, list, validato
 
     // Since debouce is a stateful action (we have to know the current state of the timer) so we just load it into state.
     const [validator] = useState(() => validateInput)  
+
+    // Focus on the search input.
+    const focusOnInput = (e) => {
+        inputRef.current.focus()
+    }
 
     // Get the options from an endpoint if we are using the options from an endpoint.
     const onSearch = useCallback(
@@ -75,9 +80,11 @@ export default function Select({ label, name, multiple, endpoint, list, validato
                 setOptions(list)
             }
 
+            // Set search input, as well as hide the value.
             setSearch(search)
+            setValue([])
         },
-        [endpoint, list],
+        [endpoint, list, setValue],
       );
     
     /**
@@ -85,7 +92,7 @@ export default function Select({ label, name, multiple, endpoint, list, validato
      * @param {object} item Item we have selected
      */
     const onChange = (item) => {
-        
+
         // If we are in single selection mode.
         if ( !multiple) 
         {
@@ -97,8 +104,8 @@ export default function Select({ label, name, multiple, endpoint, list, validato
         else if( !value.includes(item.value) )
         {
             // If we are a multi select then set the options that are selected.
-            setPills([ ...pills, item])
-            setValue([ ...value, item.value])
+            setPills([...pills, item])
+            setValue([...value, item.value])
         }
     }
 
@@ -122,16 +129,23 @@ export default function Select({ label, name, multiple, endpoint, list, validato
      * Check to see if the blur event comes from outside our own select box or not.
      * @param {event} e Blue event
      */
-    const onFocus = (focused, e) => {
+    const onFocus = (focus, e) => {
 
-        if( e.relatedTarget != null )
+        if(!touched)
         {
-            setFocused(false)
+            setTouched(true);
         }
-        else
+
+        // If we are coming into the component from somewhere grant focus.
+        if(focus)
         {
-            setFocused(true)
-            setTouched(true)
+            return setFocused(true);
+        }
+
+        // Only hide the component if we are coming from a known component (i.e. tabbing through).
+        if(e.relatedTarget != null)
+        {
+            return setFocused(false);
         }
     }
 
@@ -146,13 +160,16 @@ export default function Select({ label, name, multiple, endpoint, list, validato
      * Run the notification on start so we can make sure the optional inputs are taken care of.
      */
     useEffect(() => {
-        validator(value) 
+        validator(value)
     }, [validator, value])
+
+    useEffect(() => {
+        onSearch("")
+    }, [onSearch])
 
     // Called once to add the event listener for clicking anywhere in the document. Then we 
     useEffect(() => {
         document.addEventListener("click", (e) => {
-
             // Make sure the dropdown is not something we click on.
             if (selectRef.current && !selectRef.current.contains(e.target)) 
             {
@@ -181,14 +198,15 @@ export default function Select({ label, name, multiple, endpoint, list, validato
                 
             {/* Search box */}
             <Border focused={focused} error={errorState()}>
-                <div className={style.IconInputContainer}>
-                    <InputText label={label} name={name} value={search} onChange={onSearch} onFocus={onFocus} />
+                <div className={style.IconInputContainer} onClick={ e => focusOnInput(e) }>
+                    <InputText label={label} type="search" name={name} value={search} onFocus={onFocus} onChange={onSearch} ref={inputRef} />
                     <FontAwesomeIcon className={`${style.InputIcon} ${focused ? style.Flipped : ''}`} icon={ faChevronDown }/>
                 </div>
             </Border>
 
             {/* Dropdown popup  */}
             <Dropdown open={focused} options={options} onChange={onChange} />
+
             <span className={style.ErrorSpan}>{errorState() ? error : null}</span>
         </div>
     );

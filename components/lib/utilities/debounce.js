@@ -5,10 +5,21 @@
  */
 const debounce = (func, timeout = 1000) => {
     let timer;
-    return (...args) => {
-        clearTimeout(timer);
-        timer = setTimeout(async () => { await func.apply(this, args); }, timeout);
-    };
+    return async (...args) => {
+        return new Promise((resolve, reject) => {
+            clearTimeout(timer);
+            timer = setTimeout(async () => { 
+                try
+                {
+                    resolve(await func.apply(this, args))
+                }
+                catch(error)
+                {
+                    reject(error);
+                }; 
+            }, timeout);
+        })
+    }
 }
 
 export default debounce;

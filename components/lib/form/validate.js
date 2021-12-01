@@ -13,7 +13,6 @@ export default async function validate(value, required, rules) {
 
     let message = "";
 
-
     // If the input is not required and we don't have input then just don't validate.
     if(required && empty(value))
     {
@@ -34,7 +33,7 @@ export default async function validate(value, required, rules) {
     // Try each rule that we have.
     for (const rule of rules)
     {
-        if( ! await rule.validate( value) )
+        if( ! (await rule.validate(value)) )
         {
             return rule.message( );
         }

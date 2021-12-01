@@ -43,8 +43,8 @@ export default function Input({ label, type, name, validators, required = true, 
     /**
      * Run the notification on start so we can make sure the optional inputs are taken care of.
      */
-    useEffect( () => {
-        validator(value) 
+    useEffect(async () => {
+        await validator(value) 
     }, [validator, value])
 
     /**

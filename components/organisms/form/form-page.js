@@ -25,7 +25,7 @@ import style from "./FormPage.module.css"
  * 
  * @param {object} props 
  */
-export default function FormPage({ title, buttonLabel, onSubmit, children})
+export default function FormPage({ title, buttonLabel, annotation, onSubmit, children})
 {
     const [ loading, setLoading ] = useState(false);
     const [ valid, setValid ]     = useState({});
@@ -67,7 +67,6 @@ export default function FormPage({ title, buttonLabel, onSubmit, children})
         return ! Object.values(valid).some((state) => !state)
     }
     
-    // console.log("Re-Rendering Form");
     // Render the form.
     return <form className={style.FormPage}>
         {title != undefined && <> <HeaderMedium title={title} /> <br/> </>}
@@ -82,6 +81,7 @@ export default function FormPage({ title, buttonLabel, onSubmit, children})
         </div>
 
         <br/>
+        { annotation ?? "" }
         <Button title={buttonLabel} loading={loading} active={formValid()} onClick={ (e) => {
             setLoading(true);
             onSubmit(data)

@@ -1,8 +1,11 @@
-
+/**
+ * Original Author: Jack Watson
+ * Created Date: 12/1/2021
+ * Purpose: This file will create a employer signup screen.
+ */
 
 import Column from "@templates/column"
 
-import AffiliateVerified from "@organisms/affiliate-verified.js"
 import HeaderMedium from "@atoms/text/header-md"
 import ShareButton from "@molecules/share-button.js";
 
@@ -12,50 +15,23 @@ import { useEffect, useState } from 'react'
 import axios from "axios";
 import Paragraph from "@atoms/text/paragraph"
 
-const routeMap = {
-    "sharer"   : "affiliates",
-    "employee" : "employees",
-    "employer" : "employers"
-}
-
-const successMessage = {
-    "sharer" : function AffiliateScreen(response){
-        return <AffiliateVerified link={response.data.link} />
-    },
-
-    "employee" : function EmployeeScreen(response){
-        return <>
-            <HeaderMedium title="Congratulations! You have applied to all relevant jobs" />
-            <ShareButton title="Find a Job" text="Apply for all relevant jobs with ourjob.app" />
-        </>
-    },
-
-    "employer" : function EmployerScreen(response){
-        return <>
-            <HeaderMedium title="Your Candidate Pool has been created! You will receive candidates via email"/>
-            <ShareButton title="Find employees" text="Only pay $100 USD when you hire with ourjob.app" />
-        </>
-    }
-}
 
 export default function TokenPage(props)
 {
     const router = useRouter()
-    const { endpoint, token }       = router.query
+    const { id, s }                 = router.query
     const [ verified, setVerified ] = useState(false)
     const [ error, setError ]       = useState(false)
-    const [ data, setData ]         = useState({})
 
     useEffect(() => {
         // Cause of https://nextjs.org/docs/routing/dynamic-routes#caveats
-        if(endpoint != undefined)
+        if(id != undefined && s !=undefined)
         {
-            axios.post(`signup/${routeMap[endpoint]}/verify`, {
-                token: token
+            axios.patch(`signup/verify/${id}`, {
+                secret: s
             }).then(function (response) {
                     if(response.status === 200)
                     {
-                        setData(response.data)
                         setVerified(true)
                     }
                 })
@@ -63,7 +39,7 @@ export default function TokenPage(props)
                     setError(true);
                 });
         }
-    }, [endpoint, token])
+    }, [id, s])
 
 
     // Load the correct screen based on the response that we recieve from the verification endpoint that we chose to send
@@ -73,7 +49,10 @@ export default function TokenPage(props)
     // If were verified.
     if( verified )
     {
-        screen = successMessage[endpoint](data)
+        screen = <>
+            <HeaderMedium title="Your Candidate Pool has been created! You will receive candidates via email"/>
+            <ShareButton title="Find employees" text="Only pay $100 USD when you hire with ourjob.app" />
+        </>
     }
 
     // If we got an error verifying.

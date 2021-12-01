@@ -9,7 +9,7 @@ import axios from "axios";
 import '@styles/globals.css'
 
 config.autoAddCss = false;
-axios.defaults.baseURL = 'http://localhost:8080/api/v1/';
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_SERVER;
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
