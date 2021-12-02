@@ -60,7 +60,7 @@ export default function EmployeePage(props)
         <FormPage buttonLabel="Find Your Perfect Job" >
             <Input label="Legal First Name" name="fname"  validators={ [ rules.maxLength(50) ] } />
             <Input label="Legal Last Name"  name="lname"  validators={ [ rules.maxLength(50) ] } />
-            <Input label="Phone" name="phone" />
+            <Input label="Phone" name="phone" type="tel"   validators={ [ rules.UniqueEmployeePhone ] } />
             <Input label="Email" name="email" type="email" validators={ [ rules.email ] } />
             <Select label="Jobs" name="job_id" endpoint="search/jobs" multiple />
         </FormPage>

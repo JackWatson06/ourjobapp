@@ -11,11 +11,11 @@ const UniqueEmployerEmail = {
     
     validate: debounce( async function(value)
     {
-        const foundName = await axios.get(`search/existing/employer-emails?email=${value}`)
+        const foundName = await axios.get(`search/existing/employer?email=${value}`)
                             .then(function (response) {
                                 if(response.status === 200)
                                 {
-                                    return !response.data.result
+                                    return !response.data.exists
                                 }
                             })
                             .catch(function (error) {

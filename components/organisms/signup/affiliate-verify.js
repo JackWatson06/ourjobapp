@@ -29,9 +29,6 @@ export default function AffiliateVerify({formData, response})
 
     // Verify the affiliate
     const onSubmit = (formData) => {
-
-        console.log(typeof formData.code);
-
         axios.patch(`signup/verify/${response.id}`, {
             code: parseInt(formData.code)
         }).then(function (response) {
@@ -60,13 +57,13 @@ export default function AffiliateVerify({formData, response})
     </> 
 
     const verifyForm = <FormPage 
-            title={`Verify code sent to ${formData.phone}`} 
+            title={`Verification code sent to ${formData.phone}!`} 
             annotation={contract}
             buttonLabel="Get My Link!" 
             onSubmit={onSubmit} >
         <Input label="Code" name="code" type="number" validators={ [ rules.maxLength(5) ] } />
     </FormPage>
-    
+
     // Return a different value based on the state of the component. This would violate functional programming standards
     // if I am not mistaken.
     if(success)

@@ -7,11 +7,11 @@
 import axios from "axios"
 import debounce from "@lib/utilities/debounce"
 
-const UniqueEmployeeEmail = {
+const UniqueAffiliateName = {
     
     validate: debounce( async function(value)
     {
-        const foundName = await axios.get(`search/existing/employee-emails?email=${value}`)
+        const foundName = await axios.get(`search/existing/affiliate?name=${value}`)
                             .then(function (response) {
                                 if(response.status === 200)
                                 {
@@ -27,8 +27,8 @@ const UniqueEmployeeEmail = {
 
     message: function ()
     {
-        return `Email already taken`
+        return `Name already taken`
     }
 };
 
-export default UniqueEmployeeEmail
+export default UniqueAffiliateName

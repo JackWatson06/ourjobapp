@@ -7,15 +7,15 @@
 import axios from "axios"
 import debounce from "@lib/utilities/debounce"
 
-const UniqueName = {
+const UniqueEmployeePhone = {
     
     validate: debounce( async function(value)
     {
-        const foundName = await axios.get(`search/existing/links?name=${value}`)
+        const foundName = await axios.get(`search/existing/employee?phone=${value}`)
                             .then(function (response) {
                                 if(response.status === 200)
                                 {
-                                    return !response.data.result
+                                    return !response.data.exists
                                 }
                             })
                             .catch(function (error) {
@@ -27,8 +27,8 @@ const UniqueName = {
 
     message: function ()
     {
-        return `Name already taken`
+        return `Phone number already taken`
     }
 };
 
-export default UniqueName
+export default UniqueEmployeePhone

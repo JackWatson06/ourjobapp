@@ -16,11 +16,13 @@ export default function DependentInput( {independentInput, dependentInputs, depe
     }
 
     // Get an array of how many dependent input we haves. Start off with not showing any.
-    const [active, setActive]             = useState(dependentInputs.map(() => false))
+    const [active, setActive]               = useState(dependentInputs.map(() => false))
     const [defaultStates, setDefaultStates] = useState(dependentInputs.map(() => []))
 
     // whenever the independentInput gets notified of a change we will want to check to see if it matches any of the dependsOnValues
     const independentOnChange = (name, value, inputValid) => {
+        // Make sure the parent form still knows about the state of the child.
+        notify(name, value, inputValid)
 
         for(let i = 0; i < dependsOnValues.length; i++)
         {
@@ -46,9 +48,6 @@ export default function DependentInput( {independentInput, dependentInputs, depe
         }        
 
         setActive([...active])
-
-        // Make sure the parent form still knows about the state of the child.
-        notify(name, value, inputValid)
     }
 
     // Independent input should render at all times.
@@ -60,6 +59,7 @@ export default function DependentInput( {independentInput, dependentInputs, depe
 
             // Function which updates the state of the variable.
             const dependentOnChange = (name, value, inputValid) => {
+                notify(name, value, inputValid)
 
                 // Only set the default state on the first notification if we don't have it already.
                 if(! defaultStates.some((state) => state[0] === name))
@@ -67,8 +67,6 @@ export default function DependentInput( {independentInput, dependentInputs, depe
                     defaultStates[i] = [name, value, inputValid]
                     setDefaultStates([...defaultStates])
                 }
-                
-                notify(name, value, inputValid)
             }
             
             if(active[i]){

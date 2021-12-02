@@ -41,17 +41,18 @@ export default function FormPage({ title, buttonLabel, annotation, onSubmit, chi
      * @param {boolean} valid Is the value that was just sent a valid value?
      */
     const onChange = (name, value, inputValid) => {
+
         valid[name] = inputValid
 
         // Ugh this falsey check is kind of annyoing. Not a huge falsey person. What this check is doing is making sure
         // empty input does NOT go in the data that will be submited for this form. We just skip the empty data.
-        if(value)
+        if(value === [] || value === "")
         {
-            data[name] = value
+            delete data[name]
         }
         else
         {
-            delete data[name]
+            data[name] = value
         }
 
         setData({ ...data })

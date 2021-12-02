@@ -10,6 +10,7 @@ import style from "./Input.module.css"
 
 import Border from "@atoms/input/border"
 import InputFile from "@atoms/input/input-file"
+import InputPhone from "@atoms/input/input-phone"
 import InputText from "@atoms/input/input-text"
 
 import validate from "@lib/form/validate"
@@ -43,8 +44,12 @@ export default function Input({ label, type, name, validators, required = true, 
     /**
      * Run the notification on start so we can make sure the optional inputs are taken care of.
      */
-    useEffect(async () => {
-        await validator(value) 
+    useEffect(() => {
+        async function validateInput() {
+            await validator(value)
+        }
+
+        validateInput();
     }, [validator, value])
 
     /**
@@ -95,6 +100,10 @@ export default function Input({ label, type, name, validators, required = true, 
         if(type === "file")
         {
             return <InputFile { ...inputProps } />
+        }
+        else if(type === "tel")
+        {
+            return <InputPhone { ...inputProps } />
         }
         else
         {

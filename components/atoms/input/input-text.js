@@ -11,7 +11,7 @@ import React from "react";
 
 import style from "./InputText.module.css";
 
-const Input = React.forwardRef(({label, type = "text", name, value, onChange, onFocus}, ref) => {
+const Input = React.forwardRef(function InputText({label, type = "text", name, value, onChange, onFocus}, ref){
     const hasInput = value != ""
     
     return <div className={style.InputWrapper}>
@@ -23,7 +23,6 @@ const Input = React.forwardRef(({label, type = "text", name, value, onChange, on
             type      = {type}
             value     = {value}
             ref       = {ref}
-            autoComplete = "false"
             onChange  = {e => onChange(e.target.value)}
             onClick   = {e => e.stopPropagation()}
             onFocus   = {e => { onFocus != undefined && onFocus(true, e) }}

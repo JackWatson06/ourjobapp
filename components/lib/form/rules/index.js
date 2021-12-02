@@ -5,10 +5,10 @@ import noSpaces from "./NoSpaces"
 import urlTokens from "./UrlTokens"
 import maxSize from "./MaxSize"
 import fileType from "./FileType"
-import uniqueName from "./UniqueName"
-import uniqueAffiliateEmail from "./UniqueAffiliateEmail"
+import uniqueName from "./UniqueAffiliateName"
+import uniqueAffiliateName from "./UniqueAffiliateName"
 import uniqueEmployerEmail from "./UniqueEmployerEmail"
-import uniqueEmployeeEmail from "./UniqueEmployeeEmail"
+import uniqueEmployeePhone from "./UniqueEmployeePhone"
 
 const rules = {
     email                : email,
@@ -19,8 +19,8 @@ const rules = {
     fileType             : fileType,
     urlTokens            : urlTokens,
     uniqueName           : uniqueName,
-    uniqueAffiliateEmail : uniqueAffiliateEmail,
-    uniqueEmployeeEmail  : uniqueEmployeeEmail,
+    uniqueAffiliateName  : uniqueAffiliateName,
+    UniqueEmployeePhone  : uniqueEmployeePhone,
     uniqueEmployerEmail  : uniqueEmployerEmail
 }
 

@@ -52,10 +52,8 @@ export default function Select({ label, name, endpoint, list, validators, multip
         inputRef.current.focus()
     }
 
-    // Get the options from an endpoint if we are using the options from an endpoint.
-    const onSearch = useCallback(
+    const searchOptions = useCallback(
         (search) => {
-
             // If we are searching for options against an endpoint.
             if(endpoint)
             {
@@ -79,13 +77,21 @@ export default function Select({ label, name, endpoint, list, validators, multip
             {
                 setOptions(list)
             }
+        }, 
+        [endpoint, list, setValue]
+    )
 
-            // Set search input, as well as hide the value.
+    /**
+     * Handle a update on the text input change.
+     */
+    const onSearch = useCallback(
+        (search) => {
+            searchOptions(search);
             setSearch(search)
             setValue([])
         },
-        [endpoint, list, setValue],
-      );
+        [searchOptions, setSearch, setValue]
+    )
     
     /**
      * Item we clicked in the options. If we have select a multiple then merge with the current multiple.
@@ -164,8 +170,8 @@ export default function Select({ label, name, endpoint, list, validators, multip
     }, [validator, value])
 
     useEffect(() => {
-        onSearch("")
-    }, [onSearch])
+        searchOptions("")
+    }, [searchOptions])
 
     // Called once to add the event listener for clicking anywhere in the document. Then we 
     useEffect(() => {
