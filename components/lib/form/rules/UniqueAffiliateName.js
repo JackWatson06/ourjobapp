@@ -15,7 +15,7 @@ const UniqueAffiliateName = {
                             .then(function (response) {
                                 if(response.status === 200)
                                 {
-                                    return !response.data.result
+                                    return !response.data.exists
                                 }
                             })
                             .catch(function (error) {
