@@ -1,0 +1,17 @@
+/* The input wrapper holds the actual form element that the user can interact with. */
+.Label
+{
+    color: var(--label-text);
+    font-size: 1.13rem;
+
+    position: absolute;
+    left: 0.75rem;
+
+    transition: font-size 0.1s ease-out;
+}
+
+.Label.ActiveLabel 
+{
+    top: 0.5rem;
+    font-size: 0.75rem;
+}

@@ -1,0 +1,39 @@
+/* Select color... see the gradient. */
+.Pill {
+
+    width: 100%;
+    height: 2.5rem;
+
+    margin-bottom: 5px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 0.5rem;
+
+    background: var(--primary-gradient);
+
+    border-radius: 0.25rem;
+    transition: all ease-in 0.5s;
+}
+
+/* Pill color and size. */
+.Pill span {
+    
+    margin-right: 2rem;
+    
+    color: var(--background);
+    font-size: 1rem;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Arrow for the select? */
+.Pill img {
+    width: 0.63rem;
+    height: 0.69rem;
+}

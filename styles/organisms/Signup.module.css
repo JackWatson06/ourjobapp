@@ -1,0 +1,10 @@
+.SignupContainer
+{
+    max-width: 18rem;
+
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+
+    text-align: center;
+}

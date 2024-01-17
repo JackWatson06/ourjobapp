@@ -1,0 +1,35 @@
+/* Border on outside of the input box. */
+.BorderWrapper 
+{
+    height: 3.69rem;
+    width: 16.31rem;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.16rem;
+
+    background: var(--background);
+
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.23);
+}
+
+.BorderWrapper.InputFocused 
+{
+    border: none;
+    padding: calc(0.16rem + 1px);
+    background: var(--primary-gradient);
+}
+
+.BorderWrapper.InputError 
+{
+    border: none;
+    padding: calc(0.16rem + 1px);
+    background: var(--error-gradient);
+}

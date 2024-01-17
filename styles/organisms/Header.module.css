@@ -1,0 +1,13 @@
+
+.TopHeader
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 0.5em;
+
+    border-bottom: solid 1px var(--navigation);
+    color: var(--navigation);
+    height: 3.8rem;
+}
