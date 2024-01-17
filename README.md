@@ -1,69 +1,88 @@
-# unijobapp
-Front-End React Project for the UniJobApplication
+# UniJobApp
+Welcome to the UniJobApp repository! This repository contains the frontend code for the UniJobApp.
+UniJobApp stands for Universal Job Application and solves the discovery problem faced by employers
+looking for new candidates. The application offers features such as affiliate links to drive
+candidate signup and forms for both parties to find what they are looking for.
 
-## Directory Structure
-/__tests__
-    /unit        - Tests in unit
-    /integration - Tests integrating entire system.
-/dist - Final built files which get served by the web server.
-/components
-    /atoms      - The smallest level of React components we have ( i.e. Buttons, Labels, Headers).
-    /lib        - Any small Javascript libraries that we create internally.
-    /molecules  - Combination of atoms (i.e. Input Boxes, Headers w/ Text, Nav-Bar).
-    /organisms  - Combination of molecules. One level of abstraction higher (i.e. Forms, Sections).
-    /pages      - Combination of organisms. Represents the final pages of the site (i.e. Home Page, Affiliate Page, Employees Page).
-    /templates  - How to structure your page. The template the page sits in. (i.e. Columns, Grid, Flexbox).
-/public
-    /images - Static images. 
+## Technical Details
+The project uses _Next.JS_ and _React_ to provide an interactive single-page application. We style 
+the application using CSS modules. You will notice that in the *styles* and the *components* 
+directory we follow the atomic design principles pioneered by Brad Frost: 
+[Atomic Design](https://atomicdesign.bradfrost.com/)
 
-## Style Guide
+This project only contains the front-end code. To run this project you must also have
+the backend API running which can be found [here]().
 
-- To build the current version of the project run the following command:
-    ```npm run build```
+## Pictures / Videos
 
-- To restart the server of nextjs on the production env run the following command:
-    ```pm2 restart nextjs```
 
-## Style Guide
+## Development Guide
+In this section, I will outline how to begin development on the UniJobApp front-end. It will cover
+installing the development build and how to start touching code. 
 
-- Avoid using semicolons at the end of lines.
+### Starting the Application
+1.) Gather all the necessary software from the *Dependencies* section.
+2.) Clone this repository locally.
+3.) Install the _UniJobApp API_ found [here]().
+4.) Run `nvm use` to install the relevant version of node for this project.
+5.) Copy the *.env.example* to *.env.local*.
+6.) Install _npm_ dependencies using the command `npm run install`.
+7.) Run `npm run dev` to start the development application.
+    - You can now open the app on your browser at http://localhost:3000
 
-## Next.js
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Architecture
+The project follows the [Atomic Design](https://atomicdesign.bradfrost.com/) architecture. At a high 
+level components are broken up into five sections: atoms, molecules, organisms, templates, and pages. 
+Each category suits different levels of abstraction. Fundamentally they break up each page by layers
+which allow reuse of components for small projects.
 
-## Getting Started
+### Making Changes
+To start making changes add a new page in the *pages* directory. Any additional components you have
+should be put in the *components* directory, and any styles you have should be put in the *styles*
+directory. 
 
-First, run the development server:
+Once you are done making the changes for a feature then run the Eslint command 
+(`npm run lint`) to confirm your code follows the _next/core-web-vitals_ linting rules.
 
-```bash
-npm run dev
-# or
-yarn dev
+## Dependencies
+1.) [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm)
+
+## Commands
+Use the relevant version of node:
+```
+nvm use
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Starting the development server:
+```
+npm run dev
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Building the production application:
+```
+npm run build
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Restarting the Next.JS server on production:
+```
+pm2 restart nextjs
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Running the ESLint:
+```
+npm run lint
+```
 
 ## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Atomic Design](https://atomicdesign.bradfrost.com/) - we base our architecture on this design.
+- [CSS Modules](https://github.com/css-modules/css-modules) - how we style UniJobApp.
 
 ## Versions
-- NPM: 6.14.15
-- Node: 14.17.6
+- _Next.JS_ - v11.1.2
+- _React_ - v17.0.2
+
+## Missing Features
+- [ ] End-to-end tests which cover common use cases.
+- [ ] Continuous deployment to the server.
