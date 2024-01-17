@@ -1,0 +1,18 @@
+
+.Logo
+{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+
+    width: 100%;
+    min-width: 0;
+}
+
+.Span
+{
+    overflow: hidden;
+
+    width: 80%;
+    text-overflow: ellipsis;
+}

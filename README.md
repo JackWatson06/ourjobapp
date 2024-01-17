@@ -3,20 +3,30 @@ Front-End React Project for the UniJobApplication
 
 ## Directory Structure
 /__tests__
-    /unit - Tests in unit
+    /unit        - Tests in unit
     /integration - Tests integrating entire system.
 /dist - Final built files which get served by the web server.
-/src
-    /js
-        /atoms - The smallest level of React components we have ( i.e. Buttons, Labels, Headers).
-        /lib - Any small Javascript libraries that we create internally.
-        /molecules - Combination of atoms (i.e. Input Boxes, Headers w/ Text, Nav-Bar).
-        /organisms - Combination of molecules. One level of abstraction higher (i.e. Forms, Sections).
-        /pages - Combination of organisms. Represents the final pages of the site (i.e. Home Page, Affiliate Page, Employees Page).
-        /templates - How to structure your page. The template the page sits in. (i.e. Columns, Grid, Flexbox).
-    /css
-    /html
-/assets - Images, video, or app driven data.
+/components
+    /atoms      - The smallest level of React components we have ( i.e. Buttons, Labels, Headers).
+    /lib        - Any small Javascript libraries that we create internally.
+    /molecules  - Combination of atoms (i.e. Input Boxes, Headers w/ Text, Nav-Bar).
+    /organisms  - Combination of molecules. One level of abstraction higher (i.e. Forms, Sections).
+    /pages      - Combination of organisms. Represents the final pages of the site (i.e. Home Page, Affiliate Page, Employees Page).
+    /templates  - How to structure your page. The template the page sits in. (i.e. Columns, Grid, Flexbox).
+/public
+    /images - Static images. 
+
+## Style Guide
+
+- To build the current version of the project run the following command:
+    ```npm run build```
+
+- To restart the server of nextjs on the production env run the following command:
+    ```pm2 restart nextjs```
+
+## Style Guide
+
+- Avoid using semicolons at the end of lines.
 
 ## Next.js
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

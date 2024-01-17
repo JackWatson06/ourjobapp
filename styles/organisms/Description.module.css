@@ -1,0 +1,9 @@
+
+.ImageWrapper
+{
+    width: 100%;
+    max-width: 30rem;
+    margin: auto;
+
+    background: var(--primary-gradient);
+}

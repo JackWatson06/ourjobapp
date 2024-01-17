@@ -1,0 +1,18 @@
+.FooterContainer
+{
+    background: var(--secondary-background);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.Moto
+{
+    color: var(--light-text);
+    text-align: center;
+}
+
+.Copyright
+{
+    color: var(--light-text);
+    text-align: center;
+}

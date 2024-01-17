@@ -1,0 +1,69 @@
+
+/*
+  Code Authored by Adil Kazmi from Upworks
+*/
+
+.SelectWrapper {
+
+    width: 16.31rem;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Wrap the select options with this wrapper. */
+.PillsContainer {
+
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* .select_options_wrapper_active {
+    border: 1px dashed var(--border);
+    border-bottom: none;
+} */
+
+.IconInputContainer
+{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    background: var(--background);
+
+    border-radius: 4px;
+}
+
+/* Input Icon for File Upload */
+.InputIcon
+{
+    color: var(--label-text);
+    font-size: 2rem;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    align-self: center;
+
+    transition: transform 0.2s ease;
+}
+
+.InputIcon.Flipped
+{
+    transform: rotate(180deg);
+}
+
+/* Error Message */
+.ErrorSpan
+{
+    font-size: 1rem;
+    line-height: 2rem;
+    color: var(--error);
+}
