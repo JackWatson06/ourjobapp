@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p $(grep NEXT_PORT= .env | awk '{split($0, a, \"=\"); print a[2]}')",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $(grep NEXT_PORT= .env | awk '{split($0, a, \"=\"); print a[2]}')",
     "lint": "next lint"
   },
   "dependencies": {
