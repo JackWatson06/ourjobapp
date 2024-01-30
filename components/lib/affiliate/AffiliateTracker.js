@@ -1,8 +1,4 @@
-
-
 import Cookies from 'js-cookie'
-
-const DOMAIN = "OurJob.App"
 
 const COOKIE = "referral_key"
 const EXPIRES = 1 //Day
@@ -24,7 +20,8 @@ export function ReadCookie()
         return {
             id: cookieSplit[0],
             name: cookieSplit[1],
-            url: `${DOMAIN}/${cookieSplit[1]}` 
+            url: `${process.env.NEXT_PUBLIC_CLIENT}/${cookieSplit[1]}`,
+            displayUrl: `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/${cookieSplit[1]}` 
         }
     }
 

@@ -21,13 +21,18 @@ In this section, I will outline how to begin development on the UniJobApp front-
 installing the development build and how to start touching code. 
 
 ### Starting the Application
-1.) Gather all the necessary software from the *Dependencies* section.
-2.) Clone this repository locally.
-3.) Install the _UniJobApp API_ found [here]().
-4.) Run `nvm use` to install the relevant version of node for this project.
-5.) Copy the *.env.example* to *.env.local*.
-6.) Install _npm_ dependencies using the command `npm run install`.
-7.) Run `npm run dev` to start the development application.
+1. Gather all the necessary software from the *Dependencies* section.
+2. Clone this repository locally.
+3. Install the _UniJobApp API_ found [here]().
+4. Run `nvm use` to install the relevant version of node for this project.
+5. Copy the *.env.example* to *.env.local*.
+6. Install _npm_ dependencies using the command `npm run install`.
+    - _Note_: Git changed the git port to restricted meaning you need to forward all calls from
+    git:// to https://. This Github issue discusses this in more detail: 
+    [Github Unable to Connect](https://github.com/npm/npm/issues/6285#issuecomment-56640354).
+    Use the following command to be able to run npm install: 
+    `git config --global url.https://github.com/.insteadOf git://github.com/`
+7. Run `npm run dev` to start the development application.
     - You can now open the app on your browser at http://localhost:3000
 
 ### Architecture
@@ -43,6 +48,31 @@ directory.
 
 Once you are done making the changes for a feature then run the Eslint command 
 (`npm run lint`) to confirm your code follows the _next/core-web-vitals_ linting rules.
+
+### Running Site on HTTPS
+Some features, like the sharing of links, require the next server to run using SSL. To run the
+server with SSL support we can use a local SSL proxy. We can use the _local-ssl-proxy_ _npm_ library
+to create this proxy. Run through the following steps to setup HTTPS.
+1. Create a new certificate in the _config_ directory. The following command will create a
+certificate which will expire in 10 years.
+```
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3650 --nodes
+```
+2. Start up the _Next.js_ server on port whatever port you want to use. Set the _NEXT\_PORT_ to
+configure the port that Next.js uses.
+```
+npm run dev
+```
+3. Run the following command to start the HTTPS proxy.
+```
+npx local-ssl-proxy \
+  --key ./config/{key_name}.pem \
+  --cert ./config/{cert_name}.pem \
+  --source 8080 \
+  --target {NEXT_PORT}
+```
+4. Run a similar proxy mechanism for the backend since otherwise you will get a mixed-content error
+on the website. You can either enable insecure content or start the proxy.
 
 ## Dependencies
 1.) [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm)

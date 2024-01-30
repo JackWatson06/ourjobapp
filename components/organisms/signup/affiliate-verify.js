@@ -18,7 +18,7 @@ export default function AffiliateVerify({formData, response})
     const [error, setError]     = useState(false)
     const [copied, setCopied]   = useState("")
 
-    const link      = `${process.env.NEXT_PUBLIC_CLIENT_HOSTNAME}/${formData.name}`
+    const link      = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/${formData.name}`
     const actualUrl = `${process.env.NEXT_PUBLIC_CLIENT}/${formData.name}`
 
     // Copy functionality to copy link to clipboard.

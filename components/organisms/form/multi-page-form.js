@@ -54,8 +54,6 @@ export default function MultiPageForm({link, Redirect, children})
             .then(async function (response) {
                 if(response.status === 200)
                 {
-                    console.log(resume);
-
                     // Upload the resume if we have the resume to uplaod
                     if(resume != undefined)
                     {
