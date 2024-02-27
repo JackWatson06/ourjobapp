@@ -1,8 +1,8 @@
-# UniJobApp
-Welcome to the UniJobApp repository! This repository contains the frontend code for the UniJobApp.
-UniJobApp stands for Universal Job Application and solves the discovery problem faced by employers
-looking for new candidates. The application offers features such as affiliate links to drive
-candidate signup and forms for both parties to find what they are looking for.
+# OurJobApp
+Welcome to the OurJobApp repository! This repository contains the frontend code for the OurJob.App 
+website. OurJobApp stands for Our Job Application and solves the discovery problem faced by 
+employers looking for new candidates. The application offers features such as affiliate links to 
+drive candidate signup and forms for both parties to find what they are looking for.
 
 ## Technical Details
 The project uses _Next.JS_ and _React_ to provide an interactive single-page application. We style 
@@ -11,24 +11,26 @@ directory we follow the atomic design principles pioneered by Brad Frost:
 [Atomic Design](https://atomicdesign.bradfrost.com/)
 
 This project only contains the front-end code. To run this project you must also have
-the backend API running which can be found [here]().
+the backend API running. Navigate to the 
+[OurJobApp API](https://github.com/JackWatson06/ourjobapp_api) to access the backend API.
 
 ## Pictures / Videos
 
 
 ## Development Guide
-In this section, I will outline how to begin development on the UniJobApp front-end. It will cover
+In this section, I will outline how to begin development on the OurJobApp front end. It will cover
 installing the development build and how to start touching code. 
 
 ### Starting the Application
 1. Gather all the necessary software from the *Dependencies* section.
 2. Clone this repository locally.
-3. Install the _UniJobApp API_ found [here]().
+3. Install the _OurJobApp API_ found [here](https://github.com/JackWatson06/ourjobapp_api).
 4. Run `nvm use` to install the relevant version of node for this project.
-5. Copy the *.env.example* to *.env.local*.
+5. Copy the *.env.example* to *.env*.
 6. Install _npm_ dependencies using the command `npm run install`.
-    - _Note_: Git changed the git port to restricted meaning you need to forward all calls from
-    git:// to https://. This Github issue discusses this in more detail: 
+    - _Note_: We are using old versions of several libraries. Git changed the git port to 
+    restricted meaning you need to forward all calls from git:// to https://. This Github issue 
+    discusses this in more detail: 
     [Github Unable to Connect](https://github.com/npm/npm/issues/6285#issuecomment-56640354).
     Use the following command to be able to run npm install: 
     `git config --global url.https://github.com/.insteadOf git://github.com/`
@@ -49,10 +51,17 @@ directory.
 Once you are done making the changes for a feature then run the Eslint command 
 (`npm run lint`) to confirm your code follows the _next/core-web-vitals_ linting rules.
 
-### Running Site on HTTPS
+### Environment Settings
+*Note*: See the _.env.example_ for the development settings.
+- **NEXT_PUBLIC_SERVER**: The API origin and the API version endpoint.
+- **NEXT_PORT**: The port _Next.JS_ runs on locally.
+- **NEXT_PUBLIC_DOMAIN_NAME**: The public domain name running our application.
+- **NEXT_PUBLIC_CLIENT**: The local origin of the server running this project.
+
+### Running the Site on HTTPS
 Some features, like the sharing of links, require the next server to run using SSL. To run the
 server with SSL support we can use a local SSL proxy. We can use the _local-ssl-proxy_ _npm_ library
-to create this proxy. Run through the following steps to setup HTTPS.
+to create this proxy. Run through the following steps to enable HTTPS.
 1. Create a new certificate in the _config_ directory. The following command will create a
 certificate which will expire in 10 years.
 ```
