@@ -21,13 +21,11 @@ export default function AffiliateVerify({formData, response})
     const link      = `${process.env.NEXT_PUBLIC_DOMAIN_NAME}/${formData.name}`
     const actualUrl = `${process.env.NEXT_PUBLIC_CLIENT}/${formData.name}`
 
-    // Copy functionality to copy link to clipboard.
     const copy = () => {
         navigator.clipboard.writeText(actualUrl)
         setCopied("Link copied!")
     }
 
-    // Verify the affiliate
     const onSubmit = (formData) => {
         axios.patch(`signup/verify/${response.id}`, {
             code: parseInt(formData.code)
@@ -64,8 +62,6 @@ export default function AffiliateVerify({formData, response})
         <Input label="Code" name="code" type="number" validators={ [ rules.maxLength(5) ] } />
     </FormPage>
 
-    // Return a different value based on the state of the component. This would violate functional programming standards
-    // if I am not mistaken.
     if(success)
     {
         return successfullyVerified;

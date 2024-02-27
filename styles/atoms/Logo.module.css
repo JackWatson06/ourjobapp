@@ -1,6 +1,4 @@
-
-.Logo
-{
+.Logo {
     align-items: center;
     display: flex;
     gap: 10px;
@@ -9,8 +7,7 @@
     min-width: 0;
 }
 
-.Span
-{
+.Span {
     overflow: hidden;
 
     width: 80%;

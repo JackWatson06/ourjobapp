@@ -1,13 +1,9 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 10/22/2021
- * Purpose: A form page represents a form in the larger multi page form that we have. This page uses the formState tracker
- * passed down form the multi-page form in order to keep track of it's current state. This allows the entire multi page form
+ * A form page represents a form in the larger multi page form that we have. This page uses the 
+ * formState tracker passed down form the multi-page form in order to keep track of it's current state. This allows the entire multi page form
  * to keep track of all the states of the different inputs and bundles it up nicely into one submit request to the backend
  * server.
  */
-
-
 import React, { useState } from "react"
 
 import Button from "@atoms/button"

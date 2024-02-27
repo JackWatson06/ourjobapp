@@ -1,31 +1,13 @@
-.IconContainer
-{
+.IconContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
 
-.Icon
-{
+.Icon {
     font-size: 1.5rem;
     cursor: pointer;
 
     color: var(--primary);
 }
-
-/* .FirstStop
-{
-    stop-color: var(--primary);
-}
-
-.SecondStop
-{
-    stop-color: var(--primary-dark);
-}
-
-.Icon > path
-{
-    fill: url(#icon-gradient);
-} */
-

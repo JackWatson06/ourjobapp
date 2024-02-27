@@ -1,8 +1,6 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 10/22/2021
- * Purpose: This form allows us to render multiple pages of a form. We use this extensviely thoughout our project since we 
- * rely on mutlipage forms for user signup.
+ * This form allows us to render multiple pages of a form. We use this extensively thoughout our 
+ * project since we rely on mutlipage forms for user signup.
  */
 import Router from 'next/router'
 import React, { useState } from 'react'
@@ -10,8 +8,15 @@ import * as affTrack from "@lib/affiliate/AffiliateTracker"
 import axios from "axios";
 
 /**
+ * Create a MultiPageForm component which allows us to create a form that spans multiple pages of
+ * the application.
  * 
  * @param {object} props Bag of properties that this multipage form will take.
+ * @param {string} props.link The link we want to post the data to.
+ * @param {React.ReactElement} props.Redirect The page we want to redirect to upon completion of
+ * this form.
+ * @param {Array<React.ReactElement>} props.children The array of form pages we use in the multi
+ * page form component.
  */
 export default function MultiPageForm({link, Redirect, children})
 {
@@ -34,7 +39,7 @@ export default function MultiPageForm({link, Redirect, children})
         }
     }
 
-    // Generic send method ( this will probably change with the FinishForm component)
+    // Generic send method.
     const send = async (data) =>
     {
         const allFormData = {...formData, ...data}
@@ -100,8 +105,5 @@ export default function MultiPageForm({link, Redirect, children})
         return <Redirect formData={formData} response={response} />
     }
 
-    
-    // Finish does NOT need to be avaialbe to every form we should abstract that out into it's own FinishForm component.
-    // maybe that also dictates how the form is sent.
     return determineRenderPage();
 }
