@@ -1,13 +1,9 @@
-
-
-.ImageContainer > div
-{
+.ImageContainer > div {
     position: unset !important;
     height: 100%;
 }
 
-.BaseImage
-{
+.BaseImage {
     object-fit: contain;
     width: 100% !important;
     position: relative !important;

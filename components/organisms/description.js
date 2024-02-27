@@ -1,4 +1,3 @@
-
 import Image from "@atoms/image";
 
 import profilePic from '../../public/images/sharer-graphic.webp'

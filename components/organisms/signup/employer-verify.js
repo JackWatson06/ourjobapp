@@ -1,4 +1,3 @@
-
 import Column from "@templates/column"
 import HeaderMedium from "@atoms/text/header-md"
 import LinkButton from "@molecules/link-button"

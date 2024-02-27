@@ -1,10 +1,6 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 12/1/2021
- * Purpose: This class will set the default employee verified. We can share code beteween the affilaite class. Currentlty the code
- * verification form is simply duplicated.
+ * This component will prompot the employee to verify their phone number is accurate.
  */
-
 import {useState} from "react"
 
 import ShareButton from "@molecules/share-button.js"
@@ -20,7 +16,6 @@ export default function EmployeeVerify({formData, response})
     const [success, setSuccess] = useState(false)
     const [error, setError]     = useState(false)
 
-    // Verify the affiliate
     const onSubmit = (formData) => {
 
         axios.patch(`signup/verify/${response.id}`, {
@@ -48,8 +43,7 @@ export default function EmployeeVerify({formData, response})
         <Input label="Code" name="code" type="number" validators={ [ rules.maxLength(5) ] } />
     </FormPage>
     
-    // Return a different value based on the state of the component. This would violate functional programming standards
-    // if I am not mistaken.
+    // Return a different value based on the state of the component.
     if(success)
     {
         return successfullyVerified;

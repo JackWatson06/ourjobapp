@@ -1,25 +1,20 @@
-
-.UList
-{
+.UList {
     color: var(--light-text);
     list-style-type: none;
     text-align: center;
     padding: 0;
 }
 
-.LinkWrapper
-{
+.LinkWrapper {
     margin: 1.0rem 0;
 }
 
-.Link
-{
+.Link {
     text-decoration: underline;
     color: var(--light-text)
 }
 
-.Header
-{
+.Header {
     color: var(--light-text);
     margin-top: 1em;
     text-align: center;

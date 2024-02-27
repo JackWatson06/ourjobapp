@@ -1,5 +1,4 @@
-.IconContainer
-{
+.IconContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,26 +7,9 @@
     margin: 2rem;
 }
 
-.Icon
-{
+.Icon {
     font-size: 2rem;
     cursor: pointer;
 
     color: var(--light-text);
 }
-
-/* .FirstStop
-{
-    stop-color: var(--primary);
-}
-
-.SecondStop
-{
-    stop-color: var(--primary-dark);
-}
-
-.Icon > path
-{
-    fill: url(#icon-gradient);
-}
- */
