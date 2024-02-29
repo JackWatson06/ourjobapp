@@ -1,6 +1,6 @@
 {
   "name": "ourjobapp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "dev": "next dev -p $(grep NEXT_PORT= .env | awk '{split($0, a, \"=\"); print a[2]}')",
