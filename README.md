@@ -1,5 +1,5 @@
 # OurJobApp
-Welcome to the OurJobApp repository! This repository contains the frontend code for the OurJob.App 
+7Welcome to the OurJobApp repository! This repository contains the frontend code for the OurJob.App 
 website. OurJobApp stands for Our Job Application and solves the discovery problem faced by 
 employers looking for new candidates. The application offers features such as affiliate links to 
 drive candidate signup and forms for both parties to find what they are looking for.
@@ -14,8 +14,11 @@ This project only contains the front-end code. To run this project you must also
 the backend API running. Navigate to the 
 [OurJobApp API](https://github.com/JackWatson06/ourjobapp_api) to access the backend API.
 
-## Pictures / Videos
+## Videos/Screnshots
+[Click here for snazzy demo video!]()
 
+![Home Screen Shows Employee, Employer, and Affiliate Signup!](https://jackwatson06.github.io/ourjobapp/240227_Home_Page.png "Home Screen")
+![Signup with Multi Page Form to Find a Job You Love!](https://jackwatson06.github.io/ourjobapp/240227_Employee_Signup.png "Employee Signup Flow")
 
 ## Development Guide
 In this section, I will outline how to begin development on the OurJobApp front end. It will cover
