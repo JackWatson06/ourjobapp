@@ -1,8 +1,19 @@
 # OurJobApp
-7Welcome to the OurJobApp repository! This repository contains the frontend code for the OurJob.App 
+Welcome to the OurJobApp repository! This repository contains the frontend code for the OurJob.App 
 website. OurJobApp stands for Our Job Application and solves the discovery problem faced by 
 employers looking for new candidates. The application offers features such as affiliate links to 
 drive candidate signup and forms for both parties to find what they are looking for.
+
+## Videos and Screenshots
+[Click here for a snazzy demo video!](https://youtu.be/kv3fxr0TtWM)
+
+_Home Screen_
+
+<img src="https://jackwatson06.github.io/ourjobapp/240227_Home_Page.png" alt="Home Screen Shows Employee, Employer, and Affiliate Signup" width="200"/>
+
+_Candidate Signup_
+
+<img src="https://jackwatson06.github.io/ourjobapp/240227_Employee_Signup.png" alt="Signup with Multi Page Form to Find a Job You Love!" width="200"/>
 
 ## Technical Details
 The project uses _Next.JS_ and _React_ to provide an interactive single-page application. We style 
@@ -13,12 +24,6 @@ directory we follow the atomic design principles pioneered by Brad Frost:
 This project only contains the front-end code. To run this project you must also have
 the backend API running. Navigate to the 
 [OurJobApp API](https://github.com/JackWatson06/ourjobapp_api) to access the backend API.
-
-## Videos/Screnshots
-[Click here for snazzy demo video!]()
-
-![Home Screen Shows Employee, Employer, and Affiliate Signup!](https://jackwatson06.github.io/ourjobapp/240227_Home_Page.png "Home Screen")
-![Signup with Multi Page Form to Find a Job You Love!](https://jackwatson06.github.io/ourjobapp/240227_Employee_Signup.png "Employee Signup Flow")
 
 ## Development Guide
 In this section, I will outline how to begin development on the OurJobApp front end. It will cover
