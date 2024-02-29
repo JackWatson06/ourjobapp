@@ -15,7 +15,7 @@ the backend API running. Navigate to the
 [OurJobApp API](https://github.com/JackWatson06/ourjobapp_api) to access the backend API.
 
 ## Videos/Screnshots
-[Click here for snazzy demo video!]()
+[Click here for a snazzy demo video!](https://youtu.be/kv3fxr0TtWM)
 
 ![Home Screen Shows Employee, Employer, and Affiliate Signup!](https://jackwatson06.github.io/ourjobapp/240227_Home_Page.png "Home Screen")
 ![Signup with Multi Page Form to Find a Job You Love!](https://jackwatson06.github.io/ourjobapp/240227_Employee_Signup.png "Employee Signup Flow")
