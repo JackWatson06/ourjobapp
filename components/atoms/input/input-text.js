@@ -24,7 +24,7 @@ const Input = React.forwardRef(function InputText({label, type = "text", name, v
             onClick   = {e => e.stopPropagation()}
             onFocus   = {e => { onFocus != undefined && onFocus(true, e) }}
             onBlur    = {e => { onFocus != undefined && onFocus(false, e)} }
-            autocomplete = "one-time-code"
+            autoComplete = "one-time-code"
         />
     </div>
 });
