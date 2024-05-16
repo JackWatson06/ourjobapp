@@ -1,7 +1,5 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 11/6/2021
- * Purpose: This class will validate a input of a certain length. We can pass in how long we want, or need the input to be.
+ * This class will validate a input of a certain length. We can pass in how long we want, or need the input to be.
  */
 
 /**

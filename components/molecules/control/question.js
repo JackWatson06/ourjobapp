@@ -1,7 +1,5 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 10/30/2021
- * Purpose: This component represents a question component which simply houses a input with a text statment above it.
+ * This component represents a question component which simply houses a input with a text statment above it.
  */
 
 import React from "react"

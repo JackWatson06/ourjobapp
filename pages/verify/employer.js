@@ -1,7 +1,5 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 12/1/2021
- * Purpose: This file will create a employer signup screen.
+ * This file will create a employer signup screen.
  */
 
 import Column from "@templates/column"

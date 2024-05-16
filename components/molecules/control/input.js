@@ -1,7 +1,5 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 11/15/2021
- * Purpose: This class simply acts as a helper class to combine to seperate atoms together to form a complete input component
+ * This class simply acts as a helper class to combine to seperate atoms together to form a complete input component
  * which can track it's own state.
  */
 import { useState, useEffect, useCallback } from "react"

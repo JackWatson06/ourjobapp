@@ -1,8 +1,5 @@
-
 /**
- * Original Author: Jack Watson
- * Created Date: 11/15/2021
- * Purpose: This class holds the label code for an input element so that we can reuse the active state of the label so it
+ * This class holds the label code for an input element so that we can reuse the active state of the label so it
  * is consitent across different elements. 
  */
 

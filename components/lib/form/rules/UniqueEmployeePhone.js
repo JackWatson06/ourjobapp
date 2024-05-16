@@ -1,8 +1,3 @@
-/**
- * Original Author: Jack Watson
- * Created Date: 10/27/21
- * Purpose: 
- */
 
 import axios from "axios"
 import debounce from "@lib/utilities/debounce"
