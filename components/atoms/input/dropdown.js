@@ -1,7 +1,5 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 11/16/2021
- * Purpose: This class renders a dropdown for a select multiple input component. We keep it an individual atom here so that
+ * This class renders a dropdown for a select multiple input component. We keep it an individual atom here so that
  * we can reuse it between a regular select box as well as a select-multiple box.
  */
 

@@ -1,10 +1,3 @@
-/**
- * Original Author: Jack Watson
- * Created Date: 10/30/2021
- * Purpose: This file holds the signup form for an employee so they can get into our system.
- */
-
-
 import Head from 'next/head'
 import Column from '@templates/column'
 
@@ -27,21 +20,6 @@ const validFiles =
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document", //docx
     "application/msword" //doc
 ]
-
-// import Head from 'next/head'
-// import Column from '@templates/column'
-
-// import MultiPageForm from '@organisms/form/multi-page-form'
-// import FormPage from '@organisms/form/form-page'
-// import SharerVerify from "@organisms/signup/affiliate-verify"
-
-// import Input from "@molecules/control/input"
-// import Select from "@molecules/control/select"
-{/* <FormPage title="Let’s design your link!" buttonLabel="Create My Link!" >
-<Input  label="Link Name" name="name"       type="text" validators={ [ rules.noSpaces, rules.urlTokens, rules.maxLength(50) ] } />
-<Select label="Charity"   name="charity_id" endpoint="search/charities" />
-<Input  label="Phone"     name="phone"      type="tel" />
-</FormPage> */}
 
 export default function EmployeePage(props)
 {

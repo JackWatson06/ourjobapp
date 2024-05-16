@@ -1,8 +1,5 @@
-
 /**
- * Original Author: Jack Watson
- * Created Date: 11/15/2021
- * Purpose: Wraps a generic input component in our system. We typically use this component in conjunction with the 
+ * Wraps a generic input component in our system. We typically use this component in conjunction with the 
  * input box component which actual gives this component a shell around it.
  */
 
@@ -27,6 +24,7 @@ const Input = React.forwardRef(function InputText({label, type = "text", name, v
             onClick   = {e => e.stopPropagation()}
             onFocus   = {e => { onFocus != undefined && onFocus(true, e) }}
             onBlur    = {e => { onFocus != undefined && onFocus(false, e)} }
+            autocomplete = "one-time-code"
         />
     </div>
 });

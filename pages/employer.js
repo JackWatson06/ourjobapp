@@ -1,7 +1,5 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 10/30/2021
- * Purpose: This file outlines the signup process for the employer to get access to our system. The employer has to answer quetsions
+ * This file outlines the signup process for the employer to get access to our system. The employer has to answer quetsions
  * which help build out their candidate pool on our server.
  */
 
