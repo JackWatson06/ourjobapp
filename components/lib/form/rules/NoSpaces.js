@@ -1,7 +1,5 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 11/2/2021
- * Purpose: This class will validate a phone that is inputed into the class.
+ * This class will validate a phone that is inputed into the class.
  */
 
 const NoSpaces = {

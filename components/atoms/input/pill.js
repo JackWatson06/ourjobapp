@@ -1,7 +1,5 @@
 /**
- * Original Author: Jack Watson
- * Created Date: 10/17/2021
- * Purpose: This class simply renders a pill to the frontend.
+ * This class simply renders a pill to the frontend.
  */
 
 import Image from 'next/image'

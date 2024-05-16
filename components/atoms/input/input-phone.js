@@ -1,8 +1,5 @@
-
 /**
- * Original Author: Jack Watson
- * Created Date: 11/15/2021
- * Purpose: This component rerpresents a smarter telephone input component. Since telephone numbers are now a much more quintessential portion
+ * This component rerpresents a smarter telephone input component. Since telephone numbers are now a much more quintessential portion
  * of our application I have decided to incorporate smarter handling of these numbers. Plus they are necessary for our texting features.
  */
 

@@ -1,8 +1,5 @@
-
 /**
- * Original Author: Jack Watson
- * Created Date: 10/22/2021
- * Purpose: The logo represents the our job app logo.
+ * The logo represents the our job app logo.
  */
 import Router from "next/router"
 
